@@ -16,7 +16,7 @@ export default function Video() {
     })();
   }, []);
   return (
-    <>
+    <section className={style.background}>
       <aside className={style.aside}>
         <button className={style.addVideo}>Добави новo видео</button>
       </aside>
@@ -29,6 +29,6 @@ export default function Video() {
           </div>
         ))}
       </section>
-    </>
+    </section>
   );
 }
