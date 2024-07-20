@@ -1,98 +1,127 @@
-.backgroundImg {
-  background-size: cover;
-  padding: 2em 0 10em;
-  
-  place-items: center;
-  background-image: url('../../images/HealthFitness2.jpg');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-}
-.formContainer {
-  max-width: 600px;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 2em;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
- 
-  
-  
+.body {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    place-items: center;
+    background-image: url('../../images/HealthFitness2.jpg');
+    background-size: cover;
+    padding-bottom: 12em;
 }
 
-.recipeForm {
-  display: flex;
-  flex-direction: column;
- 
-  
+::selection {
+    background: #4158d0;
+    color: #fff;
 }
 
-.h2 {
-  text-align: center;
-  font-size: 24px;
-  font-weight: 600;
-  color: #333;
+.wrapper {
+    width: 480px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 2em;
 }
 
-.formGroup {
-  margin-bottom: 15px;
+.wrapper .title {
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    user-select: none;
+    border-radius: 15px 15px 0 0;
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
 }
 
-.formGroup label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+.wrapper .form {
+    padding: 10px 30px 50px 30px;
 }
 
-.formGroup input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5em;
-  box-sizing: border-box;
-  overflow-wrap: break-word; /* Ensures long words break and wrap */
+.wrapper .form .field {
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
 }
 
-.formGroup textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5em;
-  box-sizing: border-box;
-  resize: vertical; /* Allows vertical resizing only */
-  overflow: auto; /* Ensures scrollbar appears if content overflows */
-  word-wrap: break-word; /* Ensures long words break and wrap */
-  white-space: pre-wrap;
-  height: 10vh;
-  padding: 1em 2em; /* Ensures wrapping of whitespace and text */
-  font-size: 1.2em;
+.wrapper .form .field input,
+.wrapper .form .field textarea {
+    width: 100%;
+    outline: none;
+    font-size: 17px;
+    padding-left: 20px;
+    border: 1px solid lightgrey;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    padding: 1em 2em;
+    font-size: 1.2em;
 }
 
-.submitButton {
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5em;
-  transition: background-color 0.3s ease;
-  width: 100%;
-  margin-top: 20px; /* Ensure spacing from other elements */
+.wrapper .form .field input {
+    height: 50px;
 }
 
-.submitButton:hover {
-  background-color: #45a049;
+.wrapper .form .field textarea {
+    resize: vertical; 
+    overflow: auto; 
+    word-wrap: break-word; 
+    white-space: pre-wrap;
+    height: 100px; 
 }
 
-.error {
-  color: red;
-  margin-bottom: 10px;
+.wrapper .form .field input:focus,
+.wrapper .form .field textarea:focus,
+.wrapper .form .field input:valid,
+.wrapper .form .field textarea:valid {
+    border-color: #4158d0;
 }
 
-.success {
-  color: green;
-  margin-bottom: 10px;
+.wrapper .form .field label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    color: #999999;
+    font-weight: 400;
+    font-size: 17px;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+    background: #fff;
+    padding: 0 5px; 
+}
+
+.wrapper .form .field input:focus ~ label,
+.wrapper .form .field textarea:focus ~ label,
+.wrapper .form .field input:valid ~ label,
+.wrapper .form .field textarea:valid ~ label {
+    top: 0%;
+    font-size: 16px;
+    color: #4158d0;
+    transform: translateY(-50%);
+}
+
+.wrapper .form .content {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.wrapper .form .field input[type="submit"] {
+    color: #fff;
+    border: none;
+    padding-left: 0;
+    margin-top: -10px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    transition: all 0.3s ease;
+}
+
+.wrapper .form .field input[type="submit"]:active {
+    transform: scale(0.95);
 }
