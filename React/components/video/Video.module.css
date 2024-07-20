@@ -1,0 +1,34 @@
+.video {
+    
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+
+.video h3 {
+    position: absolute;
+    font-size: 1.2em;
+    background: #82acff;
+    display: block;
+    top: 0;
+    border-radius: 2em;
+    padding: 0.2em;
+}
+
+.video div {
+    position: relative;
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.video div iframe {
+    box-sizing: border-box;
+    width: 100%;
+    height: 60vh;
+    background: #82acff;
+
+}

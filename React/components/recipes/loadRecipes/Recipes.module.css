@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playwrite+NZ:wght@100..400&display=swap');
+
+.aside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    
+}
+
+.hr {
+    padding: 0.2em;
+    background: #d59bf6;
+}
+
+.all-recipes {
+    background: #9896f1;
+    margin: 0 auto;
+}
+
+.recipes {
+    padding: 2em;
+}
+
+.recipe-title h3 {
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.images {
+    border-radius: 2em;
+    width: 650px;
+    height: 40vh;
+}
+
+.media-ingredients-method {
+    display: flex;
+    margin-left: 2em;
+}
+
+.media-images {
+
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 2em;
+}
+
+.buttons {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+}
+
+.like,
+.edit,
+.delete,
+.show-recipe,
+.addRecipe {
+    padding: 1em 1.5em;
+    margin-top: 1em;
+    border-radius: 2em;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.like {
+    background-color: #28a745;
+}
+
+.edit {
+    background-color: darkorange;
+}
+
+.delete {
+    background-color: #dc3545;
+}
+
+.addRecipe {
+    background-color: yellow;
+    font-size: 1.5em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+.like:hover {
+    background-color: #218838;
+}
+
+.edit:hover {
+    background-color: #e0a800;
+}
+
+.delete:hover {
+    background-color: #c82333;
+}
+
+.show-recipe {
+    background-color: rgb(1, 202, 205);
+}
+
+
+.show-recipe:hover {
+    background-color: rgb(1, 194, 197);
+}
+
+.addRecipe:hover {
+    background-color: rgb(221, 221, 3);
+
+}
+
+.media-ingredients {
+    display: flex;
+    gap: 2em;
+    margin: 2em;
+    justify-content: center;
+}
+
+.ingredients {
+    background-color: #fff;
+    font-size: 1.2em;
+    border-radius: 2em;
+    padding: 3em;
+}
+
+.ingredients li {
+    font-size: 1.2em;
+    margin-top: 0.5em;
+    font-style: italic;
+}
+
+.ingredients h4,
+.method h4 {
+    font-weight: bold;
+    font-size: 1.6em;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.method {
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 2em;
+
+}
+
+.method p {
+    font-size: 1.4em;
+
+}

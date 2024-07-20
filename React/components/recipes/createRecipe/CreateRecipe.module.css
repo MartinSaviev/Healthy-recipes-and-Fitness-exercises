@@ -1,0 +1,98 @@
+.backgroundImg {
+  background-size: cover;
+  padding: 2em 0 10em;
+  
+  place-items: center;
+  background-image: url('../../images/HealthFitness2.jpg');
+
+}
+.formContainer {
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 2em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+ 
+  
+  
+}
+
+.recipeForm {
+  display: flex;
+  flex-direction: column;
+ 
+  
+}
+
+.h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.formGroup input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5em;
+  box-sizing: border-box;
+  overflow-wrap: break-word; /* Ensures long words break and wrap */
+}
+
+.formGroup textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5em;
+  box-sizing: border-box;
+  resize: vertical; /* Allows vertical resizing only */
+  overflow: auto; /* Ensures scrollbar appears if content overflows */
+  word-wrap: break-word; /* Ensures long words break and wrap */
+  white-space: pre-wrap;
+  height: 10vh;
+  padding: 1em 2em; /* Ensures wrapping of whitespace and text */
+  font-size: 1.2em;
+}
+
+.submitButton {
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5em;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 20px; /* Ensure spacing from other elements */
+}
+
+.submitButton:hover {
+  background-color: #45a049;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.success {
+  color: green;
+  margin-bottom: 10px;
+}

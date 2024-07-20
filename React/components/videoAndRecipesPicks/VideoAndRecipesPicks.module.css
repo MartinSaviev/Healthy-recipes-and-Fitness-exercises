@@ -1,0 +1,19 @@
+.media {
+    display: flex;
+    gap:2em;
+    background: #8ef6e4; 
+    padding: 4em;
+}
+
+.media a {
+   flex: 1 1 150%;
+   width: 50%;
+}
+.video,
+.recipes {
+   
+    width: 100%;
+    height: 70vh;
+    box-sizing: border-box;
+    border-radius: 2em;
+}
