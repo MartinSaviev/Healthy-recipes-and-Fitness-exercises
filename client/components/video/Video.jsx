@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import style from "./Video.module.css";
 import ReactPlayer from "react-player";
+import { Link } from "react-router-dom";
 const url = "http://localhost:3030/jsonstore/videos";
 
 export default function Video() {
@@ -18,7 +19,9 @@ export default function Video() {
   return (
     <section className={style.background}>
       <aside className={style.aside}>
+        <Link to="/CreateNewVideo" >
         <button className={style.addVideo}>Добави новo видео</button>
+        </Link>
       </aside>
 
       <section className={style.video}>

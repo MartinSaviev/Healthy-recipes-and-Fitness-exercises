@@ -1,9 +1,10 @@
 import HealthyAndFitness from "../components/backgroudImg/HealthyAndFitness";
 import Header from "../components/header/Header";
 import Login from "../components/login/Login";
-import CreateRecipe from "../components/recipes/createRecipe/CreateRecipe";
-import Recipes from "../components/recipes/loadRecipes/Recipes";
+import CreateRecipe from "../components/recipes/create-recipe/CreateRecipe";
+import Recipes from "../components/recipes/load-recipes/Recipes";
 import Register from "../components/register/Register";
+import CreateNewVideo from "../components/video/create-new-video/CreateNewVideo";
 import Video from "../components/video/Video";
 import "./App.css";
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/recipes" element={<Recipes/>}></Route>
         <Route path="/video"  element={<Video/>}></Route>
         <Route path="/CreateRecipe" element={<CreateRecipe />}></Route>
+        <Route path ="/CreateNewVideo" element={<CreateNewVideo />}></Route>
       </Routes>
     </>
   );
