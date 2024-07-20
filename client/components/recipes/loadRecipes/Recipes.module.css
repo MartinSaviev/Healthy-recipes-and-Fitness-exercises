@@ -78,10 +78,18 @@
 }
 
 .addRecipe {
-    background-color: yellow;
+    color: black;
+    border: none;
+    margin-bottom: 1em;
     font-size: 1.5em;
-    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.1);
-    font-weight: bold;
+    font-weight: 500;
+    cursor: pointer;
+    background: linear-gradient(-135deg, #f48a39, #f62719);
+    transition: all 0.3s ease;
+}
+
+.addRecipe:active {
+    transform: scale(0.95);
 }
 
 .like:hover {
@@ -103,11 +111,6 @@
 
 .show-recipe:hover {
     background-color: rgb(1, 194, 197);
-}
-
-.addRecipe:hover {
-    background-color: rgb(221, 221, 3);
-
 }
 
 .media-ingredients {
