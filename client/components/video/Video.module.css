@@ -1,8 +1,43 @@
-.video {
+.aside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    margin-top: 2em;
     
+}
+
+.addVideo {
+    padding: 1em 1.5em;
+    margin-top: 1em;
+    border-radius: 2em;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.addVideo {
+    color: #fff;
+    border: none;
+    margin-top: -10px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    background: linear-gradient(-135deg, #e88e07, #f71303);
+    transition: all 0.3s ease;
+}
+
+.addVideo:active {
+    transform: scale(0.95);
+}
+
+
+.video {
     display: flex;
     gap: 2em;
     flex-wrap: wrap;
+    justify-content: center;
+    margin: 2em;
+    
 }
 
 .video h3 {
@@ -15,20 +50,13 @@
     padding: 0.2em;
 }
 
-.video div {
+.video .reactPlayer {
     position: relative;
     display: flex;
-    flex: 1 1 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-}
-
-.video div iframe {
-    box-sizing: border-box;
-    width: 100%;
-    height: 60vh;
-    background: #82acff;
-
+    border-radius: 2em;
+    overflow: hidden;
+    
 }
