@@ -1,6 +1,7 @@
 import HealthyAndFitness from "../components/backgroudImg/HealthyAndFitness";
 import Header from "../components/header/Header";
 import Login from "../components/login/Login";
+import ChangeRecipe from "../components/recipes/change-recipe/ChangeRecipe";
 import CreateRecipe from "../components/recipes/create-recipe/CreateRecipe";
 import Recipes from "../components/recipes/load-recipes/Recipes";
 import Register from "../components/register/Register";
@@ -22,6 +23,7 @@ function App() {
         <Route path="/video"  element={<Video/>}></Route>
         <Route path="/CreateRecipe" element={<CreateRecipe />}></Route>
         <Route path ="/CreateNewVideo" element={<CreateNewVideo />}></Route>
+        <Route path="/ChangeRecipe" element={<ChangeRecipe />}></Route>
       </Routes>
     </>
   );

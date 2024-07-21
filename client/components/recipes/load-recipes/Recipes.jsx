@@ -39,7 +39,9 @@ export default function Recipes() {
 
               <section className={style.buttons}>
                 <button className={style.like}>Харесай</button>
+                <Link to="/ChangeRecipe"> 
                 <button className={style.edit}>Промени</button>
+                </Link>
                 <button className={style.delete}>Изтрий</button>
                 <button className={style["show-recipe"]}>Покажи Рецепта</button>
               </section>

@@ -1,8 +1,7 @@
 import { useState } from "react";
-
 import styles from "./CreateNewVideo.module.css";
 import backgroundVideo from "./backgroundVideo.mp4";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const url = "http://localhost:3030/jsonstore/videos";
 
@@ -12,6 +11,7 @@ export default function CreateNewVideo() {
     header: "",
     videoUrl: "",
   });
+  const [error, setError] = useState("");
 
   function changeNameHandler(ev) {
     setValues((prevValues) => ({
@@ -27,20 +27,29 @@ export default function CreateNewVideo() {
     }));
   }
 
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(values),
-  };
-  
   async function postHandler(event) {
     event.preventDefault();
-     ///try catch ?
-    const response = await fetch(url, requestOptions);
-    const data = await response.json();
-    console.log(data);
-    navigate("../Video");
+    if (!values.header || !values.videoUrl || !values.videoUrl.startsWith("https://" || "http://")) {
+      alert("Моля, попълнете всички полета коректно.");
+      return;
+    }
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      console.log(data);
+      navigate("../Video");
+    } catch (err) {
+      setError("Моля, попълнете всички полета и уверете се, че URL адресът на видеото започва с 'https://' или 'http://'.");
+    }
   }
+
   return (
     <div className={styles.body}>
       <video
@@ -52,13 +61,8 @@ export default function CreateNewVideo() {
         muted
       ></video>
       <div className={styles.wrapper}>
-        <div className={styles.title}>Create New Video</div>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault;
-          }}
-          className={styles.form}
-        >
+        <div className={styles.title}>Добави ново видео</div>
+        <form className={styles.form} onSubmit={postHandler}>
           <div className={styles.field}>
             <input
               type="text"
@@ -77,12 +81,12 @@ export default function CreateNewVideo() {
             />
             <label>Изображение (URL)</label>
           </div>
+          {error && <div className={styles.error}>{error}</div>}
           <div className={styles["submit-btn-container"]}>
             <input
               type="submit"
               className={styles["submit-btn"]}
-              value="Submit"
-              onClick={postHandler}
+              value="Добави"
             />
           </div>
         </form>

@@ -16,7 +16,7 @@ export default function Login() {
           </div>
           <div className={styles.content}></div>
           <div className={styles.field}>
-            <input type="submit" value="Login" />
+            <input type="submit" value="Влез" />
           </div>
         </form>
       </section>

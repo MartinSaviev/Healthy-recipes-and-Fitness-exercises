@@ -1,7 +1,6 @@
 import { useState } from "react";
-import styles from "./CreateRecipe.module.css";
+import styles from "./ChangeRecipe.module.css";
 import { useNavigate } from "react-router-dom";
-
 
 const url = "http://localhost:3030/jsonstore/recipes/recipes";
 
@@ -13,7 +12,6 @@ export default function CreateRecipe() {
     img: "",
     ingredients: "",
     steps: "",
-    videoUrl: "",
   });
 
   const requestOptions = {
@@ -28,30 +26,22 @@ export default function CreateRecipe() {
 
   async function sendRecipes(ev) {
     ev.preventDefault();
-    try {
-      if (!recipe.name || !recipe.img || !recipe.ingredients || !recipe.steps || !recipe.videoUrl || (!recipe.videoUrl.startsWith("https://") && !recipe.videoUrl.startsWith("http://"))) {
-        throw new Error("Моля, попълнете всички полета и уверете се, че URL адресът на видеото започва с 'https://' или 'http://'.");
-      }
-      const response = await fetch(url, requestOptions);
-      const data = await response.json();
-      console.log(data);
-      navigate("/Recipes");
-    } catch (err) {
-     
-      alert(err.message);
-    }
+    const response = await fetch(url, requestOptions);
+    const data = await response.json();
+    console.log(data);
+    navigate("/Recipes");
   }
 
   function nameHandler(ev) {
-    setRecipe((prevRecipe) => ({
-      ...prevRecipe,
+    setRecipe((prevName) => ({
+      ...prevName,
       name: ev.target.value,
     }));
   }
 
   function imgHandler(ev) {
-    setRecipe((prevRecipe) => ({
-      ...prevRecipe,
+    setRecipe((prevImg) => ({
+      ...prevImg,
       img: ev.target.value,
     }));
   }
@@ -70,32 +60,38 @@ export default function CreateRecipe() {
     }));
   }
 
+  console.log(recipe);
   return (
-    <div className={styles.body}>
+    <body className={styles.body}>
       <section className={styles.wrapper}>
-        <div className={styles.title}>Добави нова рецепта</div>
-        <form onSubmit={sendRecipes} className={styles.form}>
+        <div className={styles.title}>Промени рецепта</div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault;
+          }}
+          className={styles.form}
+        >
           <div className={styles.field}>
-            <input type="text" name="name" onChange={nameHandler} required />
+            <input type="text" name="name" onChange={nameHandler} />
             <label>Име</label>
           </div>
           <div className={styles.field}>
-            <input type="text" name="img" onChange={imgHandler} required />
+            <input type="text" name="img" onChange={imgHandler} />
             <label>Изображение (URL)</label>
           </div>
           <div className={styles.field}>
-            <textarea name="ingredients" onChange={addIngredientHandler} required />
+            <textarea name="ingredients" onChange={addIngredientHandler} />
             <label>Съставки (разделени със запетая)</label>
           </div>
           <div className={styles.field}>
-            <textarea name="steps" onChange={addStep} required />
+            <textarea name="steps" onChange={addStep} />
             <label>Стъпки</label>
           </div>
           <div className={styles.field}>
-            <input type="submit" value="Добави рецепта" />
+            <input onClick={sendRecipes} type="submit" value="Промени" />
           </div>
         </form>
       </section>
-    </div>
+    </body>
   );
 }
