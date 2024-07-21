@@ -21,15 +21,13 @@ export default function Recipes() {
   return (
     <section className={style["all-recipes"]}>
       <aside className={style.aside}>
-        <Link to="/CreateRecipe" >
-          <button className={style.addRecipe} >Добави нова рецепта</button>
+        <Link to="/CreateRecipe">
+          <button className={style.addRecipe}>Добави нова рецепта</button>
         </Link>
       </aside>
       <hr className={style.hr} />
 
       {recipes.map((recipe) => (
-        <>
-        
         <section key={recipe._id} className={style.recipes}>
           <header className={style["recipe-title"]}>
             <h3>{recipe.name}</h3>
@@ -51,17 +49,15 @@ export default function Recipes() {
           </article>
 
           <Method id={recipe._id} />
-        
         </section>
-        <hr className={style.hr} />
-        </>
       ))}
-      
+
       <aside className={style.aside}>
-        <Link to="/CreateRecipe" >
-          <button className={style.addRecipe} >Добави нова рецепта</button>
+        <Link to="/CreateRecipe">
+          <button className={style.addRecipe}>Добави нова рецепта</button>
         </Link>
       </aside>
+      <hr className={style.hr} />
     </section>
   );
 }

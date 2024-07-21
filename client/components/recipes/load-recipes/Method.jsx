@@ -10,19 +10,19 @@ export default function Method({id}) {
  
   useEffect(() => {
     (async () => {
-      const response = await fetch(`${url}/recipes/${id}/steps`);
+      const response = await fetch(`${url}/recipes/${id}`);
       const data = await response.json();
       setCooing(data);
     })();
   }, [id]);
-
+  
+  console.log(cooking);
   
   return (
     <article className={style.method}>
       <h4>Начин на приготване</h4>
-      {cooking.map((method, i) => (
-        <p key={i}>{method}</p>
-      ))}
+
+        <p key={cooking._id}>{cooking.steps}</p>
     </article>
   );
 }

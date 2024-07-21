@@ -20,7 +20,7 @@ export default function CreateRecipe() {
     body: JSON.stringify({
       ...recipe,
       ingredients: recipe.ingredients.split(","),
-      steps: recipe.steps.split(".").map((step) => step.trim() + ".").join("."),
+      steps: recipe.steps,
     }),
   };
 
@@ -85,7 +85,7 @@ export default function CreateRecipe() {
           </div>
           <div className={styles.field}>
             <textarea name="steps" onChange={addStep} />
-            <label>Стъпки (разделени с точка)</label>
+            <label>Стъпки</label>
           </div>
           <div className={styles.field}>
             <input onClick={sendRecipes} type="submit" value="Добави рецепта" />

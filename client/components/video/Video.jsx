@@ -32,6 +32,12 @@ export default function Video() {
           </div>
         ))}
       </section>
+      <aside className={style.aside}>
+        <Link to="/CreateNewVideo" >
+        <button className={style.addVideo}>Добави новo видео</button>
+        </Link>
+      </aside>
     </section>
+    
   );
 }
