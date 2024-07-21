@@ -32,34 +32,14 @@ export default function CreateRecipe() {
     navigate("/Recipes");
   }
 
-  function nameHandler(ev) {
-    setRecipe((prevName) => ({
-      ...prevName,
-      name: ev.target.value,
+  function changeHandler(ev) {
+    ev.target.name;
+    setRecipe((oldValues) => ({
+      ...oldValues,
+      [ev.target.name]:ev.target.value
     }));
   }
-
-  function imgHandler(ev) {
-    setRecipe((prevImg) => ({
-      ...prevImg,
-      img: ev.target.value,
-    }));
-  }
-
-  function addIngredientHandler(ev) {
-    setRecipe((prevRecipe) => ({
-      ...prevRecipe,
-      ingredients: ev.target.value,
-    }));
-  }
-
-  function addStep(ev) {
-    setRecipe((prevRecipe) => ({
-      ...prevRecipe,
-      steps: ev.target.value,
-    }));
-  }
-
+  
   console.log(recipe);
   return (
     <body className={styles.body}>
@@ -72,19 +52,19 @@ export default function CreateRecipe() {
           className={styles.form}
         >
           <div className={styles.field}>
-            <input type="text" name="name" onChange={nameHandler} />
+            <input type="text" name="name" onChange={changeHandler} />
             <label>Име</label>
           </div>
           <div className={styles.field}>
-            <input type="text" name="img" onChange={imgHandler} />
+            <input type="text" name="img" onChange={changeHandler} />
             <label>Изображение (URL)</label>
           </div>
           <div className={styles.field}>
-            <textarea name="ingredients" onChange={addIngredientHandler} />
+            <textarea name="ingredients" onChange={changeHandler} />
             <label>Съставки (разделени със запетая)</label>
           </div>
           <div className={styles.field}>
-            <textarea name="steps" onChange={addStep} />
+            <textarea name="steps" onChange={changeHandler} />
             <label>Стъпки</label>
           </div>
           <div className={styles.field}>

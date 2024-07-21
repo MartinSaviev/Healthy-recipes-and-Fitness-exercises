@@ -2,7 +2,6 @@ import { useState } from "react";
 import styles from "./CreateRecipe.module.css";
 import { useNavigate } from "react-router-dom";
 
-
 const url = "http://localhost:3030/jsonstore/recipes/recipes";
 
 export default function CreateRecipe() {
@@ -29,15 +28,22 @@ export default function CreateRecipe() {
   async function sendRecipes(ev) {
     ev.preventDefault();
     try {
-      if (!recipe.name || !recipe.img || !recipe.ingredients || !recipe.steps || !recipe.videoUrl || (!recipe.videoUrl.startsWith("https://") && !recipe.videoUrl.startsWith("http://"))) {
-        throw new Error("Моля, попълнете всички полета и уверете се, че URL адресът на видеото започва с 'https://' или 'http://'.");
+      if (
+        !recipe.name ||
+        !recipe.img ||
+        !recipe.ingredients ||
+        !recipe.steps ||
+        !recipe.img.startsWith("https://")
+      ) {
+        throw new Error(
+          "Моля, попълнете всички полета и уверете се, че URL адресът на видеото започва с 'https://' или 'http://'."
+        );
       }
       const response = await fetch(url, requestOptions);
       const data = await response.json();
       console.log(data);
       navigate("/Recipes");
     } catch (err) {
-     
       alert(err.message);
     }
   }
@@ -84,7 +90,11 @@ export default function CreateRecipe() {
             <label>Изображение (URL)</label>
           </div>
           <div className={styles.field}>
-            <textarea name="ingredients" onChange={addIngredientHandler} required />
+            <textarea
+              name="ingredients"
+              onChange={addIngredientHandler}
+              required
+            />
             <label>Съставки (разделени със запетая)</label>
           </div>
           <div className={styles.field}>
