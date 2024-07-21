@@ -32,18 +32,15 @@ export default function CreateNewVideo() {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(values),
   };
-
-  console.log(values);
+  
   async function postHandler(event) {
     event.preventDefault();
-
+     ///try catch ?
     const response = await fetch(url, requestOptions);
     const data = await response.json();
-    setValues({ header: "", videoUrl: "" });
     console.log(data);
     navigate("../Video");
   }
-  console.log(values);
   return (
     <div className={styles.body}>
       <video
