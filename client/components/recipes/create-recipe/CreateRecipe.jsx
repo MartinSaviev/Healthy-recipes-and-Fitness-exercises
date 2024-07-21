@@ -7,7 +7,7 @@ const url = "http://localhost:3030/jsonstore/recipes/recipes";
 export default function CreateRecipe() {
   let navigate = useNavigate();
 
-  const [recipe, setRecipe] = useState({
+  const [values, setValues] = useState({
     name: "",
     img: "",
     ingredients: "",
@@ -19,9 +19,9 @@ export default function CreateRecipe() {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      ...recipe,
-      ingredients: recipe.ingredients.split(","),
-      steps: recipe.steps,
+      ...values,
+      ingredients: values.ingredients.split(","),
+      steps: values.steps,
     }),
   };
 
@@ -29,11 +29,11 @@ export default function CreateRecipe() {
     ev.preventDefault();
     try {
       if (
-        !recipe.name ||
-        !recipe.img ||
-        !recipe.ingredients ||
-        !recipe.steps ||
-        !recipe.img.startsWith("https://")
+        !values.name ||
+        !values.img ||
+        !values.ingredients ||
+        !values.steps ||
+        !values.img.startsWith("https://")
       ) {
         throw new Error(
           "Моля, попълнете всички полета и уверете се, че URL адресът на видеото започва с 'https://' или 'http://'."
@@ -48,31 +48,11 @@ export default function CreateRecipe() {
     }
   }
 
-  function nameHandler(ev) {
-    setRecipe((prevRecipe) => ({
+  function changeValuesHandler(ev) {
+    
+    setValues((prevRecipe) => ({
       ...prevRecipe,
-      name: ev.target.value,
-    }));
-  }
-
-  function imgHandler(ev) {
-    setRecipe((prevRecipe) => ({
-      ...prevRecipe,
-      img: ev.target.value,
-    }));
-  }
-
-  function addIngredientHandler(ev) {
-    setRecipe((prevRecipe) => ({
-      ...prevRecipe,
-      ingredients: ev.target.value,
-    }));
-  }
-
-  function addStep(ev) {
-    setRecipe((prevRecipe) => ({
-      ...prevRecipe,
-      steps: ev.target.value,
+      [ev.target.name]: ev.target.value,
     }));
   }
 
@@ -82,23 +62,23 @@ export default function CreateRecipe() {
         <div className={styles.title}>Добави нова рецепта</div>
         <form onSubmit={sendRecipes} className={styles.form}>
           <div className={styles.field}>
-            <input type="text" name="name" onChange={nameHandler} required />
+            <input type="text" name="name" onChange={changeValuesHandler} required />
             <label>Име</label>
           </div>
           <div className={styles.field}>
-            <input type="text" name="img" onChange={imgHandler} required />
+            <input type="text" name="img" onChange={changeValuesHandler} required />
             <label>Изображение (URL)</label>
           </div>
           <div className={styles.field}>
             <textarea
               name="ingredients"
-              onChange={addIngredientHandler}
+              onChange={changeValuesHandler}
               required
             />
             <label>Съставки (разделени със запетая)</label>
           </div>
           <div className={styles.field}>
-            <textarea name="steps" onChange={addStep} required />
+            <textarea name="steps" onChange={changeValuesHandler} required />
             <label>Стъпки</label>
           </div>
           <div className={styles.field}>
