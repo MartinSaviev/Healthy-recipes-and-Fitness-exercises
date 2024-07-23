@@ -5,7 +5,6 @@ const url = "http://localhost:3030/jsonstore/recipes";
 
 // eslint-disable-next-line react/prop-types
 export default function Ingredients({id}) {
-   console.log(id);
 
     const [ingredients, setIngredients] = useState([]);
     
@@ -14,7 +13,6 @@ export default function Ingredients({id}) {
       const response = await fetch(`${url}/recipes/${id}/ingredients`);
       const data = await response.json();
       setIngredients(data);
-      console.log(data);
     })();
   }, [id]);
 

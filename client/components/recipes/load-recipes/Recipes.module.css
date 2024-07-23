@@ -142,9 +142,11 @@
 }
 
 .method {
-    background-color: #fff;
+   background-color: #fff;
     padding: 2em;
+    margin-top: 2em;
     border-radius: 2em;
+    color: black;
 
 }
 
