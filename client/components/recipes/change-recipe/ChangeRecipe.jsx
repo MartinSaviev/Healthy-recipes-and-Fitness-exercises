@@ -1,11 +1,14 @@
 import { useState } from "react";
 import styles from "./ChangeRecipe.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
+
 
 const url = "http://localhost:3030/jsonstore/recipes/recipes";
 
 export default function CreateRecipe() {
   let navigate = useNavigate();
+  let {userId} = useParams();
 
   const [recipe, setRecipe] = useState({
     name: "",
@@ -15,18 +18,19 @@ export default function CreateRecipe() {
   });
 
   const requestOptions = {
-    method: "POST",
+    method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       ...recipe,
       ingredients: recipe.ingredients.split(","),
       steps: recipe.steps,
+      _id:userId
     }),
   };
 
   async function sendRecipes(ev) {
     ev.preventDefault();
-    const response = await fetch(url, requestOptions);
+    const response = await fetch(`${url}/${userId}`, requestOptions);
     const data = await response.json();
     console.log(data);
     navigate("/Recipes");

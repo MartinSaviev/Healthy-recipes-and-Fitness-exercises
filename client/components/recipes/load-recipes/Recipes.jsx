@@ -14,15 +14,14 @@ export default function Recipes() {
       const response = await fetch(`${url}/recipes`);
       const data = await response.json();
       getRecipes(Object.values(data));
-      
     })();
   }, []);
 
   return (
     <section className={style["all-recipes"]}>
       <aside className={style.aside}>
-        <Link to="/CreateRecipe" >
-          <button className={style.addRecipe}  >Добави нова рецепта</button>
+        <Link to="/CreateRecipe">
+          <button className={style.addRecipe}>Добави нова рецепта</button>
         </Link>
       </aside>
       <hr className={style.hr} />
@@ -38,13 +37,17 @@ export default function Recipes() {
               <img className={style.images} src={recipe.img} alt="" />
 
               <section className={style.buttons}>
-                <button className={style.like}>Харесай</button>
-                <Link to="/ChangeRecipe">
-                <button className={style.edit}>Промени</button>
+                <Link>
+                  <button className={style.like}>Харесай</button>
                 </Link>
-                <button className={style.delete}>Изтрий</button>
+                <Link to={`/ChangeRecipe/${recipe._id}`}>
+                  <button className={style.edit}>Промени</button>
+                </Link>
+                <Link>
+                  <button className={style.delete}>Изтрий</button>
+                </Link>
                 <Link to={`/Comments/${recipe._id}`}>
-                <button className={style["show-recipe"]}>Коментари</button>
+                  <button className={style["show-recipe"]}>Коментари</button>
                 </Link>
               </section>
             </div>

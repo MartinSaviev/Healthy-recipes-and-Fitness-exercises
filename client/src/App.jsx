@@ -24,7 +24,7 @@ function App() {
         <Route path="/video"  element={<Video/>}></Route>
         <Route path="/CreateRecipe" element={<CreateRecipe />}></Route>
         <Route path ="/CreateNewVideo" element={<CreateNewVideo />}></Route>
-        <Route path="/ChangeRecipe" element={<ChangeRecipe />}></Route>
+        <Route path="/ChangeRecipe/:userId" element={<ChangeRecipe />}></Route>
         <Route path="/Comments/:userId" element={<Comments />}></Route>
       </Routes>
     </>
