@@ -16,13 +16,12 @@ export default function Method({id}) {
     })();
   }, [id]);
 
-  
   return (
     <article className={style.method}>
       <h4>Начин на приготване</h4>
-      {cooking.map((method, i) => (
-        <p key={i}>{method}</p>
-      ))}
+      
+        <p>{cooking}</p>
+      
     </article>
   );
 }

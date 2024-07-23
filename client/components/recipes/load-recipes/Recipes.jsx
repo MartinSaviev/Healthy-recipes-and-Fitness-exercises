@@ -14,6 +14,7 @@ export default function Recipes() {
       const response = await fetch(`${url}/recipes`);
       const data = await response.json();
       getRecipes(Object.values(data));
+      
     })();
   }, []);
 
