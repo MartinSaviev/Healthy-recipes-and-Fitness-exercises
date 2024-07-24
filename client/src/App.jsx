@@ -3,6 +3,7 @@ import Header from "../components/header/Header";
 import Login from "../components/login/Login";
 import Page404 from "../components/page-404/Page404";
 import ChangeRecipe from "../components/recipes/change-recipe/ChangeRecipe";
+import AddComment from "../components/recipes/comments/add-comment/AddComment";
 import Comments from "../components/recipes/comments/Comments";
 import CreateRecipe from "../components/recipes/create-recipe/CreateRecipe";
 import DeleteRecipe from "../components/recipes/delete-recipe/DeleteRecipe";
@@ -30,6 +31,7 @@ function App() {
         <Route path="/Comments/:userId" element={<Comments />}></Route>
         <Route path="/DeleteRecipe/:userId" element={<DeleteRecipe />}></Route>
         <Route path="/*" element={<Page404 />}></Route>
+        <Route path="/AddComment" element={<AddComment />}></Route>
       </Routes>
     </>
   );

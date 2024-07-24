@@ -11,11 +11,41 @@
     margin-top: 2em;
     border-radius: 2em;
     background: linear-gradient(-135deg, #c850c0, #4158d0);
-
     
 }
 
 .method p {
     font-size: 1.4em;
 
+}
+
+.aside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;   
+}
+
+.addComment {
+    padding: 1em 1.5em;
+    margin-top: 1em;
+    border-radius: 2em;
+    font-size: 1.2em;
+    cursor: pointer;
+    
+}
+
+.addComment {
+    color: #fff;
+    border: none;
+    margin-top: 1em;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    background: linear-gradient(-135deg, #e88e07, #f71303);
+    transition: all 0.3s ease;
+}
+
+.addComment:active {
+    transform: scale(0.95);
 }
