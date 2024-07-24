@@ -7,9 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1em;
-    
-    
+    padding: 1em;   
 }
 
 .addVideo {
@@ -18,7 +16,6 @@
     border-radius: 2em;
     font-size: 1.2em;
     cursor: pointer;
-    
 }
 
 .addVideo {
@@ -43,7 +40,6 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 2em;
-    
 }
 
 .video h3 {
@@ -64,5 +60,4 @@
     align-items: center;
     border-radius: 2em;
     overflow: hidden;
-    
 }
