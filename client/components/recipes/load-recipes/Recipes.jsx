@@ -43,7 +43,7 @@ export default function Recipes() {
                 <Link to={`/ChangeRecipe/${recipe._id}`}>
                   <button className={style.edit}>Промени</button>
                 </Link>
-                <Link>
+                <Link to={`/DeleteRecipe/${recipe._id}`}>
                   <button className={style.delete}>Изтрий</button>
                 </Link>
                 <Link to={`/Comments/${recipe._id}`}>

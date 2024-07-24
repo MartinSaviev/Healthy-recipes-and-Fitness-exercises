@@ -9,13 +9,12 @@ export default function Comments() {
   let { userId } = useParams();
 
   useEffect(() => {
-    console.log(userId);
     (async () => {
       const response = await fetch(`${url}${userId}/comments`);
       const data = await response.json();
       getComments(data);
     })();
-  }, []);
+  }, [userId]);
 
   console.log(comments);
   return (
