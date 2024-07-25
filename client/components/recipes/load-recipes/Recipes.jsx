@@ -4,15 +4,16 @@ import { Link } from "react-router-dom";
 import style from "./Recipes.module.css";
 import Ingredients from "./Ingredients";
 import Method from "./Method";
-const url = "http://localhost:3030/jsonstore/recipes";
+
+import requester from "../../../src/api/requester";
 
 export default function Recipes() {
   const [recipes, getRecipes] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(`${url}/recipes`);
-      const data = await response.json();
+      const data = await requester('GET','','')
+    
       getRecipes(Object.values(data));
     })();
   }, []);

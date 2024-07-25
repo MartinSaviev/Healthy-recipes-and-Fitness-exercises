@@ -2,52 +2,40 @@ import { useState } from "react";
 import styles from "./ChangeRecipe.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 
-
-
-const url = "http://localhost:3030/jsonstore/recipes/recipes";
+import { recipeRequest } from "../../../src/api/recipeRequest";
 
 export default function CreateRecipe() {
   let navigate = useNavigate();
   let {userId} = useParams();
 
-  const [recipe, setRecipe] = useState({
+  const [values, setValues] = useState({
     name: "",
     img: "",
     ingredients: "",
     steps: "",
   });
 
-  const requestOptions = {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      ...recipe,
-      ingredients: recipe.ingredients.split(","),
-      steps: recipe.steps,
-      _id:userId
-    }),
-  };
-
+ 
   async function sendRecipes(ev) {
     ev.preventDefault();
-    const response = await fetch(`${url}/${userId}`, requestOptions);
-    const data = await response.json();
-    console.log(data);
+
+    await recipeRequest('PUT',userId,values)
+
     navigate("/Recipes");
   }
 
   function changeHandler(ev) {
     ev.target.name;
-    setRecipe((oldValues) => ({
+    setValues((oldValues) => ({
       ...oldValues,
       [ev.target.name]:ev.target.value
     }));
   }
   
-  console.log(recipe);
   return (
-    <body className={styles.body}>
-      <section className={styles.wrapper}>
+    <>
+    <section className={styles.body}>
+      <article className={styles.wrapper}>
         <div className={styles.title}>Промени рецепта</div>
         <form
           onSubmit={(e) => {
@@ -75,7 +63,8 @@ export default function CreateRecipe() {
             <input onClick={sendRecipes} type="submit" value="Промени" />
           </div>
         </form>
-      </section>
-    </body>
+      </article>
+    </section>
+    </>
   );
 }

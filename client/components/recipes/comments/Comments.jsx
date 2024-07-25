@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import styles from "./Comments.module.css";
 import { useEffect, useState } from "react";
-const url = "http://localhost:3030/jsonstore/recipes/recipes/";
+
+import requester from "../../../src/api/requester";
 
 export default function Comments() {
   const [comments, getComments] = useState([]);
@@ -10,13 +11,12 @@ export default function Comments() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(`${url}${userId}/comments`);
-      const data = await response.json();
+
+      const data = await requester('GET',`${userId}/comments`)
       getComments(data);
     })();
   }, [userId]);
 
-  console.log(comments);
   return (
     <>
     <aside className={styles.aside}>
@@ -24,8 +24,8 @@ export default function Comments() {
           <button className={styles.addComment}>Добави коментар</button>
         </Link>
       </aside>
-      {comments.map((comment) => (
-        <article key={userId} className={styles.method}>
+      {comments.map((comment,index) => (
+        <article key={index} className={styles.method}>
           <h4>{comment}</h4>
         </article>
       ))}

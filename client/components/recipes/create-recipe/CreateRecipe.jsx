@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./CreateRecipe.module.css";
 import { useNavigate } from "react-router-dom";
 
-const url = "http://localhost:3030/jsonstore/recipes/recipes";
+import { recipeRequest } from "../../../src/api/recipeRequest";
 
 export default function CreateRecipe() {
   let navigate = useNavigate();
@@ -14,16 +14,6 @@ export default function CreateRecipe() {
     steps: "",
     videoUrl: "",
   });
-
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      ...values,
-      ingredients: values.ingredients.split(","),
-      steps: values.steps,
-    }),
-  };
 
   async function sendRecipes(ev) {
     ev.preventDefault();
@@ -39,8 +29,8 @@ export default function CreateRecipe() {
           "Моля, попълнете всички полета и уверете се, че URL адресът на видеото започва с 'https://' или 'http://'."
         );
       }
-      const response = await fetch(url, requestOptions);
-      const data = await response.json();
+      
+      const data = await recipeRequest('POST','',values)
       console.log(data);
       navigate("/Recipes");
     } catch (err) {
@@ -57,8 +47,9 @@ export default function CreateRecipe() {
   }
 
   return (
-    <div className={styles.body}>
-      <section className={styles.wrapper}>
+   
+    <section className={styles.container}>
+      <article className={styles.wrapper}>
         <div className={styles.title}>Добави нова рецепта</div>
         <form onSubmit={sendRecipes} className={styles.form}>
           <div className={styles.field}>
@@ -85,7 +76,8 @@ export default function CreateRecipe() {
             <input type="submit" value="Добави рецепта" />
           </div>
         </form>
-      </section>
-    </div>
+      </article>
+    </section>
+    
   );
 }

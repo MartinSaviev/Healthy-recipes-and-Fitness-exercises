@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import style from "./Recipes.module.css";
 
-const url = "http://localhost:3030/jsonstore/recipes";
+import requester from "../../../src/api/requester";
 
 // eslint-disable-next-line react/prop-types
-export default function Ingredients({id}) {
+export default function Ingredients({ id }) {
+  const [ingredients, setIngredients] = useState([]);
 
-    const [ingredients, setIngredients] = useState([]);
-    
-    useEffect(() => {
-        (async () => {
-      const response = await fetch(`${url}/recipes/${id}/ingredients`);
-      const data = await response.json();
+  useEffect(() => {
+    (async () => {
+      const data = await requester("GET", `${id}/ingredients`);
+
       setIngredients(data);
     })();
   }, [id]);

@@ -2,7 +2,7 @@ import HealthyAndFitness from "../components/backgroudImg/HealthyAndFitness";
 import Header from "../components/header/Header";
 import Login from "../components/login/Login";
 import Page404 from "../components/page-404/Page404";
-import ChangeRecipe from "../components/recipes/change-recipe/ChangeRecipe";
+import ChangeRecipe from "../components/recipes/edit-recipe/ChangeRecipe";
 import AddComment from "../components/recipes/comments/add-comment/AddComment";
 import Comments from "../components/recipes/comments/Comments";
 import CreateRecipe from "../components/recipes/create-recipe/CreateRecipe";
@@ -27,7 +27,7 @@ function App() {
         <Route path="/video"  element={<Video/>}></Route>
         <Route path="/CreateRecipe" element={<CreateRecipe />}></Route>
         <Route path ="/CreateNewVideo" element={<CreateNewVideo />}></Route>
-        <Route path="/ChangeRecipe/:userId" element={<ChangeRecipe />}></Route>
+        <Route path="/ChangeRecipe/:userId" element={<ChangeRecipe/>}></Route>
         <Route path="/Comments/:userId" element={<Comments />}></Route>
         <Route path="/DeleteRecipe/:userId" element={<DeleteRecipe />}></Route>
         <Route path="/*" element={<Page404 />}></Route>
