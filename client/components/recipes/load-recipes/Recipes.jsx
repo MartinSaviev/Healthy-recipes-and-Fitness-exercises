@@ -12,8 +12,8 @@ export default function Recipes() {
 
   useEffect(() => {
     (async () => {
-      const data = await requester('GET','','')
-    
+      const data = await requester("GET", "", "");
+
       getRecipes(Object.values(data));
     })();
   }, []);
@@ -61,6 +61,11 @@ export default function Recipes() {
       ))}
 
       <hr className={style.hr} />
+      <aside className={style.aside}>
+        <Link to="/CreateRecipe">
+          <button className={style.addRecipe}>Добави нова рецепта</button>
+        </Link>
+      </aside>
     </section>
   );
 }

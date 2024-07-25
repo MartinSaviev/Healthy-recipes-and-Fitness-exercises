@@ -18,7 +18,7 @@ export default function DeleteRecipe() {
 
   return (
     <article className={style.deleteModal}>
-      <h2>Издриване на рецепта!</h2>
+      <h2>Изтриване на рецепта!</h2>
       <div className={style.buttons}>
         <Link>
           <button className={style.deleteButton} onClick={deleteRecipeHandler}>

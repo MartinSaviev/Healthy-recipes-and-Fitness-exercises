@@ -2,8 +2,8 @@ import styles from "./AddComment.module.css";
 
 export default function AddComment() {
   return (
-    <body className={styles.body}>
-      <section className={styles.wrapper}>
+    <section className={styles.body}>
+      <article className={styles.wrapper}>
         <div className={styles.title}>Добави Коментар</div>
         <form
           onSubmit={(e) => {
@@ -19,7 +19,7 @@ export default function AddComment() {
             <input type="submit" value="Добави" />
           </div>
         </form>
-      </section>
-    </body>
+      </article>
+    </section>
   );
 }

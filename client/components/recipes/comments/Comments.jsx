@@ -11,24 +11,23 @@ export default function Comments() {
 
   useEffect(() => {
     (async () => {
-
-      const data = await requester('GET',`${userId}/comments`)
+      const data = await requester("GET", `${userId}/comments`);
       getComments(data);
     })();
   }, [userId]);
 
   return (
-    <>
-    <aside className={styles.aside}>
+    <section className={styles.background}>
+      <aside className={styles.aside}>
         <Link to="/AddComment">
           <button className={styles.addComment}>Добави коментар</button>
         </Link>
       </aside>
-      {comments.map((comment,index) => (
+      {comments.map((comment, index) => (
         <article key={index} className={styles.method}>
           <h4>{comment}</h4>
         </article>
       ))}
-    </>
+    </section>
   );
 }
