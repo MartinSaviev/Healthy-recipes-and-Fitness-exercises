@@ -30,8 +30,8 @@ function App() {
         <Route path="/ChangeRecipe/:userId" element={<ChangeRecipe/>}></Route>
         <Route path="/Comments/:userId" element={<Comments />}></Route>
         <Route path="/DeleteRecipe/:userId" element={<DeleteRecipe />}></Route>
+        <Route path="/AddComment/:userId" element={<AddComment />}></Route>
         <Route path="/*" element={<Page404 />}></Route>
-        <Route path="/AddComment" element={<AddComment />}></Route>
       </Routes>
     </>
   );

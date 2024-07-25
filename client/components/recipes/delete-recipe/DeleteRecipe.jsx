@@ -1,19 +1,20 @@
 import style from "./DeleteRecipe.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-const ulr = "http://localhost:3030/jsonstore/recipes/recipes/";
+import requester from "../../../src/api/requester";
+
 export default function DeleteRecipe() {
   let { userId } = useParams();
   let navigate = useNavigate();
 
   async function deleteRecipeHandler() {
-    const response = await fetch(ulr + userId, {
-      method: "DELETE",
-    });
-    if (response.ok) {
-        navigate('/recipes')
-    }
+    let response = await requester("DELETE", userId, "");
+    
+    
     console.log(response);
+    if (response) {
+      navigate("/recipes");
+    }
   }
 
   return (

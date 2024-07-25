@@ -5,20 +5,24 @@ export default async function requester(method, url, data) {
 
   if (method === "GET") {
     options.method = method;
-  } else if (method === "POST") {
+
+  }if (method === "POST") {
+
     options.method = method;
-    (options.headers = {
+    options.headers = {
       "Content-Type": "application/json",
-    }),
-      (options.body = JSON.stringify());
-  } else if (method === "PUT") {
+    },
+      options.body = JSON.stringify(data);
+
+  }if (method === "PUT") {
     options.method = method;
-    (options.headers = {
+    options.headers = {
       "Content-Type": "application/json",
-    }),
-      (options.body = JSON.stringify(data));
-  } else if (method === "DELETE") {
+    },
+      options.body = JSON.stringify(data);
+  }if (method === "DELETE") {
     options.method = method;
+
   }
 
   const response = await fetch(`${baseUrl}/${url}`, options);
