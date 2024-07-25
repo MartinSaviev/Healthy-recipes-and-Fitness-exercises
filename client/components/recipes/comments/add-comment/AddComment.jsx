@@ -1,11 +1,13 @@
 import styles from "./AddComment.module.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import requester from "../../../../src/api/requester";
 
 export default function AddComment() {
   const [values, setValues] = useState({ note: "" });
   const { userId } = useParams();
+  
+  let navigate = useNavigate();
 
   function changeValuesHandler(ev) {
     setValues((prevValues) => ({
@@ -19,6 +21,7 @@ export default function AddComment() {
     try {
       const response = await requester("POST", `${userId}/commentary`, values);
       console.log(response);
+      navigate(`/Comments/${userId}`)
     } catch (error) {
       console.error("Error adding comment:", error);
     }
