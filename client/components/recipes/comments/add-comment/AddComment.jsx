@@ -1,7 +1,7 @@
 import styles from "./AddComment.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import requester from "../../../../src/api/requester";
+import * as  requester from "../../../../src/api/requester";
 
 export default function AddComment() {
   const [values, setValues] = useState({ note: "" });
@@ -19,7 +19,7 @@ export default function AddComment() {
   async function handleSubmit(ev) {
     ev.preventDefault();
     try {
-      const response = await requester("POST", `${userId}/commentary`, values);
+      const response = await requester.post(`recipes/recipes/${userId}/commentary`, values);
       console.log(response);
       navigate(`/Comments/${userId}`)
     } catch (error) {

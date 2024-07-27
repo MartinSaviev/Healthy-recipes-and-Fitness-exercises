@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import styles from "./Comments.module.css";
 import { useEffect, useState } from "react";
 
-import requester from "../../../src/api/requester";
+import * as requester from "../../../src/api/requester";
 
 export default function Comments() {
   const [comments, getComments] = useState([]);
@@ -11,7 +11,7 @@ export default function Comments() {
 
   useEffect(() => {
     (async () => {
-      const data = await requester("GET", `${userId}/commentary`);
+      const data = await requester.get(`${userId}/commentary`);
       getComments(Object.values(data));
      
     })();

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import style from "./Recipes.module.css";
 
-import requester from "../../../src/api/requester";
+import * as requester from "../../../src/api/requester";
+
+const ulr = 'recipes/recipes'
 
 // eslint-disable-next-line react/prop-types
 export default function Ingredients({ id }) {
@@ -9,7 +11,7 @@ export default function Ingredients({ id }) {
 
   useEffect(() => {
     (async () => {
-      const data = await requester("GET", `${id}/ingredients`);
+      const data = await requester.get(`${ulr}/${id}/ingredients`);
 
       setIngredients(data);
     })();

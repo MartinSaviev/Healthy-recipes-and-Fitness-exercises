@@ -2,8 +2,9 @@ import { useState } from "react";
 import styles from "./CreateNewVideo.module.css";
 import backgroundVideo from "./backgroundVideo.mp4";
 import { useNavigate } from "react-router-dom";
+import * as requester from "../../../src/api/requester";
 
-const url = "http://localhost:3030/jsonstore/videos";
+const url = "videos";
 
 export default function CreateNewVideo() {
   let navigate = useNavigate();
@@ -29,24 +30,26 @@ export default function CreateNewVideo() {
 
   async function postHandler(event) {
     event.preventDefault();
-    if (!values.header || !values.videoUrl || !values.videoUrl.startsWith("https://" || "http://")) {
-      alert("Моля, попълнете всички полета коректно.");
+    
+    if (
+      !values.header ||
+      (!values.videoUrl.startsWith("https://") && !values.videoUrl.startsWith("http://"))
+    ) {
+      setError("Моля, попълнете всички полета и уверете се, че URL адресът на видеото започва с 'https://' или 'http://'.");
       return;
     }
+
     try {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
-      if (!response.ok) {
+      const addVideoFormServer = await requester.post(url, values);
+
+      if (!addVideoFormServer) {
         throw new Error("Network response was not ok");
       }
-      const data = await response.json();
-      console.log(data);
+
       navigate("../Video");
     } catch (err) {
-      setError("Моля, попълнете всички полета и уверете се, че URL адресът на видеото започва с 'https://' или 'http://'.");
+      setError("Възникна грешка при добавянето на видеото. Моля, опитайте отново.");
+      console.error("Error adding video:", err);
     }
   }
 

@@ -3,24 +3,17 @@ import style from "./Video.module.css";
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
 
-const url = "http://localhost:3030/jsonstore/videos";
+import * as requester from "../../src/api/requester";
+
+const ulr = 'videos'
 
 export default function Video() {
   const [videos, setVideos] = useState([]);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     (async () => {
-      try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const allVideos = await response.json();
-        setVideos(Object.values(allVideos));
-      } catch (err) {
-        setError(err.message);
-      }
+      const allVideos = await requester.get(ulr);
+      setVideos(Object.values(allVideos));
     })();
   }, []);
 
@@ -33,16 +26,12 @@ export default function Video() {
       </aside>
 
       <section className={style.video}>
-        {error ? (
-          <div className={style.error}>Error: {error}</div>
-        ) : (
-          videos.map((video) => (
-            <div key={video._id} className={style.reactPlayer}>
-              <h3>{video.header}</h3>
-              <ReactPlayer url={video.videoUrl} controls />
-            </div>
-          ))
-        )}
+        {videos.map((video) => (
+          <div key={video._id} className={style.reactPlayer}>
+            <h3>{video.header}</h3>
+            <ReactPlayer url={video.videoUrl} controls />
+          </div>
+        ))}
       </section>
       <aside className={style.aside}>
         <Link to="/CreateNewVideo">

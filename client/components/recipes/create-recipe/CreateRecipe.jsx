@@ -29,8 +29,7 @@ export default function CreateRecipe() {
           "Моля, попълнете всички полета и уверете се, че URL адресът на видеото започва с 'https://' или 'http://'."
         );
       }
-      
-      const data = await recipeRequest('POST','',values)
+      const data = await recipeRequest('POST','',values);
       console.log(data);
       navigate("/Recipes");
     } catch (err) {
@@ -47,9 +46,8 @@ export default function CreateRecipe() {
   }
 
   return (
-   
-    <section className={styles.container}>
-      <article className={styles.wrapper}>
+    <div className={styles.container}>
+      <section className={styles.wrapper}>
         <div className={styles.title}>Добави нова рецепта</div>
         <form onSubmit={sendRecipes} className={styles.form}>
           <div className={styles.field}>
@@ -76,8 +74,7 @@ export default function CreateRecipe() {
             <input type="submit" value="Добави рецепта" />
           </div>
         </form>
-      </article>
-    </section>
-    
+      </section>
+    </div>
   );
 }

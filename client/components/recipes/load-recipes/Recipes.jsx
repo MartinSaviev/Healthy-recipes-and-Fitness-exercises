@@ -5,15 +5,16 @@ import style from "./Recipes.module.css";
 import Ingredients from "./Ingredients";
 import Method from "./Method";
 
-import requester from "../../../src/api/requester";
+import * as requester from "../../../src/api/requester";
+
+const url = 'recipes/recipes'
 
 export default function Recipes() {
   const [recipes, getRecipes] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const data = await requester("GET", "", "");
-
+      const data = await requester.get(url);
       getRecipes(Object.values(data));
     })();
   }, []);

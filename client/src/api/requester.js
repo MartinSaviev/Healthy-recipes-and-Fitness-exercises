@@ -1,31 +1,25 @@
 export default async function requester(method, url, data) {
-  const baseUrl = "http://localhost:3030/jsonstore/recipes/recipes";
+  const baseUrl = "http://localhost:3030/jsonstore/";
 
   const options = {};
 
-  if (method === "GET") {
+  if (method !== "GET") {
     options.method = method;
-
-  }if (method === "POST") {
-
+  }
+  if (data) {
     options.method = method;
-    options.headers = {
+    (options.headers = {
       "Content-Type": "application/json",
-    },
-      options.body = JSON.stringify(data);
-
-  }if (method === "PUT") {
-    options.method = method;
-    options.headers = {
-      "Content-Type": "application/json",
-    },
-      options.body = JSON.stringify(data);
-  }if (method === "DELETE") {
-    options.method = method;
-
+    }),
+      (options.body = JSON.stringify(data));
   }
 
-  const response = await fetch(`${baseUrl}/${url}`, options);
+  const response = await fetch(`${baseUrl}${url}`, options);
   const result = await response.json();
   return result;
 }
+
+export const get = requester.bind(null, "GET");
+export const post = requester.bind(null, "POST");
+export const put = requester.bind(null, "PUT");
+export const del = requester.bind(null, "DELETE");
