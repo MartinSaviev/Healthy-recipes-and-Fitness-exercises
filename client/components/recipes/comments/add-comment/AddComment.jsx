@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import * as  requester from "../../../../src/api/requester";
 
+const url = 'recipes/recipes'
 export default function AddComment() {
   const [values, setValues] = useState({ note: "" });
   const { userId } = useParams();
@@ -19,7 +20,7 @@ export default function AddComment() {
   async function handleSubmit(ev) {
     ev.preventDefault();
     try {
-      const response = await requester.post(`recipes/recipes/${userId}/commentary`, values);
+      const response = await requester.post(`${url}/${userId}/commentary`, values);
       console.log(response);
       navigate(`/Comments/${userId}`)
     } catch (error) {

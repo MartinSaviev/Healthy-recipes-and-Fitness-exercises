@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 import * as requester from "../../../src/api/requester";
 
+const ulr = 'recipes/recipes'
+
 export default function Comments() {
   const [comments, getComments] = useState([]);
 
@@ -11,7 +13,7 @@ export default function Comments() {
 
   useEffect(() => {
     (async () => {
-      const data = await requester.get(`${userId}/commentary`);
+      const data = await requester.get(`${ulr}/${userId}/commentary`);
       getComments(Object.values(data));
      
     })();
