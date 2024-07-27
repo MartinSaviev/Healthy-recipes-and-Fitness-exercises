@@ -1,8 +1,9 @@
 import { useState } from "react";
-import styles from "./CreateRecipe.module.css";
 import { useNavigate } from "react-router-dom";
 
 import * as recipeRequest from "../../../src/api/recipeRequest";
+
+import styles from "./CreateRecipe.module.css";
 
 export default function CreateRecipe() {
   let navigate = useNavigate();

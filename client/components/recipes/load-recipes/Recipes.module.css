@@ -8,6 +8,14 @@
     
 }
 
+.noRecipes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    font-size: 2em;
+}
+
 .hr {
     padding: 0.2em;
     background: #d59bf6;
