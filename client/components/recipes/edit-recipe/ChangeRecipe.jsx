@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./ChangeRecipe.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { recipeRequest } from "../../../src/api/recipeRequest";
+import * as recipeRequest  from "../../../src/api/recipeRequest";
 
 export default function CreateRecipe() {
   let navigate = useNavigate();
@@ -19,7 +19,7 @@ export default function CreateRecipe() {
   async function sendRecipes(ev) {
     ev.preventDefault();
 
-    await recipeRequest('PUT',userId,values)
+    await recipeRequest.put(userId,values)
 
     navigate("/Recipes");
   }

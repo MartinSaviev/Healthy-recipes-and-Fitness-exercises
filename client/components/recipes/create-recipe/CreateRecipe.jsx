@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./CreateRecipe.module.css";
 import { useNavigate } from "react-router-dom";
 
-import { recipeRequest } from "../../../src/api/recipeRequest";
+import * as recipeRequest from "../../../src/api/recipeRequest";
 
 export default function CreateRecipe() {
   let navigate = useNavigate();
@@ -29,7 +29,7 @@ export default function CreateRecipe() {
           "Моля, попълнете всички полета и уверете се, че URL адресът на видеото започва с 'https://' или 'http://'."
         );
       }
-      const data = await recipeRequest('POST','',values);
+      const data = await recipeRequest.post('',values);
       console.log(data);
       navigate("/Recipes");
     } catch (err) {

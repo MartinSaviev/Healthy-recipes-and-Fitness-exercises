@@ -1,33 +1,32 @@
-
 const baseUrl = "http://localhost:3030/jsonstore/recipes/recipes";
 
-export async function recipeRequest(method,id,data){
+export async function recipeRequest(method, id, data) {
+  const options = {
+    method: method,
+    headers: { "Content-Type": "application/json" },
+  };
 
-    const options = {}
+  if (method === "POST") {
+    options.body = JSON.stringify({
+      ...data,
+      ingredients: data.ingredients.split(","),
+      steps: data.steps,
+    });
+  }
 
-    if(method === "POST") {
-        options.method = method,
-        options.headers = { "Content-Type": "application/json" },
-        options.body = JSON.stringify({
-            ...data,
-            ingredients: data.ingredients.split(","),
-            steps: data.steps,
-        })
-    }
+  else if (method === "PUT") {
+    options.body = JSON.stringify({
+      ...data,
+      ingredients: data.ingredients.split(","),
+      steps: data.steps,
+      _id: id,
+    });
+  }
 
-    if(method === "PUT") {
-        options.method = method,
-        options.headers = { "Content-Type": "application/json" },
-        options.body = JSON.stringify({
-            ...data,
-            ingredients: data.ingredients.split(","),
-            steps: data.steps,
-            "_id":id,
-        })
-    }
-
-    const response = await fetch(`${baseUrl}/${id}`, options);
-    const result = await response.json();
-    return result;
-
+  const response = await fetch(`${baseUrl}/${id}`, options);
+  const result = await response.json();
+  return result;
 }
+
+export const post = recipeRequest.bind(null, "POST");
+export const put = recipeRequest.bind(null, "PUT");
