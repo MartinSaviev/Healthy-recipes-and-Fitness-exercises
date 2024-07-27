@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import style from "./Recipes.module.css";
 
 import * as requester from "../../../src/api/requester";
+
+import style from "./Recipes.module.css";
 
 const ulr = 'recipes/recipes'
 

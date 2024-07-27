@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import style from "./Video.module.css";
-import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
 
 import * as requester from "../../src/api/requester";
+
+import style from "./Video.module.css";
+import ReactPlayer from "react-player";
 
 const ulr = 'videos'
 
