@@ -6,6 +6,7 @@ export default async function requester(method, url, data) {
   if (method !== "GET") {
     options.method = method;
   }
+  
   if (data) {
     options.method = method;
     (options.headers = {
@@ -13,6 +14,8 @@ export default async function requester(method, url, data) {
     }),
       (options.body = JSON.stringify(data));
   }
+
+
 
   const response = await fetch(`${baseUrl}${url}`, options);
   const result = await response.json();
