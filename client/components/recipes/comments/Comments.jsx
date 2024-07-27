@@ -29,7 +29,9 @@ export default function Comments() {
       </aside>
       {comments.map((c) => (
         <article key={c._id} className={styles.method}>
+          <h5 className={styles.user}>{c.user}</h5>
           <h4>{c.note}</h4>
+          <button className={styles.delete}>Delete</button>
         </article>
       ))}
     </section>
