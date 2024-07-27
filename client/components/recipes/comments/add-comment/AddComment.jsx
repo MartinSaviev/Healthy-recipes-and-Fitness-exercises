@@ -2,10 +2,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
 import * as  requester from "../../../../src/api/requester";
+import { urls } from "../../../../public/allUrls/urls";
 
 import styles from "./AddComment.module.css";
 
-const url = 'recipes/recipes'
 export default function AddComment() {
   const [values, setValues] = useState({ note: "" });
   const { userId } = useParams();
@@ -22,7 +22,7 @@ export default function AddComment() {
   async function handleSubmit(ev) {
     ev.preventDefault();
     try {
-      const response = await requester.post(`${url}/${userId}/commentary`, values);
+      const response = await requester.post(`${urls.recipes}/${userId}/commentary`, values);
       console.log(response);
       navigate(`/Comments/${userId}`)
     } catch (error) {
@@ -36,7 +36,10 @@ export default function AddComment() {
         <div className={styles.title}>Добави Коментар</div>
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.field}>
-            <textarea name="note" onChange={changeValuesHandler} />
+            <textarea 
+            name="note" 
+            onChange={changeValuesHandler}
+            required />
             <label>добави коментар</label>
           </div>
           <div className={styles.field}>

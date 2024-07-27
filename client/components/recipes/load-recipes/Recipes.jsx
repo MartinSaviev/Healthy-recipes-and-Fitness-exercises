@@ -2,19 +2,18 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import * as requester from "../../../src/api/requester";
+import { urls } from "../../../public/allUrls/urls";
 
 import style from "./Recipes.module.css";
 import Ingredients from "./Ingredients";
 import Method from "./Method";
-
-const url = "recipes/recipes";
 
 export default function Recipes() {
   const [recipes, getRecipes] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const data = await requester.get(url);
+      const data = await requester.get(urls.recipes);
       getRecipes(Object.values(data));
     })();
   }, []);

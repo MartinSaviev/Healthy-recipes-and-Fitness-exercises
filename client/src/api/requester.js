@@ -1,9 +1,8 @@
 export default async function requester(method, url, data) {
-  const baseUrl = "http://localhost:3030/jsonstore/";
 
   const options = {};
 
-  if (method !== "GET") {
+  if (method === "GET") {
     options.method = method;
   }
   
@@ -14,10 +13,12 @@ export default async function requester(method, url, data) {
     }),
       (options.body = JSON.stringify(data));
   }
+  
 
-
-
-  const response = await fetch(`${baseUrl}${url}`, options);
+  const response = await fetch(url, options);
+  if(!response.ok){
+    throw new Error(response);
+  }
   const result = await response.json();
   return result;
 }

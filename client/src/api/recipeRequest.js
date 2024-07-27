@@ -1,4 +1,5 @@
-const baseUrl = "http://localhost:3030/jsonstore/recipes/recipes";
+
+import { urls } from "../../public/allUrls/urls";
 
 export async function recipeRequest(method, id, data) {
   const options = {
@@ -23,7 +24,7 @@ export async function recipeRequest(method, id, data) {
     });
   }
 
-  const response = await fetch(`${baseUrl}/${id}`, options);
+  const response = await fetch(`${urls.recipes}/${id}`, options);
   const result = await response.json();
   return result;
 }

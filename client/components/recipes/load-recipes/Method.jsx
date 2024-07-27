@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 
 import * as requester from "../../../src/api/requester.js";
+import { urls } from "../../../public/allUrls/urls.js";
 
 import style from "./Recipes.module.css";
-
-const ulr = 'recipes/recipes'
 
 // eslint-disable-next-line react/prop-types
 export default function Method({ id }) {
@@ -12,9 +11,11 @@ export default function Method({ id }) {
 
   useEffect(() => {
     (async () => {
-      const data = await requester.get(`${ulr}/${id}/steps`);
+      const data = await requester.get(`${urls.recipes}/${id}/steps`);
       setCooing(data);
     })();
+    
+
   }, [id]);
 
   return (

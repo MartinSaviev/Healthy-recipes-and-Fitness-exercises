@@ -1,10 +1,10 @@
 import { Link, useParams } from "react-router-dom";
-import styles from "./Comments.module.css";
 import { useEffect, useState } from "react";
 
 import * as requester from "../../../src/api/requester";
+import { urls } from "../../../public/allUrls/urls";
 
-const ulr = 'recipes/recipes'
+import styles from "./Comments.module.css";
 
 export default function Comments() {
   const [comments, getComments] = useState([]);
@@ -13,13 +13,12 @@ export default function Comments() {
 
   useEffect(() => {
     (async () => {
-      const data = await requester.get(`${ulr}/${userId}/commentary`);
+      const data = await requester.get(`${urls.recipes}/${userId}/commentary`);
       getComments(Object.values(data));
      
     })();
-  }, [userId]);
-
-  console.log(comments);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <section className={styles.background}>
       <aside className={styles.aside}>

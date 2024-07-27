@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 
 import * as requester from "../../../src/api/requester";
+import { urls } from "../../../public/allUrls/urls";
 
 import style from "./Recipes.module.css";
-
-const ulr = 'recipes/recipes'
 
 // eslint-disable-next-line react/prop-types
 export default function Ingredients({ id }) {
@@ -12,10 +11,12 @@ export default function Ingredients({ id }) {
 
   useEffect(() => {
     (async () => {
-      const data = await requester.get(`${ulr}/${id}/ingredients`);
+      const data = await requester.get(`${urls.recipes}/${id}/ingredients`);
 
       setIngredients(data);
     })();
+    
+
   }, [id]);
 
   return (

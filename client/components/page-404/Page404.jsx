@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import page404 from "./page404.jpg";
+
 import style from "./Page.404.module.css";
 
 export default function Page404() {

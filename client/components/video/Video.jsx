@@ -2,18 +2,19 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import * as requester from "../../src/api/requester";
+import  {urls} from "../../public/allUrls/urls"
 
 import style from "./Video.module.css";
 import ReactPlayer from "react-player";
 
-const ulr = 'videos'
+
 
 export default function Video() {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const allVideos = await requester.get(ulr);
+      const allVideos = await requester.get(urls.videos);
       setVideos(Object.values(allVideos));
     })();
   }, []);

@@ -8,7 +8,7 @@ export default function Register() {
         <form className={styles.register}>
           <div className={styles.field}>
             <input type="text" required />
-            <label>Потребителско име</label>
+            <label>Електронна поща</label>
           </div>
           <div className={styles.field}>
             <input type="password" required />

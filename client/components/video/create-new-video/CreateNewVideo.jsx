@@ -2,11 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as requester from "../../../src/api/requester";
-
-import styles from "./CreateNewVideo.module.css";
+import { urls } from "../../../public/allUrls/urls";
 import backgroundVideo from "./backgroundVideo.mp4";
 
-const url = "videos";
+import styles from "./CreateNewVideo.module.css";
 
 export default function CreateNewVideo() {
   let navigate = useNavigate();
@@ -42,7 +41,7 @@ export default function CreateNewVideo() {
     }
 
     try {
-      const addVideoFormServer = await requester.post(url, values);
+      const addVideoFormServer = await requester.post(urls.videos, values);
 
       if (!addVideoFormServer) {
         throw new Error("Network response was not ok");
@@ -74,6 +73,7 @@ export default function CreateNewVideo() {
               name="name"
               value={values.header}
               onChange={changeNameHandler}
+              required
             />
             <label>Име</label>
           </div>
@@ -83,6 +83,7 @@ export default function CreateNewVideo() {
               name="img"
               value={values.videoUrl}
               onChange={changeUrlHandler}
+              required
             />
             <label>Изображение (URL)</label>
           </div>
@@ -92,6 +93,7 @@ export default function CreateNewVideo() {
               type="submit"
               className={styles["submit-btn"]}
               value="Добави"
+              required
             />
           </div>
         </form>
