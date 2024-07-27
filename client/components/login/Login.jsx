@@ -1,19 +1,25 @@
-import {useState } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import * as requester from "../../src/api/requester";
 import { urls } from "../../public/allUrls/urls";
 
 import styles from "./Login.module.css";
+import UserContext from "../../src/context/useContext";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [values, setValues] = useState({ email: "", password: "" });
 
+  const contextData = useContext(UserContext);
+   
   async function login(ev) {
     ev.preventDefault();
-    const data = await requester.post(urls.login, values);
-    console.log(data);
+    const dataFromServer = await requester.post(urls.login, values);
+    contextData.changeAuthState(dataFromServer);
+    navigate('/')
   }
-  
+
   function changeHandler(ev) {
     ev.target.name;
     setValues((oldValues) => ({
@@ -47,4 +53,5 @@ export default function Login() {
       </section>
     </section>
   );
+  
 }

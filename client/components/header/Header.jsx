@@ -1,40 +1,63 @@
 import { NavLink } from "react-router-dom";
+
 import styles from "./Header.module.css";
+import UserContext from "../../src/context/useContext";
+import { useContext } from "react";
 
 export default function Header() {
+
+  const contextData = useContext(UserContext);
+  
   return (
     <section className={styles.logo}>
       <div className={styles.media}>
         <img className={styles.img} src="./images/fitness-logo.jpg" alt="" />
       </div>
-
       <nav className={styles.navigation}>
         <ul>
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `${styles.home} ${
-                  isActive ? styles.active : styles.inactive
-                }`
-              }
-            >
-              Начало
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/video"
-              className={({ isActive }) =>
-                `${styles.video} ${
-                  isActive ? styles.active : styles.inactive
-                }`
-              }
-            >
-              Видео
-            </NavLink>
-          </li>
-          <li>
+          {contextData.accessToken === undefined? 
+            <>
+              <li>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    `${styles.home} ${
+                      isActive ? styles.active : styles.inactive
+                    }`
+                  }
+                >
+                  Начало
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    `${styles.login} ${
+                      isActive ? styles.active : styles.inactive
+                    }`
+                  }
+                >
+                  Влез
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/register"
+                  className={({ isActive }) =>
+                    `${styles.register} ${
+                      isActive ? styles.active : styles.inactive
+                    }`
+                  }
+                >
+                  Регистрация
+                </NavLink>
+              </li>
+            </>
+           : 
+           <>
+ <li>
             <NavLink
               to="/recipes"
               className={({ isActive }) =>
@@ -46,6 +69,29 @@ export default function Header() {
               Рецепти
             </NavLink>
           </li>
+
+          <li>
+            <NavLink
+              to="/video"
+              className={({ isActive }) =>
+                `${styles.video} ${isActive ? styles.active : styles.inactive}`
+              }
+            >
+              Видео
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/logout"
+              className={({ isActive }) =>
+                `${styles.logout} ${isActive ? styles.active : styles.inactive}`
+              }
+            >
+              Излез
+            </NavLink>
+          </li>
+
           <li>
             <NavLink
               to="/accessories"
@@ -58,39 +104,9 @@ export default function Header() {
               Аксесоари
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                `${styles.login} ${
-                  isActive ? styles.active : styles.inactive
-                }`
-              }
-            >
-              Влез
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/register"
-              className={({ isActive }) =>
-                `${styles.register} ${
-                  isActive ? styles.active : styles.inactive
-                }`
-              }
-            >
-              Регистрация
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/logout" className={({ isActive }) =>
-                `${styles.logout} ${
-                  isActive ? styles.active : styles.inactive
-                }`
-              }>
-              Излез
-            </NavLink>
-          </li>
+           </>}
+
+         
         </ul>
       </nav>
 
