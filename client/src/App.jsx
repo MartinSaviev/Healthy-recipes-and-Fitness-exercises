@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { ContextProvider } from "../src/context/AuthContext";
 
 import HealthyAndFitness from "../components/backgroudImg/HealthyAndFitness";
 import Header from "../components/header/Header";
@@ -13,29 +14,14 @@ import Recipes from "../components/recipes/load-recipes/Recipes";
 import Register from "../components/register/Register";
 import CreateNewVideo from "../components/video/create-new-video/CreateNewVideo";
 import Video from "../components/video/Video";
-import UserContext from "./context/useContext";
 
 import "./App.css";
-import { useState } from "react";
 
 function App() {
-  const [data, setData] = useState({});
-
-  const changeAuthState = (state) => {
-    setData(state);
-  };
-
-  const contextData = {
-    accessToken: data.accessToken,
-    email: data.email,
-    username: data.username,
-    _id: data._id,
-    changeAuthState,
-  };
-
+  
   return (
     <>
-      <UserContext.Provider value={contextData}>
+      <ContextProvider >
         <Header />
         <Routes>
           <Route path="/" element={<HealthyAndFitness />}></Route>
@@ -57,7 +43,7 @@ function App() {
           <Route path="/AddComment/:userId" element={<AddComment />}></Route>
           <Route path="/*" element={<Page404 />}></Route>
         </Routes>
-      </UserContext.Provider>
+      </ContextProvider>
     </>
   );
 }

@@ -5,14 +5,14 @@ import * as requester from "../../src/api/requester";
 import { urls } from "../../public/allUrls/urls";
 
 import styles from "./Login.module.css";
-import UserContext from "../../src/context/useContext";
+import { UserContext } from "../../src/context/AuthContext";
 
 export default function Login() {
   const navigate = useNavigate();
   const [values, setValues] = useState({ email: "", password: "" });
-
-  const contextData = useContext(UserContext);
-   
+  
+  const  contextData = useContext(UserContext);
+  
   async function login(ev) {
     ev.preventDefault();
     const dataFromServer = await requester.post(urls.login, values);

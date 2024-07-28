@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom";
 
 import styles from "./Header.module.css";
-import UserContext from "../../src/context/useContext";
 import { useContext } from "react";
+import { UserContext } from "../../src/context/AuthContext";
 
 export default function Header() {
 
-  const contextData = useContext(UserContext);
+ const  contextData = useContext(UserContext);
+ console.log(contextData);
   
   return (
     <section className={styles.logo}>
@@ -112,7 +113,7 @@ export default function Header() {
 
       <div className={styles.avatar}>
         <img className={styles.img} src="./images/avatar.jpg" alt="" />
-        <h3>Потребителско име</h3>
+        {contextData.email ? <h3>{contextData.email}</h3> : <h3>Guest</h3>}
       </div>
     </section>
   );
