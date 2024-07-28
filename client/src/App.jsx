@@ -14,15 +14,14 @@ import Recipes from "../components/recipes/load-recipes/Recipes";
 import Register from "../components/register/Register";
 import CreateNewVideo from "../components/video/create-new-video/CreateNewVideo";
 import Video from "../components/video/Video";
-
+import Logout from "../components/logout/Logout";
 import "./App.css";
 
 function App() {
-  
   return (
     <>
-      <ContextProvider >
-        <Header />
+      <ContextProvider>
+          <Header />
         <Routes>
           <Route path="/" element={<HealthyAndFitness />}></Route>
           <Route path="/login" element={<Login />}></Route>
@@ -31,16 +30,12 @@ function App() {
           <Route path="/video" element={<Video />}></Route>
           <Route path="/CreateRecipe" element={<CreateRecipe />}></Route>
           <Route path="/CreateNewVideo" element={<CreateNewVideo />}></Route>
-          <Route
-            path="/ChangeRecipe/:userId"
-            element={<ChangeRecipe />}
-          ></Route>
-          <Route path="/Comments/:userId" element={<Comments />}></Route>
-          <Route
-            path="/DeleteRecipe/:userId"
-            element={<DeleteRecipe />}
-          ></Route>
+          <Route path="/Logout" element={<Logout />}></Route>
+          <Route path="/ChangeRecipe/:userId"element={<ChangeRecipe />}></Route>
+          <Route path="/DeleteRecipe/:userId"element={<DeleteRecipe />}></Route>
           <Route path="/AddComment/:userId" element={<AddComment />}></Route>
+          <Route path="/Comments/:userId" element={<Comments />}></Route>
+          
           <Route path="/*" element={<Page404 />}></Route>
         </Routes>
       </ContextProvider>

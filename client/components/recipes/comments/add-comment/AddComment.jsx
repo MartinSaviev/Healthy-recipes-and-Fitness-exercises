@@ -1,12 +1,15 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
+import { UserContext } from "../../../../src/context/AuthContext";
 import * as  requester from "../../../../src/api/requester";
 import { urls } from "../../../../public/allUrls/urls";
 
 import styles from "./AddComment.module.css";
 
 export default function AddComment() {
+
+  const  contextData = useContext(UserContext);
   const [values, setValues] = useState({ note: "" });
   const { userId } = useParams();
   
@@ -41,6 +44,8 @@ export default function AddComment() {
             onChange={changeValuesHandler}
             required />
             <label>добави коментар</label>
+            <input type="text" style={{display:"none"}}
+            name={contextData.email} />
           </div>
           <div className={styles.field}>
             <input type="submit" value="Добави" />

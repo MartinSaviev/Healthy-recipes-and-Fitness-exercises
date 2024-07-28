@@ -1,24 +1,42 @@
-import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 
 import * as requester from "../../../src/api/requester";
 import { urls } from "../../../public/allUrls/urls";
 
 import styles from "./Comments.module.css";
+import { UserContext } from "../../../src/context/AuthContext";
 
 export default function Comments() {
-  const [comments, getComments] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [deleteId, setDeleteId] = useState(false);
 
-  let { userId } = useParams();
+  let navigate = useNavigate();
+  const { userId } = useParams();
+
+  async function deleteHandler(ev, recipeId, id) {
+    ev.preventDefault();
+
+    let result = await requester.del(
+      `${urls.recipes}/${recipeId}/commentary/${id}`
+    );
+    console.log(result);
+    navigate(`/Comments/${recipeId}`);
+    setDeleteId(id);
+  }
 
   useEffect(() => {
     (async () => {
       const data = await requester.get(`${urls.recipes}/${userId}/commentary`);
-      getComments(Object.values(data));
-     
+      setComments(Object.values(data));
     })();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deleteId]);
+
+  const contextData = useContext(UserContext);
+
+  console.log(comments);
   return (
     <section className={styles.background}>
       <aside className={styles.aside}>
@@ -26,11 +44,19 @@ export default function Comments() {
           <button className={styles.addComment}>Добави коментар</button>
         </Link>
       </aside>
-      {comments.map((c) => (
-        <article key={c._id} className={styles.method}>
-          <h5 className={styles.user}>{c.user}</h5>
-          <h4>{c.note}</h4>
-          <button className={styles.delete}>Delete</button>
+      {comments.map((comment) => (
+        <article key={comment._id} className={styles.method}>
+          <h5 className={styles.user}>{comment.user}</h5>
+          <h4>{comment.note}</h4>
+
+          {contextData.email === comment.user ? (
+            <button
+              onClick={(ev) => deleteHandler(ev, userId, comment._id)}
+              className={styles.delete}
+            >
+              Delete
+            </button>
+          ) : null}
         </article>
       ))}
     </section>
