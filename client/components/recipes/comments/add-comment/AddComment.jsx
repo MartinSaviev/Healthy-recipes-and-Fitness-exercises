@@ -2,17 +2,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 
 import { UserContext } from "../../../../src/context/AuthContext";
-import * as  requester from "../../../../src/api/requester";
+import * as requester from "../../../../src/api/requester";
 import { urls } from "../../../../public/allUrls/urls";
 
 import styles from "./AddComment.module.css";
 
 export default function AddComment() {
-
-  const  contextData = useContext(UserContext);
-  const [values, setValues] = useState({ note: "" });
+  const contextData = useContext(UserContext);
+  const [values, setValues] = useState({ note: "", user: contextData.email });
   const { userId } = useParams();
-  
+
   let navigate = useNavigate();
 
   function changeValuesHandler(ev) {
@@ -21,13 +20,16 @@ export default function AddComment() {
       [ev.target.name]: ev.target.value,
     }));
   }
-
+  console.log(values);
   async function handleSubmit(ev) {
     ev.preventDefault();
     try {
-      const response = await requester.post(`${urls.recipes}/${userId}/commentary`, values);
+      const response = await requester.post(
+        `${urls.recipes}/${userId}/commentary`,
+        values
+      );
       console.log(response);
-      navigate(`/Comments/${userId}`)
+      navigate(`/Comments/${userId}`);
     } catch (error) {
       console.error("Error adding comment:", error);
     }
@@ -39,13 +41,8 @@ export default function AddComment() {
         <div className={styles.title}>Добави Коментар</div>
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.field}>
-            <textarea 
-            name="note" 
-            onChange={changeValuesHandler}
-            required />
+            <textarea name="note" onChange={changeValuesHandler} required />
             <label>добави коментар</label>
-            <input type="text" style={{display:"none"}}
-            name={contextData.email} />
           </div>
           <div className={styles.field}>
             <input type="submit" value="Добави" />

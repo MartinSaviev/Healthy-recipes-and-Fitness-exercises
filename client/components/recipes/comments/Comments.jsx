@@ -41,14 +41,14 @@ export default function Comments() {
     <section className={styles.background}>
       <aside className={styles.aside}>
         <Link to={`/AddComment/${userId}`}>
-          <button className={styles.addComment}>Добави коментар</button>
+          {contextData.accessToken ? <button className={styles.addComment}>Добави коментар</button> :null}
         </Link>
       </aside>
       {comments.map((comment) => (
         <article key={comment._id} className={styles.method}>
           <h5 className={styles.user}>{comment.user}</h5>
           <h4>{comment.note}</h4>
-
+          
           {contextData.email === comment.user ? (
             <button
               onClick={(ev) => deleteHandler(ev, userId, comment._id)}

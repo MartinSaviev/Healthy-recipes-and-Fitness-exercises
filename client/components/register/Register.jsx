@@ -17,7 +17,7 @@ export default function Register() {
     're-password': "",
     
   });
-console.log(values);
+
   async function register(ev) {
     ev.preventDefault();
     if (values.password !== values['re-password']){
@@ -26,7 +26,6 @@ console.log(values);
     }
     const dataFromServer = await requester.post(urls.register, {email:values.email, password:values.password});
     contextData.changeAuthState(dataFromServer);
-    console.log(dataFromServer);
     navigate('/')
   }
 
