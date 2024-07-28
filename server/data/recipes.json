@@ -3,6 +3,7 @@
     "866a44c3-a60f-40a7-ac28-4db3801e977e": {
       "name": "Салата Цезар с пилешко",
       "img": "./images/saladCezar.jpg",
+      "user": "peter@abv.bg",
       "ingredients": [
         "пилешки гърди - 2 бр",
         "айсберг",
@@ -39,6 +40,7 @@
     "ec8a0610-ea5d-4fce-9230-f8b959b4fdfa": {
       "name": "Печена сьомга с аспержи",
       "img": "./images/fish.jpg",
+      "user": "Ivan@abv.bg",
       "ingredients": [
         "450 г малки картофи",
         "2 супени лъжици зехтин",
@@ -74,6 +76,7 @@
     "2dadb284-016d-42d2-9037-327e289184d3": {
       "name": "Спагети карбонара",
       "img": "https://recepti.ezine.bg/files/lib/600x350/spaghetti_carbonara.webp",
+      "user": "Asen@abv.bg",
       "ingredients": [
         "спагети - 500 г",
         "кашкавал - 200 г",

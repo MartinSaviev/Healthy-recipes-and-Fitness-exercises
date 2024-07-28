@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./CreateRecipe.module.css";
 import { useNavigate } from "react-router-dom";
 
 import * as recipeRequest from "../../../src/api/recipeRequest";
+import { UserContext } from "../../../src/context/AuthContext";
 
 export default function CreateRecipe() {
   let navigate = useNavigate();
 
+const userData = useContext(UserContext);
+
   const [values, setValues] = useState({
     name: "",
     img: "",
+    user: userData.email,
     ingredients: "",
     steps: "",
     videoUrl: "",

@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import * as requester from "../../src/api/requester";
-import  {urls} from "../../public/allUrls/urls"
+import { urls } from "../../public/allUrls/urls";
+import { UserContext } from "../../src/context/AuthContext";
 
 import style from "./Video.module.css";
 import ReactPlayer from "react-player";
 
-
-
 export default function Video() {
   const [videos, setVideos] = useState([]);
+  const userData = useContext(UserContext);
 
   useEffect(() => {
     (async () => {
@@ -22,9 +22,11 @@ export default function Video() {
   return (
     <section className={style.background}>
       <aside className={style.aside}>
-        <Link to="/CreateNewVideo">
-          <button className={style.addVideo}>Добави новo видео</button>
-        </Link>
+        {userData.accessToken ? (
+          <Link to="/CreateNewVideo">
+            <button className={style.addVideo}>Добави новo видео</button>
+          </Link>
+        ) : null}
       </aside>
 
       <section className={style.video}>
@@ -36,9 +38,11 @@ export default function Video() {
         ))}
       </section>
       <aside className={style.aside}>
-        <Link to="/CreateNewVideo">
-          <button className={style.addVideo}>Добави новo видео</button>
-        </Link>
+        {userData.accessToken ? (
+          <Link to="/CreateNewVideo">
+            <button className={style.addVideo}>Добави новo видео</button>
+          </Link>
+        ) : null}
       </aside>
     </section>
   );

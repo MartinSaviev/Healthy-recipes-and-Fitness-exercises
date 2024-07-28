@@ -36,6 +36,13 @@
     text-align: center;
 }
 
+.user {
+    margin:-1em 0em 0 2.5em;
+    text-align: start;
+    
+
+}
+
 .images {
     border-radius: 2em;
     width: 650px;

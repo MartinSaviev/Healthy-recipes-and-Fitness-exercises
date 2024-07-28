@@ -84,17 +84,6 @@ export default function Header() {
 
           <li>
             <NavLink
-              to="/Logout"
-              className={({ isActive }) =>
-                `${styles.logout} ${isActive ? styles.active : styles.inactive}`
-              }
-            >
-              Излез
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
               to="/accessories"
               className={({ isActive }) =>
                 `${styles.accessories} ${
@@ -103,6 +92,17 @@ export default function Header() {
               }
             >
               Аксесоари
+            </NavLink>
+          </li>
+          
+          <li>
+            <NavLink
+              to="/Logout"
+              className={({ isActive }) =>
+                `${styles.logout} ${isActive ? styles.active : styles.inactive}`
+              }
+            >
+              Излез
             </NavLink>
           </li>
            </>}
