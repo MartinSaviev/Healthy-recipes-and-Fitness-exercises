@@ -12,6 +12,25 @@
 
 }
 
+.stoppingCart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6em;
+   
+}
+
+.iconStoppingCart {
+    font-size: 3em;
+   
+}
+
+.count {
+   font-size: 1.2em;
+   
+}
+
 .logo {
     display: flex;
     background: linear-gradient(-135deg, #c850c0, #4158d0);

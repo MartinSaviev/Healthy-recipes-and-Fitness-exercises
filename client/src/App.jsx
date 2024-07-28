@@ -17,6 +17,7 @@ import Video from "../components/video/Video";
 import Logout from "../components/logout/Logout";
 import "./App.css";
 import Accessories from "../components/accessories/Accessories";
+import ShoppingCart from "../components/accessories/shopping-cart/ShoppingCart";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/AddComment/:userId" element={<AddComment />}></Route>
           <Route path="/Comments/:userId" element={<Comments />}></Route>
           <Route path="/Accessories" element={<Accessories />}></Route>
+          <Route path="/ShoppingCart" element={<ShoppingCart />}></Route>
           <Route path="/*" element={<Page404 />}></Route>
         </Routes>
       </ContextProvider>
