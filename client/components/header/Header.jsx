@@ -7,7 +7,7 @@ import { UserContext } from "../../src/context/AuthContext";
 export default function Header() {
 
  const  contextData = useContext(UserContext);
- console.log(contextData);
+ 
   
   return (
     <section className={styles.logo}>
@@ -84,7 +84,7 @@ export default function Header() {
 
           <li>
             <NavLink
-              to="/logout"
+              to="/Logout"
               className={({ isActive }) =>
                 `${styles.logout} ${isActive ? styles.active : styles.inactive}`
               }
