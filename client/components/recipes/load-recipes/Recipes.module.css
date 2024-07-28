@@ -5,7 +5,6 @@
     justify-content: center;
     align-items: center;
     padding: 1em;
-    
 }
 
 .noRecipes {
@@ -37,16 +36,14 @@
 }
 
 .user {
-    margin:-1em 0em 0 2.5em;
+    margin: -1em 0em 0 2.5em;
     text-align: start;
-    
-
 }
 
 .images {
     border-radius: 2em;
-    width: 650px;
-    height: 40vh;
+    width: 750px; 
+    height: 50vh; 
 }
 
 .media-ingredients-method {
@@ -55,10 +52,12 @@
 }
 
 .media-images {
-
     background-color: #fff;
     padding: 2em;
     border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .buttons {
@@ -66,66 +65,99 @@
     gap: 1em;
     align-items: center;
     justify-content: center;
+    margin-top: 1em; 
 }
 
-.like,
-.edit,
-.delete,
-.show-recipe,
-.addRecipe {
-    padding: 1em 1.5em;
-    margin-top: 1em;
-    border-radius: 2em;
+.like,.edit,.delete,.show-recipe,.addRecipe {
+    padding: 0.8em 1.2em; 
+    border-radius: 1.5em;
     font-size: 1.2em;
     cursor: pointer;
+    font-family: 'PT Sans', sans-serif;
+    transition: background-color 0.3s, transform 0.3s;
+    border:initial;
+}
+
+.like:hover,
+.edit:hover,
+.delete:hover,
+.show-recipe:hover,
+.addRecipe:hover{
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow on hover */
+}
+
+.like:active,
+.edit:active,
+.delete:active,
+.show-recipe:active,
+.addRecipe {
+    transform: translateY(0); /* Return to original position on click */
+    box-shadow: none; /* Remove shadow on click */
 }
 
 .like {
     background-color: #28a745;
-}
-
-.edit {
-    background-color: darkorange;
-}
-
-.delete {
-    background-color: #dc3545;
-}
-
-.addRecipe {
-    color: black;
-    border: none;
-    margin-bottom: 1em;
-    font-size: 1.5em;
-    font-weight: 500;
-    cursor: pointer;
-    background: linear-gradient(-135deg, #f48a39, #f62719);
-    transition: all 0.3s ease;
-}
-
-.addRecipe:active {
-    transform: scale(0.95);
+    color: white;
 }
 
 .like:hover {
     background-color: #218838;
 }
 
+.edit {
+    background-color: darkorange;
+    color: white;
+}
+
 .edit:hover {
     background-color: #e0a800;
+}
+
+.delete {
+    background-color: #dc3545;
+    color: white;
 }
 
 .delete:hover {
     background-color: #c82333;
 }
 
-.show-recipe {
-    background-color: rgb(1, 202, 205);
+.addRecipe {
+    background: linear-gradient(-135deg, #f48a39, #f62719);
+    color: white;
+    font-size: 1.5em; /* Reduced font size */
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
+.addRecipe:hover {
+    background: linear-gradient(-135deg, #e07b32, #e01b15);
+    transform: translateY(-2px);
+}
+
+.addRecipe:active {
+    transform: scale(0.95);
+}
+
+.show-recipe {
+    background-color: rgb(1, 202, 205);
+    color: white;
+}
 
 .show-recipe:hover {
     background-color: rgb(1, 194, 197);
+}
+
+.ingredients-button {
+    background-color: #6c757d; 
+    color: white;
+}
+
+.ingredients-button:hover {
+    background-color: #5a6268; 
 }
 
 .media-ingredients {
@@ -157,15 +189,13 @@
 }
 
 .method {
-   background-color: #fff;
+    background-color: #fff;
     padding: 2em;
     margin-top: 2em;
     border-radius: 2em;
     color: black;
-
 }
 
 .method p {
     font-size: 1.4em;
-
 }
