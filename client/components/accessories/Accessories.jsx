@@ -8,15 +8,15 @@ export default function Accessories() {
       <section className={style.accessories}>
         <div className={style.media}>
             <img className={style.img}src='./components/accessories/bench-personal-gallery-1.jpg' alt="img" />
-            <button className={style.button}>buy</button>
+            <button className={style.buttonBuy}>buy</button>
         </div>
         <div className={style.media}>
             <img className={style.img} src='./components/accessories/bike-weights-plp.jpg' alt="img" />
-            <button className={style.button}>buy</button>
+            <button className={style.buttonBuy}>buy</button>
         </div>
         <div className={style.media}>
             <img className={style.img} src='./components/accessories/cross-personal-plp.jpg' alt="img" />
-            <button className={style.button}>buy</button>
+            <button className={style.buttonBuy}>buy</button>
         </div>
         <div className={style.media}>
             <img className={style.img} src='./components/accessories/floor-training-kit-grey.jpg' alt="img" />

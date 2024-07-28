@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playwrite+NZ:wght@100..400&display=swap');
+
 .title {
     text-align: center;
     margin: 1em;
@@ -33,7 +35,7 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
 
-.button {
+.buttonBuy {
     background-color: #007BFF; 
     color: white;
     border: none; 
@@ -43,21 +45,22 @@
     cursor: pointer; 
     text-transform: uppercase;
     font-weight: bold; 
-    transition: background-color 0.3s, transform 0.3s; 
+    transition: background-color 0.2s, transform 0.2s; 
     margin-top: 1em;
 }
 
-.button:hover {
+.buttonBuy:hover {
     background-color: #0056b3; 
-    transform: scale(1); 
+    transform: scale(1.1); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-.button:active {
+.buttonBuy:active {
     background-color: #004494; 
-    transform: scale(1.2); 
+    transform: scale(0.95); 
 }
 
-.button:focus {
+.buttonBuy:focus {
     outline: none; 
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); 
 }
@@ -70,4 +73,7 @@
     transition: transform 0.1s; 
 }
 
-
+.img:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
