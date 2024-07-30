@@ -4,10 +4,11 @@ import styles from "./Header.module.css";
 import { useContext } from "react";
 import { UserContext } from "../../src/context/AuthContext";
 import { CiShoppingBasket } from "react-icons/ci";
+import { AccContext } from "../../src/context/AccessoriesContext";
 
 export default function Header() {
   const contextData = useContext(UserContext);
-
+  const { itemCount } = useContext(AccContext);
   return (
     <section className={styles.logo}>
       <div className={styles.media}>
@@ -85,7 +86,7 @@ export default function Header() {
 
               <li>
                 <NavLink
-                  to="/accessories"
+                  to="/AccessoriesApp"
                   className={({ isActive }) =>
                     `${styles.accessories} ${
                       isActive ? styles.active : styles.inactive
@@ -114,7 +115,7 @@ export default function Header() {
       </nav>
        
        {contextData.accessToken ? <article className={styles.stoppingCart}>
-        <p className={styles.count}>0</p>
+        <p className={styles.count}>{itemCount}</p>
         <Link to='/ShoppingCart' className={styles.iconStoppingCart}>
           <CiShoppingBasket />
         </Link>

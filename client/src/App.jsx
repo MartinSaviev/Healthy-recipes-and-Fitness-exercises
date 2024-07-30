@@ -16,12 +16,16 @@ import CreateNewVideo from "../components/video/create-new-video/CreateNewVideo"
 import Video from "../components/video/Video";
 import Logout from "../components/logout/Logout";
 import "./App.css";
-import Accessories from "../components/accessories/Accessories";
+
 import ShoppingCart from "../components/accessories/shopping-cart/ShoppingCart";
+import AccessoriesApp from "../components/accessories/accessoriesAppComponent/AcessoriesApp";
+import Accessories from "../components/accessories/Accessories";
+import { AccContextProvider } from "./context/AccessoriesContext";
 
 function App() {
   return (
     <>
+      <AccContextProvider>
       <ContextProvider>
           <Header />
         <Routes>
@@ -37,11 +41,13 @@ function App() {
           <Route path="/DeleteRecipe/:userId"element={<DeleteRecipe />}></Route>
           <Route path="/AddComment/:userId" element={<AddComment />}></Route>
           <Route path="/Comments/:userId" element={<Comments />}></Route>
-          <Route path="/Accessories" element={<Accessories />}></Route>
+          <Route path="/AccessoriesApp" element={<AccessoriesApp />}></Route>
           <Route path="/ShoppingCart" element={<ShoppingCart />}></Route>
+          <Route path="Accessories"  element={<Accessories />}></Route>
           <Route path="/*" element={<Page404 />}></Route>
         </Routes>
       </ContextProvider>
+      </AccContextProvider>
     </>
   );
 }

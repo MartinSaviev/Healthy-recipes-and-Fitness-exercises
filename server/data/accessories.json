@@ -1,0 +1,32 @@
+{
+    "2d5ae478-87c7-45fa-acf9-f04aa4724421": {
+        "header": "Exercise Mat",
+        "imgUrl": "https://webapi-prod.technogym.com/dw/image/v2/BFLQ_PRD/on/demandware.static/-/Sites-tg-catalog-master/default/dw9c899563/product/MD10/new-pdp/bench-personal-gallery-1.jpg?sw=896&sh=896",
+        "_id": "2d5ae478-87c7-45fa-acf9-f04aa4724421",
+        "price":"50"
+    },
+    "18110697-ccc0-4be0-b7ad-8a95e4d29183": {
+        "header": "JumpRope",
+        "imgUrl": "https://webapi-prod.technogym.com/dw/image/v2/BFLQ_PRD/on/demandware.static/-/Sites-tg-catalog-master/default/dw7fbf1cc3/product/A000JR/toolsjump-rope-plp.jpg?sw=896&sh=896",
+        "_id": "18110697-ccc0-4be0-b7ad-8a95e4d29183",
+        "price":"150"
+    },
+    "6012c542-38e1-4660-ba40-1b109c40cb2f": {
+        "header": "Balance Dome",
+        "imgUrl": "https://webapi-prod.technogym.com/dw/image/v2/BFLQ_PRD/on/demandware.static/-/Sites-tg-catalog-master/default/dw17030630/product/A0001252/toolsbalance-dome-plp.jpg?sw=896&sh=896",
+        "_id": "6012c542-38e1-4660-ba40-1b109c40cb2f",
+        "price":"150"
+    },
+    "d749a819-1e41-4c65-9ce2-7b429c4ebd0d": {
+        "header": "Bike Weights",
+        "imgUrl": "https://webapi-prod.technogym.com/dw/image/v2/BFLQ_PRD/on/demandware.static/-/Sites-tg-catalog-master/default/dw626c5926/product/A0001-BW/bike-weights-plp.jpg?sw=896&sh=896",
+        "_id": "d749a819-1e41-4c65-9ce2-7b429c4ebd0d",
+        "price":"150"
+    },
+    "2be9eabd-1b34-4336-9978-20904bbde0b1": {
+        "header": "Skillmill",
+        "imgUrl": "https://webapi-prod.technogym.com/dw/image/v2/BFLQ_PRD/on/demandware.static/-/Sites-tg-catalog-master/default/dwf75f8f1f/product/DJK0/skillmill-plp.jpg?sw=896&sh=896",
+        "_id": "2be9eabd-1b34-4336-9978-20904bbde0b1",
+        "price":"150"
+    }
+}
