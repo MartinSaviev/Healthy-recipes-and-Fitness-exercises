@@ -32,7 +32,7 @@ export default function ShoppingCart() {
             cart.map((acc) => (
               <article key={acc._id} className={style.item}>
                 <div className={style.buttons}>
-                  <button className={style.deleteBtn}>
+                  <button  className={style.deleteBtn}>
                     <IoMdClose />
                   </button>
                 </div>
@@ -44,11 +44,12 @@ export default function ShoppingCart() {
                 </div>
                 <div className={style.quantity}>
                   <button className={style.plusBtn} type="button">
-                    <IoIosAdd />
+                  <GrFormSubtract className={style.icon}/>
+                   
                   </button>
-                  <input type="text" defaultValue={1} readOnly />
+                  <input className={style.input} type="text" defaultValue={1} readOnly />
                   <button className={style.minusBtn} type="button">
-                    <GrFormSubtract />
+                  <IoIosAdd className={style.icon}/>
                   </button>
                 </div>
                 <span className={style.totalPrice}>{Number(acc.price)} лв.</span>

@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { ContextProvider } from "../src/context/AuthContext";
+import { AccContextProvider } from "./context/AccessoriesContext";
 
 import HealthyAndFitness from "../components/backgroudImg/HealthyAndFitness";
 import Header from "../components/header/Header";
@@ -19,8 +20,9 @@ import "./App.css";
 import ShoppingCart from "../components/accessories/shopping-cart/ShoppingCart";
 import AccessoriesApp from "../components/accessories/accessoriesAppComponent/AcessoriesApp";
 import Accessories from "../components/accessories/Accessories";
-import { AccContextProvider } from "./context/AccessoriesContext";
 import Checkout from "../components/accessories/shopping-cart/checkout/Checkout";
+import EditVideo from "../components/video/create-new-video/edit-video/EditVideo";
+import DeleteVideo from "../components/video/create-new-video/delete-vide/DeleteVideo";
 
 function App() {
   return (
@@ -34,8 +36,10 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/recipes" element={<Recipes />}></Route>
           <Route path="/video" element={<Video />}></Route>
-          <Route path="/CreateRecipe" element={<CreateRecipe />}></Route>
           <Route path="/CreateNewVideo" element={<CreateNewVideo />}></Route>
+          <Route path="/EditVideo/:userId" element={<EditVideo />}></Route>
+          <Route path="/DeleteVideo/:userId" element={<DeleteVideo />}></Route>
+          <Route path="/CreateRecipe" element={<CreateRecipe />}></Route>
           <Route path="/Logout" element={<Logout />}></Route>
           <Route path="/ChangeRecipe/:userId"element={<ChangeRecipe />}></Route>
           <Route path="/DeleteRecipe/:userId"element={<DeleteRecipe />}></Route>

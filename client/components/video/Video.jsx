@@ -31,10 +31,26 @@ export default function Video() {
 
       <section className={style.video}>
         {videos.map((video) => (
-          <div key={video._id} className={style.reactPlayer}>
-            <h3>{video.header}</h3>
-            <ReactPlayer url={video.videoUrl} controls />
-          </div>
+          <article key={video._id} className={style.article}>
+            <div className={style.reactPlayer}>
+              <h3>{video.header}</h3>
+              <ReactPlayer url={video.videoUrl} controls />
+            </div>
+            <div className={style.editAndDelete}>
+              <h1 className={style.mail}>{video.user}</h1>
+
+              {userData.email === video.user ? (
+                <div className={style.flex}>
+                  <Link to={`/EditVideo/${video._id}`}>
+                    <button className={style.edit}>edit</button>
+                  </Link>
+                  <Link to={`/DeleteVideo/${video._id}`}>
+                    <button className={style.delete}>delete</button>
+                  </Link>
+                </div>
+              ) : null}
+            </div>
+          </article>
         ))}
       </section>
       <aside className={style.aside}>

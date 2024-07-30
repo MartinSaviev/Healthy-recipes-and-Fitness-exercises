@@ -2,20 +2,25 @@
     "2d5ae478-87c7-45fa-acf9-f04aa4724421": {
         "header": "Изтласкване от полулег(Dumbbell Incline Bench Press)",
         "videoUrl": "https://app-media.fitbod.me/v2/100/videos/full_720p.mp4",
+        "user": "peter@abv.bg",
         "_id": "2d5ae478-87c7-45fa-acf9-f04aa4724421"
     },
     "6012c542-38e1-4660-ba40-1b109c40cb2f": {
         "header": "Избутване на щанга от лег(Barbell Bench Press)",
         "videoUrl": "https://app-media.fitbod.me/v2/29/videos/full_720p.mp4",
+        "user": "Ivan@abv.bg",
         "_id": "6012c542-38e1-4660-ba40-1b109c40cb2f"
+       
     },
     "d749a819-1e41-4c65-9ce2-7b429c4ebd0d": {
         "header": "Гребане с щанга от наклон (Bent Over Barbell Row)",
         "videoUrl": "https://app-media.fitbod.me/v2/44/videos/full_1080p.mp4",
+        "user": "Asen@abv.bg",
         "_id": "d749a819-1e41-4c65-9ce2-7b429c4ebd0d"
     },
     "2be9eabd-1b34-4336-9978-20904bbde0b1": {
         "header": "Лицеви опори с отпускане (Hand Release Push Up)",
+         "user": "Krum@abv.bg",
         "videoUrl": "https://app-media.fitbod.me/v2/3358/videos/full_1080p.mp4",
         "_id": "2be9eabd-1b34-4336-9978-20904bbde0b1"
     }

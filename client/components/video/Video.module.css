@@ -7,8 +7,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1em;   
+    padding: 1em;
 }
+
 
 .addVideo {
     padding: 1em 1.5em;
@@ -40,6 +41,7 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 2em;
+
 }
 
 .video h3 {
@@ -50,14 +52,90 @@
     top: 0;
     border-radius: 2em;
     padding: 0.2em;
+    margin-top: 0.2em;
 }
 
 .video .reactPlayer {
-    position: relative;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 2em;
     overflow: hidden;
+}
+
+.article {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    padding: 3em 2em 1em;
+    background-color: #ccc;
+    border-radius: 2em;
+
+}
+
+.editAndDelete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    margin-top: 1em;
+    border-radius: 0.5em;
+    font-size: 1em;
+    text-align: center;
+}
+
+.edit {
+    color: #fff;
+    background-color: #007bff;
+    /* Blue */
+    border: none;
+}
+
+.edit:hover {
+    background-color: #0056b3;
+}
+
+.edit:active {
+    transform: scale(0.95);
+    background-color: #004085;
+}
+
+.delete {
+    color: #fff;
+    background-color: #dc3545;
+    /* Red */
+    border: none;
+}
+
+.delete:hover {
+    background-color: #c82333;
+}
+
+.delete:active {
+    transform: scale(0.95);
+    background-color: #bd2130;
+}
+
+.editAndDelete button {
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.editAndDelete {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.flex {
+   display: flex;
+   justify-content: center;
+   margin: 0 auto;
+   gap: 2em;
 }

@@ -1,23 +1,24 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../../src/context/AuthContext";
+import { useNavigate, useParams } from "react-router-dom";
 
-import * as requester from "../../../src/api/requester";
-import { urls } from "../../../public/allUrls/urls";
-import backgroundVideo from "./backgroundVideo.mp4";
+import backgroundVideo from "../backgroundVideo.mp4";
 
-import styles from "./CreateNewVideo.module.css";
+import styles from "./EditVideo.module.css";
+import * as requester from "../../../../src/api/requester";
+import { urls } from "../../../../public/allUrls/urls";
+import { UserContext } from "../../../../src/context/AuthContext";
 
+export default function EditVideo() {
 
-
-export default function CreateNewVideo() {
   const userData = useContext(UserContext);
 
-  let navigate = useNavigate();
+  let { userId } = useParams();
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     header: "",
     user:userData.email,
     videoUrl: "",
+    "_id":userId,
   });
   const [error, setError] = useState("");
 
@@ -35,7 +36,7 @@ export default function CreateNewVideo() {
     }));
   }
 
-  async function postHandler(event) {
+  async function editHandler(event) {
     event.preventDefault();
     
     if (
@@ -47,9 +48,9 @@ export default function CreateNewVideo() {
     }
 
     try {
-      const addVideoFormServer = await requester.post(urls.videos, values);
-
-      if (!addVideoFormServer) {
+      const response = await requester.put(`${urls.videos}/${userId}`, values);
+        console.log(response);
+      if (!response) {
         throw new Error("Network response was not ok");
       }
 
@@ -71,8 +72,8 @@ export default function CreateNewVideo() {
         muted
       ></video>
       <div className={styles.wrapper}>
-        <div className={styles.title}>Добави ново видео</div>
-        <form className={styles.form} onSubmit={postHandler}>
+        <div className={styles.title}>Промени Видео</div>
+        <form className={styles.form} onSubmit={editHandler}>
           <div className={styles.field}>
             <input
               type="text"
@@ -98,7 +99,7 @@ export default function CreateNewVideo() {
             <input
               type="submit"
               className={styles["submit-btn"]}
-              value="Добави"
+              value="Промени"
               required
             />
           </div>
