@@ -16,7 +16,6 @@ const userData = useContext(UserContext);
     user: userData.email,
     ingredients: "",
     steps: "",
-    videoUrl: "",
   });
 
   async function sendRecipes(ev) {
