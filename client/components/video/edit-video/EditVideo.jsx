@@ -1,44 +1,47 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import backgroundVideo from "../backgroundVideo.mp4";
+import backgroundVideo from "../backgroundVideos.jpg";
 
 import styles from "./EditVideo.module.css";
-import * as requester from "../../../../src/api/requester";
-import { urls } from "../../../../public/allUrls/urls";
-import { UserContext } from "../../../../src/context/AuthContext";
+import * as requester from "../../../src/api/requester";
+import { urls } from "../../../public/allUrls/urls";
+import { UserContext } from "../../../src/context/AuthContext";
 
 export default function EditVideo() {
-
   const userData = useContext(UserContext);
 
   let { userId } = useParams();
   const navigate = useNavigate();
   const [values, setValues] = useState({
     header: "",
-    user:userData.email,
+    user: userData.email,
     videoUrl: "",
-    "_id":userId,
+    _id: userId,
   });
   const [error, setError] = useState("");
 
-  function changeNameHandler(ev) {
+  function changeHandler(ev) {
     setValues((prevValues) => ({
       ...prevValues,
-      header: ev.target.value,
+      [ev.target.name]: ev.target.value,
     }));
   }
 
-  function changeUrlHandler(ev) {
-    setValues((prevValues) => ({
-      ...prevValues,
-      videoUrl: ev.target.value,
-    }));
-  }
+  useEffect(() => {
+    (async () => {
+      const data = await requester.get(`${urls.videos}/${userId}`);
+      setValues((prevValues) => ({
+        ...prevValues,
+        header: data.header || "",
+        videoUrl: data.videoUrl || "",
+      }));
+    })();
+  }, [userId]);
 
   async function editHandler(event) {
     event.preventDefault();
-    
+
     if (
       !values.header ||
       (!values.videoUrl.startsWith("https://") && !values.videoUrl.startsWith("http://"))
@@ -46,10 +49,8 @@ export default function EditVideo() {
       setError("Моля, попълнете всички полета и уверете се, че URL адресът на видеото започва с 'https://' или 'http://'.");
       return;
     }
-
     try {
       const response = await requester.put(`${urls.videos}/${userId}`, values);
-        console.log(response);
       if (!response) {
         throw new Error("Network response was not ok");
       }
@@ -77,9 +78,9 @@ export default function EditVideo() {
           <div className={styles.field}>
             <input
               type="text"
-              name="name"
+              name="header"
               value={values.header}
-              onChange={changeNameHandler}
+              onChange={changeHandler}
               required
             />
             <label>Име</label>
@@ -87,9 +88,9 @@ export default function EditVideo() {
           <div className={styles.field}>
             <input
               type="text"
-              name="img"
+              name="videoUrl"
               value={values.videoUrl}
-              onChange={changeUrlHandler}
+              onChange={changeHandler}
               required
             />
             <label>Видео (URL)</label>
@@ -100,7 +101,6 @@ export default function EditVideo() {
               type="submit"
               className={styles["submit-btn"]}
               value="Промени"
-              required
             />
           </div>
         </form>

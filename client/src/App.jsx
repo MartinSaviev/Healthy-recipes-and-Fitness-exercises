@@ -21,8 +21,8 @@ import ShoppingCart from "../components/accessories/shopping-cart/ShoppingCart";
 import AccessoriesApp from "../components/accessories/accessoriesAppComponent/AcessoriesApp";
 import Accessories from "../components/accessories/Accessories";
 import Checkout from "../components/accessories/shopping-cart/checkout/Checkout";
-import EditVideo from "../components/video/create-new-video/edit-video/EditVideo";
-import DeleteVideo from "../components/video/create-new-video/delete-vide/DeleteVideo";
+import EditVideo from "../components/video/edit-video/EditVideo";
+import DeleteVideo from "../components/video/delete-vide/DeleteVideo";
 
 function App() {
   return (

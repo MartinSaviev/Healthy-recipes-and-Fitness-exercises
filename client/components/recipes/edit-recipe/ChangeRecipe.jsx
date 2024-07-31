@@ -37,7 +37,7 @@ export default function CreateRecipe() {
         ingredients: data.ingredients.join(", "), 
       });
     })();
-  }, [userId]);
+  }, [userId,values]);
 
   function changeHandler(ev) {
     ev.target.name;

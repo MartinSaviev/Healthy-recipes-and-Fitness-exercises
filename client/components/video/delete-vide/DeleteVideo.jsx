@@ -1,7 +1,7 @@
-import { urls } from "../../../../public/allUrls/urls";
+import { urls } from "../../../public/allUrls/urls";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-import *as requester from "../../../../src/api/requester";
+import *as requester from "../../../src/api/requester";
 
 import style from "./DeleteVideo.module.css";
 
