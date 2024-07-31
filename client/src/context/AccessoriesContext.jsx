@@ -9,7 +9,7 @@ export const AccContext = createContext({
   clearCart: () => null,
   calculatePrice: () => null,
   clearIncrementItemCount: () => null,
- 
+  removeItemFromCart: () => null,
 });
 
 export function AccContextProvider(props) {
@@ -17,18 +17,22 @@ export function AccContextProvider(props) {
   const [itemCount, setItemCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
- 
   function clearIncrementItemCount(zero) {
     setItemCount(Number(zero));
   }
 
   function clearCart() {
     setCart([]);
+    setItemCount(0);
+    setTotalPrice(0);
   }
 
   function calculatePrice(itemPrice) {
-    setTotalPrice (oldPrice =>  oldPrice += Number(itemPrice));
-   console.log(itemPrice);
+    setTotalPrice((oldPrice) => oldPrice + Number(itemPrice));
+  }
+
+  function decrementPrice(itemPrice) {
+    setTotalPrice((oldPrice) => oldPrice - Number(itemPrice));
   }
 
   function changeAccessoriesState(itemData) {
@@ -43,6 +47,18 @@ export function AccContextProvider(props) {
     });
   }
 
+  function removeItemFromCart(itemId) {
+    setCart((prevCart) => {
+      const itemToRemove = prevCart.find((item) => item._id === itemId);
+      if (itemToRemove) {
+        decrementPrice(itemToRemove.price);
+        setItemCount((prevCount) => prevCount - 1);
+        return prevCart.filter((item) => item._id !== itemId);
+      }
+      return prevCart;
+    });
+  }
+
   const contextData = {
     cart,
     itemCount,
@@ -50,7 +66,7 @@ export function AccContextProvider(props) {
     clearCart,
     changeAccessoriesState,
     clearIncrementItemCount,
-    
+    removeItemFromCart,
   };
 
   return (

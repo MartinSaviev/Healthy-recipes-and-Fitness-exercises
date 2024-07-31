@@ -9,13 +9,17 @@ import { useContext, useState } from "react";
 import Checkout from "./checkout/Checkout";
 
 export default function ShoppingCart() {
-  const { cart, clearCart,clearIncrementItemCount } = useContext(AccContext);
+  const { cart, clearCart,clearIncrementItemCount,removeItemFromCart  } = useContext(AccContext);
   const [showCheckout, setShowCheckout] = useState(false);
 
   function clearCheckoutHandler() {
     clearCart();
     clearIncrementItemCount(0);
     setShowCheckout(true); 
+  }
+
+  function removeItemShoppingCartHandler(ev) {
+     removeItemFromCart(ev.currentTarget.id);
   }
 
   return (
@@ -32,8 +36,8 @@ export default function ShoppingCart() {
             cart.map((acc) => (
               <article key={acc._id} className={style.item}>
                 <div className={style.buttons}>
-                  <button className={style.deleteBtn}>
-                    <IoMdClose />
+                  <button  id={acc._id} onClick={removeItemShoppingCartHandler}  className={style.deleteBtn}>
+                    <IoMdClose  />
                   </button>
                 </div>
                 <div className={style.image}>
