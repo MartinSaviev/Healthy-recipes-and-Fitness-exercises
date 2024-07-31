@@ -43,7 +43,7 @@ export function AccContextProvider(props) {
       if (!isAlreadyAdded) {
         calculatePrice(itemData.price);
         setItemCount((prevCount) => prevCount + 1);
-        return [...prevCart, itemData];
+        return [...prevCart, { ...itemData, quantity: 1 }];
       }
       return prevCart;
     });
@@ -53,11 +53,35 @@ export function AccContextProvider(props) {
     setCart((prevCart) => {
       const itemToRemove = prevCart.find((item) => item._id === itemId);
       if (itemToRemove) {
-        decrementPrice(itemToRemove.price);
-        setItemCount((prevCount) => prevCount - 1);
+        decrementPrice(itemToRemove.price * itemToRemove.quantity);
+        setItemCount((prevCount) => prevCount - itemToRemove.quantity);
         return prevCart.filter((item) => item._id !== itemId);
       }
       return prevCart;
+    });
+  }
+
+  function incrementItemCount(itemId) {
+    setCart((prevCart) => {
+      return prevCart.map((item) => {
+        if (item._id === itemId) {
+          item.quantity += 1;
+          calculatePrice(item.price);
+        }
+        return item;
+      });
+    });
+  }
+
+  function decrementItemCount(itemId) {
+    setCart((prevCart) => {
+      return prevCart.map((item) => {
+        if (item._id === itemId && item.quantity > 1) {
+          item.quantity -= 1;
+          decrementPrice(item.price);
+        }
+        return item;
+      });
     });
   }
 
@@ -69,6 +93,8 @@ export function AccContextProvider(props) {
     changeAccessoriesState,
     clearIncrementItemCount,
     removeItemFromCart,
+    incrementItemCount,
+    decrementItemCount,
   };
 
   return (
