@@ -6,33 +6,33 @@ import { IoIosAdd } from "react-icons/io";
 import { GrFormSubtract } from "react-icons/gr";
 import { AccContext } from "../../../src/context/AccessoriesContext";
 import { useContext, useState } from "react";
-import Checkout from './checkout/Checkout'
+import Checkout from "./checkout/Checkout";
 
 export default function ShoppingCart() {
-  const { cart, clearCart, setItemCount } = useContext(AccContext);
+  const { cart, clearCart,clearIncrementItemCount } = useContext(AccContext);
   const [showCheckout, setShowCheckout] = useState(false);
 
   function clearCheckoutHandler() {
     clearCart();
-    setItemCount(0);
-    setShowCheckout(true);  // Set state to show Checkout component
+    clearIncrementItemCount(0);
+    setShowCheckout(true); 
   }
 
   return (
     <>
       {showCheckout ? (
-        <Checkout setShowCheckout={setShowCheckout}/>
+        <Checkout setShowCheckout={setShowCheckout} />
       ) : (
         <section className={style.shoppingCart}>
           <header className={style.title}>Количка</header>
 
           {cart.length === 0 ? (
-            <p  className={style.emptyBag} >Вашата кошница е празна</p>
+            <p className={style.emptyBag}>Вашата кошница е празна</p>
           ) : (
             cart.map((acc) => (
               <article key={acc._id} className={style.item}>
                 <div className={style.buttons}>
-                  <button  className={style.deleteBtn}>
+                  <button className={style.deleteBtn}>
                     <IoMdClose />
                   </button>
                 </div>
@@ -44,20 +44,30 @@ export default function ShoppingCart() {
                 </div>
                 <div className={style.quantity}>
                   <button className={style.plusBtn} type="button">
-                  <GrFormSubtract className={style.icon}/>
-                   
+                    <GrFormSubtract className={style.icon} />
                   </button>
-                  <input className={style.input} type="text" defaultValue={1} readOnly />
+                  <input
+                    className={style.input}
+                    type="text"
+                    defaultValue={1}
+                    readOnly
+                  />
                   <button className={style.minusBtn} type="button">
-                  <IoIosAdd className={style.icon}/>
+                    <IoIosAdd className={style.icon} />
                   </button>
                 </div>
-                <span className={style.totalPrice}>{Number(acc.price)} лв.</span>
+                <span className={style.totalPrice}>
+                  {Number(acc.price)} лв.
+                </span>
               </article>
             ))
           )}
 
-          <button onClick={clearCheckoutHandler} className={style.checkoutBtn} type="button">
+          <button
+            onClick={clearCheckoutHandler}
+            className={style.checkoutBtn}
+            type="button"
+          >
             Поръчай
           </button>
         </section>
