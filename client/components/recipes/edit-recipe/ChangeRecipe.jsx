@@ -1,10 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { UserContext } from "../../../src/context/AuthContext";
 
 import * as recipeRequest from "../../../src/api/recipeRequest";
+import * as requester from "../../../src/api/requester";
 
 import styles from "./ChangeRecipe.module.css";
-import { UserContext } from "../../../src/context/AuthContext";
+import { urls } from "../../../public/allUrls/urls";
 
 export default function CreateRecipe() {
 
@@ -26,6 +28,16 @@ export default function CreateRecipe() {
     navigate("/Recipes");
     
   }
+
+  useEffect(() => {
+    (async () => {
+      const data = await requester.get(`${urls.recipes}/${userId}`);
+      setValues({
+        ...data,
+        ingredients: data.ingredients.join(", "), 
+      });
+    })();
+  }, [userId]);
 
   function changeHandler(ev) {
     ev.target.name;
@@ -51,7 +63,9 @@ export default function CreateRecipe() {
                 type="text"
                 name="name"
                 onChange={changeHandler}
+                value={values.name}
                 required
+                
               />
               <label>Име</label>
             </div>
@@ -60,6 +74,7 @@ export default function CreateRecipe() {
                 type="text" 
                 name="img" 
                 onChange={changeHandler} 
+                value={values.img}
                 required />
               <label>Изображение (URL)</label>
             </div>
@@ -67,6 +82,7 @@ export default function CreateRecipe() {
               <textarea 
                 name="ingredients" 
                 onChange={changeHandler} 
+                value={values.ingredients}
                 required />
               <label>Съставки (разделени със запетая)</label>
             </div>
@@ -74,6 +90,7 @@ export default function CreateRecipe() {
               <textarea 
                 name="steps" 
                 onChange={changeHandler} 
+                value={values.steps}
                 required />
               <label>Стъпки</label>
             </div>
