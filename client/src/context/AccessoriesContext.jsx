@@ -10,6 +10,8 @@ export const AccContext = createContext({
   calculatePrice: () => null,
   clearIncrementItemCount: () => null,
   removeItemFromCart: () => null,
+  incrementItemCount: () => null,
+  decrementItemCount: () => null,
 });
 
 export function AccContextProvider(props) {

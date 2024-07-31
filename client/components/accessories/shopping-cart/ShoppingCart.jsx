@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import style from "./ShoppingCart.module.css";
 import { IoMdClose } from "react-icons/io";
 import { IoIosAdd } from "react-icons/io";
@@ -9,17 +7,24 @@ import { useContext, useState } from "react";
 import Checkout from "./checkout/Checkout";
 
 export default function ShoppingCart() {
-  const { cart, clearCart,clearIncrementItemCount,removeItemFromCart  } = useContext(AccContext);
+  const { cart, clearIncrementItemCount, removeItemFromCart, incrementItemCount, decrementItemCount } = useContext(AccContext);
   const [showCheckout, setShowCheckout] = useState(false);
 
   function clearCheckoutHandler() {
-    clearCart();
     clearIncrementItemCount(0);
     setShowCheckout(true); 
   }
 
   function removeItemShoppingCartHandler(ev) {
      removeItemFromCart(ev.currentTarget.id);
+  }
+
+  function addItemHandler(ev) {
+    incrementItemCount(ev.currentTarget.id);
+  }
+
+  function removeItemHandler(ev) {
+    decrementItemCount(ev.currentTarget.id);
   }
 
   return (
@@ -36,8 +41,8 @@ export default function ShoppingCart() {
             cart.map((acc) => (
               <article key={acc._id} className={style.item}>
                 <div className={style.buttons}>
-                  <button  id={acc._id} onClick={removeItemShoppingCartHandler}  className={style.deleteBtn}>
-                    <IoMdClose  />
+                  <button id={acc._id} onClick={removeItemShoppingCartHandler} className={style.deleteBtn}>
+                    <IoMdClose />
                   </button>
                 </div>
                 <div className={style.image}>
@@ -47,21 +52,21 @@ export default function ShoppingCart() {
                   <span className={style.brand}>{acc.header}</span>
                 </div>
                 <div className={style.quantity}>
-                  <button className={style.plusBtn} type="button">
+                  <button id={acc._id} onClick={removeItemHandler} className={style.minusBtn} type="button">
                     <GrFormSubtract className={style.icon} />
                   </button>
                   <input
                     className={style.input}
                     type="text"
-                    defaultValue={1}
+                    value={acc.quantity}
                     readOnly
                   />
-                  <button className={style.minusBtn} type="button">
+                  <button id={acc._id} onClick={addItemHandler} className={style.plusBtn} type="button">
                     <IoIosAdd className={style.icon} />
                   </button>
                 </div>
                 <span className={style.totalPrice}>
-                  {Number(acc.price)} лв.
+                  {Number(acc.price * acc.quantity)} лв.
                 </span>
               </article>
             ))

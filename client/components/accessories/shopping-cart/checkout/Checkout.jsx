@@ -5,12 +5,12 @@ import style from "./Checkout.module.css";
 import { Link } from "react-router-dom";
 
 export default function Checkout({setShowCheckout}) {
-  const { totalPrice } = useContext(AccContext);
+  const { totalPrice,clearCart } = useContext(AccContext);
  
   console.log(totalPrice);
   function cancelHandler() {
     setShowCheckout(false);
-
+    clearCart();
   }
 
   return (
