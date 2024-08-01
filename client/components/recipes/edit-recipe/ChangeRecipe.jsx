@@ -25,7 +25,7 @@ export default function CreateRecipe() {
   async function sendRecipes(ev) {
     ev.preventDefault();
     await recipeRequest.put(userId, values);
-    navigate("/Recipes");
+    navigate(`/AllRecipes/Recipes/${userId}`);
     
   }
 
@@ -37,7 +37,7 @@ export default function CreateRecipe() {
         ingredients: data.ingredients.join(", "), 
       });
     })();
-  }, [userId,values]);
+  }, [userId]);
 
   function changeHandler(ev) {
     ev.target.name;
@@ -78,7 +78,7 @@ export default function CreateRecipe() {
                 required />
               <label>Изображение (URL)</label>
             </div>
-            <div className={styles.field}>
+            <div className={`${styles.field} ${styles.fontSizeTextarea}`}>
               <textarea 
                 name="ingredients" 
                 onChange={changeHandler} 
@@ -86,7 +86,7 @@ export default function CreateRecipe() {
                 required />
               <label>Съставки (разделени със запетая)</label>
             </div>
-            <div className={styles.field}>
+            <div className={`${styles.field} ${styles.fontSizeTextarea}`}>
               <textarea 
                 name="steps" 
                 onChange={changeHandler} 

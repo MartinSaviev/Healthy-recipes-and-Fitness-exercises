@@ -34,7 +34,7 @@ const userData = useContext(UserContext);
       }
       const data = await recipeRequest.post('',values);
       console.log(data);
-      navigate("/Recipes");
+      navigate("/AllRecipes");
     } catch (err) {
       alert(err.message);
     }
@@ -61,7 +61,7 @@ const userData = useContext(UserContext);
             <input type="text" name="img" onChange={changeValuesHandler} required />
             <label>Изображение (URL)</label>
           </div>
-          <div className={styles.field}>
+          <div className={`${styles.field} ${styles.fontSizeTextarea}`}>
             <textarea
               name="ingredients"
               onChange={changeValuesHandler}
@@ -69,7 +69,7 @@ const userData = useContext(UserContext);
             />
             <label>Съставки (разделени със запетая)</label>
           </div>
-          <div className={styles.field}>
+          <div className={`${styles.field} ${styles.fontSizeTextarea}`}>
             <textarea name="steps" onChange={changeValuesHandler} required />
             <label>Стъпки</label>
           </div>

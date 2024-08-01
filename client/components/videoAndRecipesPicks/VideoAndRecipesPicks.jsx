@@ -15,7 +15,7 @@ export default function VideoAndRecipesPicks() {
           
         </Link>
 
-        <Link to="/recipes">
+        <Link to="/AllRecipes">
           <img
             className={styles.recipes}
             src="./images/recipesHome.jpg"

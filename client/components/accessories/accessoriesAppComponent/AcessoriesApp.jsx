@@ -19,8 +19,6 @@ export default function AccessoriesApp() {
     let accessoriesId = ev.currentTarget.id;
     const itemId = await requester.get(`${urls.accessories}/${accessoriesId}`);
     changeAccessoriesState(itemId);
-    
-    
   }
 
   return (

@@ -73,14 +73,14 @@ export default function Header() {
               
               <li>
                 <NavLink
-                  to="/recipes"
+                  to="/AllRecipes"
                   className={({ isActive }) =>
                     `${styles.recipes} ${
                       isActive ? styles.active : styles.inactive
                     }`
                   }
                 >
-                  Рецепти
+                  Всички Рецепти
                 </NavLink>
               </li>
 

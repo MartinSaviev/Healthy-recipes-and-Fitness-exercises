@@ -23,6 +23,7 @@ import Accessories from "../components/accessories/Accessories";
 import Checkout from "../components/accessories/shopping-cart/checkout/Checkout";
 import EditVideo from "../components/video/edit-video/EditVideo";
 import DeleteVideo from "../components/video/delete-vide/DeleteVideo";
+import AllRecipes from "../components/recipes/allRecipes/AllRecipes";
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
           <Route path="/" element={<HealthyAndFitness />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
-          <Route path="/recipes" element={<Recipes />}></Route>
+          <Route path="/AllRecipes/recipes/:userId" element={<Recipes />}></Route>
+          <Route path="/AllRecipes" element={<AllRecipes />}></Route>l
           <Route path="/video" element={<Video />}></Route>
           <Route path="/CreateNewVideo" element={<CreateNewVideo />}></Route>
           <Route path="/EditVideo/:userId" element={<EditVideo />}></Route>

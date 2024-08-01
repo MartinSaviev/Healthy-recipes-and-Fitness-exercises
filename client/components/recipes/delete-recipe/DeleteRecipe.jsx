@@ -14,7 +14,7 @@ export default function DeleteRecipe() {
     console.log(response);
     console.log(userId);
     if (response) {
-        navigate('/recipes')
+        navigate('/AllRecipes')
     }
   }
 
