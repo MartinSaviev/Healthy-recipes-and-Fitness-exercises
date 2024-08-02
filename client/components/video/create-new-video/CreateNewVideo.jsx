@@ -4,7 +4,6 @@ import { UserContext } from "../../../src/context/AuthContext";
 
 import * as requester from "../../../src/api/requester";
 import { urls } from "../../../public/allUrls/urls";
-import backgroundVideo from "./backgroundVideo.mp4";
 
 import styles from "./CreateNewVideo.module.css";
 
@@ -62,14 +61,6 @@ export default function CreateNewVideo() {
 
   return (
     <div className={styles.body}>
-      <video
-        className={styles.video}
-        src={backgroundVideo}
-        type="video/mp4"
-        autoPlay
-        loop
-        muted
-      ></video>
       <div className={styles.wrapper}>
         <div className={styles.title}>Добави ново видео</div>
         <form className={styles.form} onSubmit={postHandler}>

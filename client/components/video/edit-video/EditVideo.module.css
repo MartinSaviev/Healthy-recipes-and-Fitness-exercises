@@ -7,6 +7,7 @@
     width: 100%;
     justify-items: center;
     align-content:start;
+    background:#F8F8F8;
 }
 
 .video {
@@ -37,7 +38,7 @@
     color: #fff;
     user-select: none;
     border-radius: 15px 15px 0 0;
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    background: #0fc9e7;
     padding: 1em;
 }
 
@@ -119,7 +120,7 @@
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    background: #0fc9e7;
     transition: all 0.3s ease;
     text-align: center;
     padding: 1em 2em;

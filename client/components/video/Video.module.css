@@ -1,6 +1,5 @@
 .background {
-    background-image: url('./backgroundVideos.jpg');
-    background-size: cover;
+    background:#F8F8F8;
 }
 
 .aside {
@@ -47,7 +46,6 @@
 .video h3 {
     position: absolute;
     font-size: 1.2em;
-    background: #82acff;
     display: block;
     top: 0;
     border-radius: 2em;
@@ -71,7 +69,7 @@
     flex-direction: column;
     border: 2px solid black;
     padding: 3em 2em 1em;
-    background-color: #ccc;
+    background:#ccc;
     border-radius: 2em;
 
 }

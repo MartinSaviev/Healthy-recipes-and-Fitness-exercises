@@ -2,8 +2,7 @@
 
     display: grid;
     place-items: center;
-    background-image: url('./comments.jpg');
-    background-size: cover;
+    background:#F8F8F8;
     padding-bottom: 12em;
 
 }
@@ -15,18 +14,21 @@
 }
 
 .user {
-    margin:1em 0em 0 1em;
-    color: #fff;
+    margin: 1em 0em 0 1em;
+    color: black;
     text-decoration: underline;
 }
 
 .method {
-   
+
     margin-top: 2em;
     border-radius: 1em;
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    background: #e3f6f5;
     display: flex;
     flex-direction: column;
+    border: 2px solid black;
+    box-shadow: 0 0 0.1em 0 rgba(0, 0, 0, 0.5);
+
 }
 
 .delete {
@@ -38,6 +40,7 @@
     color: #fff;
     margin-bottom: 1em;
 }
+
 .method p {
     font-size: 1.4em;
 }
