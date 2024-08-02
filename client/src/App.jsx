@@ -24,6 +24,7 @@ import Checkout from "../components/accessories/shopping-cart/checkout/Checkout"
 import EditVideo from "../components/video/edit-video/EditVideo";
 import DeleteVideo from "../components/video/delete-vide/DeleteVideo";
 import AllRecipes from "../components/recipes/allRecipes/AllRecipes";
+import ShowMyRecipes from "../components/recipes/show-my-recipes/ShowMyRecipes";
 
 function App() {
   return (
@@ -36,7 +37,8 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/AllRecipes/recipes/:userId" element={<Recipes />}></Route>
-          <Route path="/AllRecipes" element={<AllRecipes />}></Route>l
+          <Route path="/AllRecipes" element={<AllRecipes />}></Route>
+          <Route path="/ShowMyRecipes" element={<ShowMyRecipes />}></Route>
           <Route path="/video" element={<Video />}></Route>
           <Route path="/CreateNewVideo" element={<CreateNewVideo />}></Route>
           <Route path="/EditVideo/:userId" element={<EditVideo />}></Route>

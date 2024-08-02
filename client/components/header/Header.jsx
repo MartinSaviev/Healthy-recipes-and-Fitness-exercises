@@ -86,6 +86,19 @@ export default function Header() {
 
               <li>
                 <NavLink
+                  to="/ShowMyRecipes"
+                  className={({ isActive }) =>
+                    `${styles.recipes} ${
+                      isActive ? styles.active : styles.inactive
+                    }`
+                  }
+                >
+                  Moите Рецепти
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
                   to="/video"
                   className={({ isActive }) =>
                     `${styles.video} ${
