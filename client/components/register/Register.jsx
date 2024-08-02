@@ -14,7 +14,7 @@ export default function Register() {
     're-password': "",
   });
 
-  async function register(ev) {
+  async function createUser(ev) {
     ev.preventDefault();
 
     if (!values.email.includes('@')) {
@@ -49,7 +49,7 @@ export default function Register() {
     <section className={styles.body}>
       <section className={styles.wrapper}>
         <div className={styles.title}>Регистрация</div>
-        <form onSubmit={register} className={styles.register}>
+        <form onSubmit={createUser} className={styles.register}>
           <div className={styles.field}>
             <input
               type="text"
