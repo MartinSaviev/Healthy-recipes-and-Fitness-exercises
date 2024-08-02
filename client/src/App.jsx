@@ -39,6 +39,7 @@ function App() {
           <Route path="/AllRecipes/recipes/:userId" element={<Recipes />}></Route>
           <Route path="/AllRecipes" element={<AllRecipes />}></Route>
           <Route path="/ShowMyRecipes" element={<ShowMyRecipes />}></Route>
+          <Route path="/ShowMyRecipes/Recipes/:userId" element={<Recipes/>}></Route>
           <Route path="/video" element={<Video />}></Route>
           <Route path="/CreateNewVideo" element={<CreateNewVideo />}></Route>
           <Route path="/EditVideo/:userId" element={<EditVideo />}></Route>

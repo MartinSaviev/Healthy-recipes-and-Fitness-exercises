@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { UserContext } from "../../../src/context/AuthContext";
 
 import * as requester from "../../../src/api/requester";
 import { urls } from "../../../public/allUrls/urls";
@@ -7,7 +8,6 @@ import { urls } from "../../../public/allUrls/urls";
 import style from "./Recipes.module.css";
 import Ingredients from "./Ingredients";
 import Method from "./Method";
-import { UserContext } from "../../../src/context/AuthContext";
 
 export default function Recipes() {
   const [recipe, getRecipe] = useState([]);
