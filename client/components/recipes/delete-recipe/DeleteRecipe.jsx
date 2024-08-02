@@ -27,7 +27,7 @@ export default function DeleteRecipe() {
             Изтрий
           </button>
         </Link>
-        <Link to="/recipes">
+        <Link to={`/ShowMyRecipes/Recipes/${userId}`}>
           <button className={style.cancelButton}>Отказ</button>
         </Link>
       </div>

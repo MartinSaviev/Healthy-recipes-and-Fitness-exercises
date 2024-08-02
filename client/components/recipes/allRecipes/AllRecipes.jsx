@@ -12,7 +12,6 @@ export default function AllRecipes() {
       getRecipes(Object.values(data));
     })();
   }, []);
-  console.log(getRecipes);
   return (
     <>
       <h2 className={style.title}>Всички Рецепти</h2>
