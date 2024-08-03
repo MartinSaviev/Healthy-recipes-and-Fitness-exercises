@@ -46,9 +46,6 @@ export default function Recipes() {
                   <img className={style.images} src={recipe.img} alt="" />
 
                   <section className={style.buttons}>
-                    <Link>
-                      <button className={style.like}>Харесай</button>
-                    </Link>
                     {userData.email === recipe.user && (
                       <>
                         <Link to={`/ChangeRecipe/${recipe._id}`}>
