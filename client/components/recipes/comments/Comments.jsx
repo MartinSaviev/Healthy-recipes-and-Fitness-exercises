@@ -14,14 +14,10 @@ export default function Comments() {
   let navigate = useNavigate();
   const { userId } = useParams();
 
-  async function deleteHandler(ev, recipeId, id) {
+  async function navigateToDeletePageHandler(ev, recipeId, id) {
     ev.preventDefault();
 
-    let result = await requester.del(
-      `${urls.recipes}/${recipeId}/commentary/${id}`
-    );
-    console.log(result);
-    navigate(`/Comments/${recipeId}`);
+    navigate(`/DeleteComment/${recipeId}/${id}`);
     setDeleteId(id);
   }
 
@@ -36,7 +32,6 @@ export default function Comments() {
 
   const contextData = useContext(UserContext);
 
-  console.log(comments);
   return (
     <section className={styles.background}>
       <aside className={styles.aside}>
@@ -51,7 +46,7 @@ export default function Comments() {
           
           {contextData.email === comment.user ? (
             <button
-              onClick={(ev) => deleteHandler(ev, userId, comment._id)}
+              onClick={(ev) => navigateToDeletePageHandler(ev, userId, comment._id)}
               className={styles.delete}
             >
               Delete
