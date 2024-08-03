@@ -15,9 +15,15 @@ export default function Login() {
   
   async function login(ev) {
     ev.preventDefault();
-    const dataFromServer = await requester.post(urls.login, values);
-    contextData.changeAuthState(dataFromServer);
-    console.log(dataFromServer);
+   
+    try {
+      const dataFromServer = await requester.post(urls.login, values);
+      contextData.changeAuthState(dataFromServer);
+    } catch (error) {
+      alert('Грешен потребител или парола!');
+      return;
+    }
+ 
     navigate('/')
   }
 
