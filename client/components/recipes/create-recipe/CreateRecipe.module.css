@@ -113,10 +113,19 @@
   justify-content: space-around;
 }
 
-.wrapper .form .field input[type="submit"] {
+.field {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper .form .field input[type="submit"],
+.wrapper .form .field input[type="button"] {
+  flex: 0 1 auto;
   color: #fff;
   border: none;
-  margin-top: -10px;
+  margin-top: 10px;
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
@@ -126,7 +135,16 @@
   padding-bottom: 2em;
 }
 
+.wrapper .form .field input[type="button"] {
+  background-color: red;
+}
+
 .wrapper .form .field input[type="submit"]:active {
+  transform: scale(0.95);
+  
+}
+
+.wrapper .form .field input[type="button"]:active {
   transform: scale(0.95);
   
 }

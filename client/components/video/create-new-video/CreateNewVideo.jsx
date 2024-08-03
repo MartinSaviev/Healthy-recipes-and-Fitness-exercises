@@ -1,13 +1,11 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../../src/context/AuthContext";
 
 import * as requester from "../../../src/api/requester";
 import { urls } from "../../../public/allUrls/urls";
 
 import styles from "./CreateNewVideo.module.css";
-
-
 
 export default function CreateNewVideo() {
   const userData = useContext(UserContext);
@@ -20,17 +18,10 @@ export default function CreateNewVideo() {
   });
   const [error, setError] = useState("");
 
-  function changeNameHandler(ev) {
+  function createNewVideoHandler(ev) {
     setValues((prevValues) => ({
       ...prevValues,
-      header: ev.target.value,
-    }));
-  }
-
-  function changeUrlHandler(ev) {
-    setValues((prevValues) => ({
-      ...prevValues,
-      videoUrl: ev.target.value,
+      [ev.target.name] : ev.target.value
     }));
   }
 
@@ -52,7 +43,7 @@ export default function CreateNewVideo() {
         throw new Error("Network response was not ok");
       }
 
-      navigate("../Video");
+      navigate("/video");
     } catch (err) {
       setError("Възникна грешка при добавянето на видеото. Моля, опитайте отново.");
       console.error("Error adding video:", err);
@@ -67,9 +58,9 @@ export default function CreateNewVideo() {
           <div className={styles.field}>
             <input
               type="text"
-              name="name"
+              name="header"
               value={values.header}
-              onChange={changeNameHandler}
+              onChange={createNewVideoHandler}
               required
             />
             <label>Име</label>
@@ -77,9 +68,9 @@ export default function CreateNewVideo() {
           <div className={styles.field}>
             <input
               type="text"
-              name="img"
+              name="videoUrl"
               value={values.videoUrl}
-              onChange={changeUrlHandler}
+              onChange={createNewVideoHandler}
               required
             />
             <label>Видео (URL)</label>
@@ -91,7 +82,18 @@ export default function CreateNewVideo() {
               className={styles["submit-btn"]}
               value="Добави"
               required
+              
             />
+             <Link to={'/video'}>
+             <input
+              type="button"
+              className={styles["cancel-btn"]}
+              value="Отказ"
+              required
+              
+            />
+             </Link>
+            
           </div>
         </form>
       </div>

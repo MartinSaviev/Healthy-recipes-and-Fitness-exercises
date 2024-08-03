@@ -112,9 +112,10 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    gap: 2em;
 }
 
-.submit-btn {
+.submit-btn,.cancel-btn {
     color: #fff;
     border: none;
     font-size: 20px;
@@ -127,6 +128,12 @@
     border-radius: 25px;
 }
 
-.submit-btn:active {
+.cancel-btn{
+    background-color: red;
+}
+
+.submit-btn:active, 
+.cancel-btn:active {
     transform: scale(0.95);
 }
+

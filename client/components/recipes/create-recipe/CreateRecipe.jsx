@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import styles from "./CreateRecipe.module.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import * as recipeRequest from "../../../src/api/recipeRequest";
 import { UserContext } from "../../../src/context/AuthContext";
@@ -8,8 +8,9 @@ import { UserContext } from "../../../src/context/AuthContext";
 export default function CreateRecipe() {
   let navigate = useNavigate();
 
-const userData = useContext(UserContext);
-
+  const userData = useContext(UserContext);
+  const params = useParams() 
+  console.log(params)
   const [values, setValues] = useState({
     name: "",
     img: "",
@@ -32,8 +33,8 @@ const userData = useContext(UserContext);
           "Моля, попълнете всички полета и уверете се, че URL адресът на видеото започва с 'https://' или 'http://'."
         );
       }
-      const data = await recipeRequest.post('',values);
-      console.log(data);
+      await recipeRequest.post("", values);
+      
       navigate("/AllRecipes");
     } catch (err) {
       alert(err.message);
@@ -41,7 +42,6 @@ const userData = useContext(UserContext);
   }
 
   function changeValuesHandler(ev) {
-    
     setValues((prevRecipe) => ({
       ...prevRecipe,
       [ev.target.name]: ev.target.value,
@@ -54,11 +54,21 @@ const userData = useContext(UserContext);
         <div className={styles.title}>Добави нова рецепта</div>
         <form onSubmit={sendRecipes} className={styles.form}>
           <div className={styles.field}>
-            <input type="text" name="name" onChange={changeValuesHandler} required />
+            <input
+              type="text"
+              name="name"
+              onChange={changeValuesHandler}
+              required
+            />
             <label>Име</label>
           </div>
           <div className={styles.field}>
-            <input type="text" name="img" onChange={changeValuesHandler} required />
+            <input
+              type="text"
+              name="img"
+              onChange={changeValuesHandler}
+              required
+            />
             <label>Изображение (URL)</label>
           </div>
           <div className={`${styles.field} ${styles.fontSizeTextarea}`}>
@@ -75,6 +85,9 @@ const userData = useContext(UserContext);
           </div>
           <div className={styles.field}>
             <input type="submit" value="Добави рецепта" />
+            <Link to ={'/AllRecipes'}>
+              <input type="button" value="Отказ" />
+            </Link>
           </div>
         </form>
       </section>
