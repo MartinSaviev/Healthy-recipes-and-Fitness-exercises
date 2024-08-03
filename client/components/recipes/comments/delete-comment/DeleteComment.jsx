@@ -6,14 +6,13 @@ import * as requester from "../../../../src/api/requester";
 import style from "./DeleteComment.module.css";
 
 export default function DeleteComment() {
-  const { recipeCommentId, commentId } = useParams();
-
+  const { recipeCommentsId, commentId } = useParams(); 
   const navigate = useNavigate();
   async function deleteCommentHandler() {
     const result = await requester.del(
-      `${urls.recipes}/${recipeCommentId}/commentary/${commentId}`
+      `${urls.recipes}/${recipeCommentsId}/commentary/${commentId}`
     );
-    navigate(`/Comments/${recipeCommentId}`);
+    navigate(`/Comments/${recipeCommentsId}`);
     console.log(result);
   }
 
@@ -21,11 +20,12 @@ export default function DeleteComment() {
     <article className={style.deleteModal}>
       <h2>Изтриване на Коментар!</h2>
       <div className={style.buttons}>
+        
         <button className={style.deleteButton} onClick={deleteCommentHandler}>
           Изтрий
         </button>
 
-        <Link to={`/Comments/${recipeCommentId}`}>
+        <Link to={`/Comments/${recipeCommentsId}`}>
           <button className={style.cancelButton}>Отказ</button>
         </Link>
       </div>

@@ -40,14 +40,14 @@ export default function Video() {
               <h1 className={style.mail}>{video.user}</h1>
 
               {userData.email === video.user ? (
-                <div className={style.flex}>
+                <article className={style.buttons}>
                   <Link to={`/EditVideo/${video._id}`}>
                     <button className={style.edit}>edit</button>
                   </Link>
                   <Link to={`/DeleteVideo/${video._id}`}>
                     <button className={style.delete}>delete</button>
                   </Link>
-                </div>
+                </article>
               ) : null}
             </div>
           </article>

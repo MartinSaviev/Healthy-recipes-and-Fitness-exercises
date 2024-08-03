@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 
 import { UserContext } from "../../../../src/context/AuthContext";
@@ -46,6 +46,7 @@ export default function AddComment() {
           </div>
           <div className={styles.field}>
             <input type="submit" value="Добави" />
+            <Link to={`/Comments/${userId}`}><input className={styles.backButton } type="button" value="Отказ" /></Link>
           </div>
         </form>
       </article>

@@ -1,4 +1,4 @@
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 
 import * as requester from "../../../src/api/requester";
@@ -9,17 +9,8 @@ import { UserContext } from "../../../src/context/AuthContext";
 
 export default function Comments() {
   const [comments, setComments] = useState([]);
-  const [deleteId, setDeleteId] = useState(false);
 
-  let navigate = useNavigate();
   const { userId } = useParams();
-
-  async function navigateToDeletePageHandler(ev, recipeId, id) {
-    ev.preventDefault();
-
-    navigate(`/DeleteComment/${recipeId}/${id}`);
-    setDeleteId(id);
-  }
 
   useEffect(() => {
     (async () => {
@@ -28,7 +19,7 @@ export default function Comments() {
     })();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [deleteId]);
+  }, [userId]);
 
   const contextData = useContext(UserContext);
 
@@ -36,21 +27,25 @@ export default function Comments() {
     <section className={styles.background}>
       <aside className={styles.aside}>
         <Link to={`/AddComment/${userId}`}>
-          {contextData.accessToken ? <button className={styles.addComment}>Добави коментар</button> :null}
+          {contextData.accessToken ? (
+            <button className={styles.addComment}>Добави коментар</button>
+          ) : null}
         </Link>
       </aside>
       {comments.map((comment) => (
         <article key={comment._id} className={styles.method}>
           <h5 className={styles.user}>{comment.user}</h5>
           <h4>{comment.note}</h4>
-          
+
           {contextData.email === comment.user ? (
-            <button
-              onClick={(ev) => navigateToDeletePageHandler(ev, userId, comment._id)}
-              className={styles.delete}
-            >
-              Delete
-            </button>
+            <article className={styles.buttons}>
+              <Link to={`/DeleteComment/${userId}/${comment._id}`}>
+                <button className={styles.delete}>Delete</button>
+              </Link>
+              <Link to={`/EditComment/${userId}/${comment._id}`}>
+                <button className={styles.edit}>Edit</button>
+              </Link>
+            </article>
           ) : null}
         </article>
       ))}

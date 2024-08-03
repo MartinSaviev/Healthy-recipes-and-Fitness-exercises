@@ -26,6 +26,7 @@ import DeleteVideo from "../components/video/delete-vide/DeleteVideo";
 import AllRecipes from "../components/recipes/allRecipes/AllRecipes";
 import ShowMyRecipes from "../components/recipes/show-my-recipes/ShowMyRecipes";
 import DeleteComment from "../components/recipes/comments/delete-comment/DeleteComment";
+import EditComment from "../components/recipes/comments/edit-comment/EditComment";
 
 function App() {
   return (
@@ -51,7 +52,8 @@ function App() {
           <Route path="/DeleteRecipe/:userId"element={<DeleteRecipe />}></Route>
           <Route path="/AddComment/:userId" element={<AddComment />}></Route>
           <Route path="/Comments/:userId" element={<Comments />}></Route>
-          <Route path="/DeleteComment/:recipeCommentId/:commentId" element={<DeleteComment />}></Route>
+          <Route path="/DeleteComment/:recipeCommentsId/:commentId" element={<DeleteComment />}></Route>
+          <Route path="/EditComment/:recipeCommentsId/:commentId" element={<EditComment />}></Route>
           <Route path="/AccessoriesApp" element={<AccessoriesApp />}></Route>
           <Route path="/ShoppingCart" element={<ShoppingCart />}></Route>
           <Route path="Accessories"  element={<Accessories />}></Route>
