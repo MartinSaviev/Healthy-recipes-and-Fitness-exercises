@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../../src/context/AuthContext";
 
 import * as recipeRequest from "../../../src/api/recipeRequest";
@@ -9,7 +9,6 @@ import styles from "./ChangeRecipe.module.css";
 import { urls } from "../../../public/allUrls/urls";
 
 export default function CreateRecipe() {
-
   const userData = useContext(UserContext);
   let navigate = useNavigate();
   let { userId } = useParams();
@@ -26,7 +25,6 @@ export default function CreateRecipe() {
     ev.preventDefault();
     await recipeRequest.put(userId, values);
     navigate(`/AllRecipes/Recipes/${userId}`);
-    
   }
 
   useEffect(() => {
@@ -34,7 +32,7 @@ export default function CreateRecipe() {
       const data = await requester.get(`${urls.recipes}/${userId}`);
       setValues({
         ...data,
-        ingredients: data.ingredients.join(", "), 
+        ingredients: data.ingredients.join(", "),
       });
     })();
   }, [userId]);
@@ -65,40 +63,42 @@ export default function CreateRecipe() {
                 onChange={changeHandler}
                 value={values.name}
                 required
-                
               />
               <label>Име</label>
             </div>
             <div className={styles.field}>
-              <input 
-                type="text" 
-                name="img" 
-                onChange={changeHandler} 
+              <input
+                type="text"
+                name="img"
+                onChange={changeHandler}
                 value={values.img}
-                required />
+                required
+              />
               <label>Изображение (URL)</label>
             </div>
             <div className={`${styles.field} ${styles.fontSizeTextarea}`}>
-              <textarea 
-                name="ingredients" 
-                onChange={changeHandler} 
+              <textarea
+                name="ingredients"
+                onChange={changeHandler}
                 value={values.ingredients}
-                required />
+                required
+              />
               <label>Съставки (разделени със запетая)</label>
             </div>
             <div className={`${styles.field} ${styles.fontSizeTextarea}`}>
-              <textarea 
-                name="steps" 
-                onChange={changeHandler} 
+              <textarea
+                name="steps"
+                onChange={changeHandler}
                 value={values.steps}
-                required />
+                required
+              />
               <label>Стъпки</label>
             </div>
             <div className={styles.field}>
-              <input 
-                onClick={sendRecipes} 
-                type="submit" 
-                value="Промени" />
+              <input onClick={sendRecipes} type="submit" value="Промени" />
+              <Link to={`/AllRecipes/Recipes/${userId}`}>
+                <input type="button" value="Отказ" />
+              </Link>
             </div>
           </form>
         </article>

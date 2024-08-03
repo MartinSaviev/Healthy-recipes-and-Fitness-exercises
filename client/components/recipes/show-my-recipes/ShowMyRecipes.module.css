@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playwrite+NZ:wght@100..400&display=swap');
 
+.backgroundColor{
+    background:#F8F8F8;;
+}
+
 .title {
     text-align: center;
-    margin: 1em;
+    padding: 1em;
     font-size: 3em;
+    
 }
 
 .recipes {
@@ -13,6 +18,7 @@
     justify-content: center;
     align-items: center; 
     margin: 0 auto;
+    
 }
 
 .media {

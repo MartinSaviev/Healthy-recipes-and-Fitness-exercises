@@ -17,6 +17,7 @@ export default function Login() {
     ev.preventDefault();
     const dataFromServer = await requester.post(urls.login, values);
     contextData.changeAuthState(dataFromServer);
+    console.log(dataFromServer);
     navigate('/')
   }
 
