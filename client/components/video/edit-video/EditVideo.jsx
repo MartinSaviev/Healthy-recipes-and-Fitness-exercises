@@ -1,21 +1,18 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-import backgroundVideo from "../backgroundVideos.jpg";
-
-import styles from "./EditVideo.module.css";
 import * as requester from "../../../src/api/requester";
 import { urls } from "../../../public/allUrls/urls";
-import { UserContext } from "../../../src/context/AuthContext";
+
+import styles from "./EditVideo.module.css";
 
 export default function EditVideo() {
-  const userData = useContext(UserContext);
-
+  
   let { userId } = useParams();
   const navigate = useNavigate();
   const [values, setValues] = useState({
     header: "",
-    user: userData.email,
+    user: "",
     videoUrl: "",
     _id: userId,
   });
@@ -31,10 +28,12 @@ export default function EditVideo() {
   useEffect(() => {
     (async () => {
       const data = await requester.get(`${urls.videos}/${userId}`);
+    
       setValues((prevValues) => ({
         ...prevValues,
         header: data.header || "",
         videoUrl: data.videoUrl || "",
+        user:data.user || "",
       }));
     })();
   }, [userId]);
@@ -64,14 +63,6 @@ export default function EditVideo() {
 
   return (
     <div className={styles.body}>
-      <video
-        className={styles.video}
-        src={backgroundVideo}
-        type="video/mp4"
-        autoPlay
-        loop
-        muted
-      ></video>
       <div className={styles.wrapper}>
         <div className={styles.title}>Промени Видео</div>
         <form className={styles.form} onSubmit={editHandler}>
@@ -102,6 +93,14 @@ export default function EditVideo() {
               className={styles["submit-btn"]}
               value="Промени"
             />
+            <Link to='/video'>
+            <input
+              type="button"
+              className={styles["cancel-btn"]}
+              value="Отказ"
+            />
+            </Link>
+
           </div>
         </form>
       </div>
