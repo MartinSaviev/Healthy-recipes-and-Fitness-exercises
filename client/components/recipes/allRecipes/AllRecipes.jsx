@@ -1,17 +1,11 @@
-import style from "./AllRecipes.module.css";
-import { useEffect, useState } from "react";
-import * as requester from "../../../src/api/requester";
-import { urls } from "../../../public/allUrls/urls";
+import { useRequest } from "./allRecipesGetRequest";
 import { Link } from "react-router-dom";
 
+import style from "./AllRecipes.module.css";
 export default function AllRecipes() {
-  const [recipes, getRecipes] = useState([]);
-  useEffect(() => {
-    (async () => {
-      const data = await requester.get(urls.recipes);
-      getRecipes(Object.values(data));
-    })();
-  }, []);
+ 
+  const recipes = useRequest();
+ 
   return (
     <>
       <h2 className={style.title}>Всички Рецепти</h2>

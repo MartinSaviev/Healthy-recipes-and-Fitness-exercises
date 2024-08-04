@@ -12,13 +12,14 @@ import Method from "./Method";
 export default function Recipes() {
   const [recipe, getRecipe] = useState([]);
   let { userId } = useParams();
-  console.log(userId);
+
   useEffect(() => {
     (async () => {
       const data = await requester.get(`${urls.recipes}/${userId}`);
       getRecipe(data);
     })();
   }, [userId]);
+  
   const userData = useContext(UserContext);
   console.log(recipe);
   return (

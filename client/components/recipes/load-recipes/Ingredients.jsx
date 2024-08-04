@@ -8,7 +8,7 @@ import style from "./Recipes.module.css";
 // eslint-disable-next-line react/prop-types
 export default function Ingredients({ id }) {
   const [ingredients, setIngredients] = useState([]);
-  console.log(id)
+  
   useEffect(() => {
     (async () => {
       const data = await requester.get(`${urls.recipes}/${id}/ingredients`);
@@ -16,7 +16,6 @@ export default function Ingredients({ id }) {
       setIngredients(data);
     })();
     
-console.log();
   }, [id]);
 
   return (
