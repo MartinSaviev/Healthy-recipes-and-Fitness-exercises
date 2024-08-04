@@ -1,23 +1,13 @@
-import { useEffect, useState } from "react";
-
-import * as requester from "../../../src/api/requester";
-import { urls } from "../../../public/allUrls/urls";
 
 import style from "./Recipes.module.css";
 
+import { useRequest } from "../custom Hook/allRecipesGetRequest";
+
 // eslint-disable-next-line react/prop-types
 export default function Ingredients({ id }) {
-  const [ingredients, setIngredients] = useState([]);
+
+ const ingredients = Object.values(useRequest(id,'ingredients'));
   
-  useEffect(() => {
-    (async () => {
-      const data = await requester.get(`${urls.recipes}/${id}/ingredients`);
-
-      setIngredients(data);
-    })();
-    
-  }, [id]);
-
   return (
     <article className={style.ingredients}>
       <h4>Продукти</h4>

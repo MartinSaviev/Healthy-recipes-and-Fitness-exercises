@@ -1,28 +1,17 @@
-import { useEffect, useState } from "react";
-
-import * as requester from "../../../src/api/requester.js";
-import { urls } from "../../../public/allUrls/urls.js";
 
 import style from "./Recipes.module.css";
+import { useRequest } from "../custom Hook/allRecipesGetRequest.js";
 
 // eslint-disable-next-line react/prop-types
 export default function Method({ id }) {
-  const [cooking, setCooing] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const data = await requester.get(`${urls.recipes}/${id}/steps`);
-      setCooing(data);
-    })();
-    
-
-  }, [id]);
+ 
+  const method = Object.values(useRequest(id,'steps'))
 
   return (
     <article className={style.method}>
       <h4>Начин на приготване</h4>
 
-      <p>{cooking}</p>
+      <p>{method}</p>
     </article>
   );
 }
