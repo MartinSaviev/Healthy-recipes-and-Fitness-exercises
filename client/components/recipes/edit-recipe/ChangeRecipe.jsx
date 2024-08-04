@@ -24,7 +24,7 @@ export default function CreateRecipe() {
   async function sendRecipes(ev) {
     ev.preventDefault();
     await recipeRequest.put(userId, values);
-    navigate(`/AllRecipes/Recipes/${userId}`);
+    navigate(`/allRecipes/recipes/${userId}`);
   }
 
   useEffect(() => {
@@ -96,7 +96,7 @@ export default function CreateRecipe() {
             </div>
             <div className={styles.field}>
               <input onClick={sendRecipes} type="submit" value="Промени" />
-              <Link to={`/AllRecipes/Recipes/${userId}`}>
+              <Link to={`/allRecipes/recipes/${userId}`}>
                 <input type="button" value="Отказ" />
               </Link>
             </div>

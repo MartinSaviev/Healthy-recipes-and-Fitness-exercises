@@ -11,8 +11,6 @@ export default function DeleteRecipe() {
 
   async function deleteRecipeHandler() {
     const response = await requester.del(`${urls.recipes}/${userId}`);
-    console.log(response);
-    console.log(userId);
     if (response) {
         navigate('/AllRecipes')
     }

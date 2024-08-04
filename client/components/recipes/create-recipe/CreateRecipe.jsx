@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import styles from "./CreateRecipe.module.css";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import * as recipeRequest from "../../../src/api/recipeRequest";
 import { UserContext } from "../../../src/context/AuthContext";
@@ -9,8 +9,7 @@ export default function CreateRecipe() {
   let navigate = useNavigate();
 
   const userData = useContext(UserContext);
-  const params = useParams() 
-  console.log(params)
+
   const [values, setValues] = useState({
     name: "",
     img: "",
@@ -35,7 +34,7 @@ export default function CreateRecipe() {
       }
       await recipeRequest.post("", values);
       
-      navigate("/AllRecipes");
+      navigate("/allRecipes");
     } catch (err) {
       alert(err.message);
     }

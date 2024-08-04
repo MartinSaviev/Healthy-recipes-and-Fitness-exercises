@@ -23,7 +23,7 @@ export default function Video() {
     <section className={style.background}>
       <aside className={style.aside}>
         {userData.accessToken ? (
-          <Link to="/CreateNewVideo">
+          <Link to="/createNewVideo">
             <button className={style.addVideo}>Добави новo видео</button>
           </Link>
         ) : null}
@@ -41,10 +41,10 @@ export default function Video() {
 
               {userData.email === video.user ? (
                 <article className={style.buttons}>
-                  <Link to={`/EditVideo/${video._id}`}>
+                  <Link to={`/editVideo/${video._id}`}>
                     <button className={style.edit}>edit</button>
                   </Link>
-                  <Link to={`/DeleteVideo/${video._id}`}>
+                  <Link to={`/deleteVideo/${video._id}`}>
                     <button className={style.delete}>delete</button>
                   </Link>
                 </article>
@@ -55,7 +55,7 @@ export default function Video() {
       </section>
       <aside className={style.aside}>
         {userData.accessToken ? (
-          <Link to="/CreateNewVideo">
+          <Link to="/createNewVideo">
             <button className={style.addVideo}>Добави новo видео</button>
           </Link>
         ) : null}
