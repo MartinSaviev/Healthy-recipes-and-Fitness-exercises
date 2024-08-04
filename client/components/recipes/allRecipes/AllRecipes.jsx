@@ -18,7 +18,7 @@ export default function AllRecipes() {
       <section className={style.recipes}>
         {recipes.map((recipe) => (
           <div key={recipe._id} className={style.media}>
-            <Link to={`Recipes/${recipe._id}`}><img className={style.img} src={recipe.img} alt="img" /></Link>
+            <Link to={`recipes/${recipe._id}`}><img className={style.img} src={recipe.img} alt="img" /></Link>
           </div>
         ))}
       </section>

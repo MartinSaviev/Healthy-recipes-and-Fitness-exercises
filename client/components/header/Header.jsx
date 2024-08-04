@@ -73,7 +73,7 @@ export default function Header() {
               
               <li>
                 <NavLink
-                  to="/AllRecipes"
+                  to="/allRecipes"
                   className={({ isActive }) =>
                     `${styles.recipes} ${
                       isActive ? styles.active : styles.inactive
@@ -86,7 +86,7 @@ export default function Header() {
 
               <li>
                 <NavLink
-                  to="/ShowMyRecipes"
+                  to="/showMyRecipes"
                   className={({ isActive }) =>
                     `${styles.recipes} ${
                       isActive ? styles.active : styles.inactive
@@ -112,7 +112,7 @@ export default function Header() {
 
               <li>
                 <NavLink
-                  to="/AccessoriesApp"
+                  to="/accessories"
                   className={({ isActive }) =>
                     `${styles.accessories} ${
                       isActive ? styles.active : styles.inactive
@@ -125,7 +125,7 @@ export default function Header() {
 
               <li>
                 <NavLink
-                  to="/Logout"
+                  to="/logout"
                   className={({ isActive }) =>
                     `${styles.logout} ${
                       isActive ? styles.active : styles.inactive
@@ -142,7 +142,7 @@ export default function Header() {
        
        {contextData.accessToken ? <article className={styles.stoppingCart}>
         <p className={styles.count}>{itemCount}</p>
-        <Link to='/ShoppingCart' className={styles.iconStoppingCart}>
+        <Link to='/shoppingCart' className={styles.iconStoppingCart}>
           <CiShoppingBasket />
         </Link>
       </article>:null}
