@@ -6,7 +6,7 @@ import { AccContext } from "../../../src/context/AccessoriesContext";
 
 export default function AccessoriesApp() {
   const [accessories, setAccessories] = useState([]);
-  const { changeAccessoriesState } = useContext(AccContext);
+  const { dataFromServer } = useContext(AccContext);
 
   useEffect(() => {
     (async () => {
@@ -18,7 +18,7 @@ export default function AccessoriesApp() {
   async function getImgHandler(ev) {
     let accessoriesId = ev.currentTarget.id;
     const itemId = await requester.get(`${urls.accessories}/${accessoriesId}`);
-    changeAccessoriesState(itemId);
+    dataFromServer(itemId);
   }
 
   return (

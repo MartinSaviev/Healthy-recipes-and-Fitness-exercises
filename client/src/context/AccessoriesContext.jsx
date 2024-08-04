@@ -5,7 +5,7 @@ export const AccContext = createContext({
   cart: [],
   itemCount: 0,
   totalPrice: 0,
-  changeAccessoriesState: () => null,
+  dataFromServer: () => null,
   clearCart: () => null,
   calculatePrice: () => null,
   clearIncrementItemCount: () => null,
@@ -37,7 +37,7 @@ export function AccContextProvider(props) {
     setTotalPrice((oldPrice) => oldPrice - Number(itemPrice));
   }
 
-  function changeAccessoriesState(itemData) {
+  function dataFromServer(itemData) {
     setCart((prevCart) => {
       const isAlreadyAdded = prevCart.some((item) => item._id === itemData._id);
       if (!isAlreadyAdded) {
@@ -90,7 +90,7 @@ export function AccContextProvider(props) {
     itemCount,
     totalPrice,
     clearCart,
-    changeAccessoriesState,
+    dataFromServer,
     clearIncrementItemCount,
     removeItemFromCart,
     incrementItemCount,

@@ -15,7 +15,7 @@
 }
 
 .wrapper {
-  width: 480px;
+  width:600px;
   background: #fff;
   border-radius: 15px;
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
@@ -53,20 +53,20 @@
   border-radius: 25px;
   transition: all 0.3s ease;
   box-sizing: border-box;
-  padding: 1em 2em;
-  font-size: 1.2em;
+  padding: 1em 1em;
+  font-size: 1.4em;
 }
 
 .wrapper .form .field input {
-  height: 50px;
+  height: 55px;
 }
 
 .wrapper .form .field textarea {
-  resize: vertical;
+  resize: both;
   overflow: auto;
   word-wrap: break-word;
   white-space: pre-wrap;
-  height: 100px;
+  height: 10em;
 }
 
 .wrapper .form .field input:focus,
@@ -88,6 +88,7 @@
   transition: all 0.3s ease;
   background: #fff;
   padding: 0 5px;
+
 }
 
 .wrapper .form .field input:focus~label,
@@ -95,13 +96,13 @@
 .wrapper .form .field input:valid~label,
 .wrapper .form .field textarea:valid~label {
   top: 0%;
-  font-size: 16px;
+  font-size: 18px;
   color: #4158d0;
   transform: translateY(-50%);
 }
 
 .fontSizeTextarea {
-  font-size: 1.2em;
+  font-size: 1.4em;
 }
 
 .wrapper .form .content {
