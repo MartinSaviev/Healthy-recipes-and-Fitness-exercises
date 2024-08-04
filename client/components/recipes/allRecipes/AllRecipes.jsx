@@ -1,10 +1,10 @@
-import { useRequest } from "./allRecipesGetRequest";
+import { useRequest } from "../custom Hook/allRecipesGetRequest";
 import { Link } from "react-router-dom";
 
 import style from "./AllRecipes.module.css";
 export default function AllRecipes() {
  
-  const recipes = useRequest();
+  const recipes = Object.values(useRequest());
  
   return (
     <>

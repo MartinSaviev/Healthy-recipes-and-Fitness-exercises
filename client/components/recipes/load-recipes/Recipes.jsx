@@ -1,27 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext} from "react";
 import { Link, useParams } from "react-router-dom";
-import { UserContext } from "../../../src/context/AuthContext";
 
-import * as requester from "../../../src/api/requester";
-import { urls } from "../../../public/allUrls/urls";
+import { UserContext } from "../../../src/context/AuthContext";
+import { useRequest } from "../custom Hook/allRecipesGetRequest";
 
 import style from "./Recipes.module.css";
 import Ingredients from "./Ingredients";
 import Method from "./Method";
 
 export default function Recipes() {
-  const [recipe, getRecipe] = useState([]);
-  let { userId } = useParams();
 
-  useEffect(() => {
-    (async () => {
-      const data = await requester.get(`${urls.recipes}/${userId}`);
-      getRecipe(data);
-    })();
-  }, [userId]);
-  
   const userData = useContext(UserContext);
-  console.log(recipe);
+  let { userId } = useParams();
+  const recipe = useRequest(userId,null)
+
   return (
     <>
       {recipe !== 0 ? (
