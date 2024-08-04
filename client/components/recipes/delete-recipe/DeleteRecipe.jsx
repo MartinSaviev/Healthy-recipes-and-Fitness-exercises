@@ -2,7 +2,6 @@ import style from "./DeleteRecipe.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import * as requester from "../../../src/api/requester";
-
 import {urls} from "../../../public/allUrls/urls.js"
 
 export default function DeleteRecipe() {
@@ -12,7 +11,7 @@ export default function DeleteRecipe() {
   async function deleteRecipeHandler() {
     const response = await requester.del(`${urls.recipes}/${userId}`);
     if (response) {
-        navigate('/AllRecipes')
+        navigate('/allRecipes')
     }
   }
 
@@ -25,7 +24,7 @@ export default function DeleteRecipe() {
             Изтрий
           </button>
         </Link>
-        <Link to={`/ShowMyRecipes/Recipes/${userId}`}>
+        <Link to={`/showMyRecipes/recipes/${userId}`}>
           <button className={style.cancelButton}>Отказ</button>
         </Link>
       </div>

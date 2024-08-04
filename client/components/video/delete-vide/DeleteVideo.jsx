@@ -11,8 +11,6 @@ export default function DeleteVideo() {
 
   async function deleteVideoHandler() {
     const response = await requester.del(`${urls.videos}/${userId}`);
-    console.log(response);
-    console.log(userId);
     if (response) {
         navigate('/video')
     }

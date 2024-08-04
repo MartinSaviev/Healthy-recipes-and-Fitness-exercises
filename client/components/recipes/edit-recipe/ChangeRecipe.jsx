@@ -30,6 +30,7 @@ export default function CreateRecipe() {
   useEffect(() => {
     (async () => {
       const data = await requester.get(`${urls.recipes}/${userId}`);
+      
       setValues({
         ...data,
         ingredients: data.ingredients.join(", "),
