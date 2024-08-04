@@ -23,9 +23,8 @@ export default async function requester(method, url, data, token) {
   }
 
   const text = await response.text();
-  
-  
   return text ? JSON.parse(text) : {};
+  
 }
 
 export const get = requester.bind(null, "GET");

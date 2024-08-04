@@ -27,7 +27,7 @@ export default function Recipes() {
         <section className={style["all-recipes"]}>
           <aside className={style.aside}>
             {userData.accessToken ? (
-              <Link to="/CreateRecipe">
+              <Link to="/createRecipe">
                 <button className={style.addRecipe}>Добави нова рецепта</button>
               </Link>
             ) : null}
@@ -48,16 +48,16 @@ export default function Recipes() {
                   <section className={style.buttons}>
                     {userData.email === recipe.user && (
                       <>
-                        <Link to={`/ChangeRecipe/${recipe._id}`}>
+                        <Link to={`/changeRecipe/${recipe._id}`}>
                           <button className={style.edit}>Промени</button>
                         </Link>
-                        <Link to={`/DeleteRecipe/${recipe._id}`}>
+                        <Link to={`/deleteRecipe/${recipe._id}`}>
                           <button className={style.delete}>Изтрий</button>
                         </Link>
                       </>
                     )}
 
-                    <Link to={`/Comments/${recipe._id}`}>
+                    <Link to={`/comments/${recipe._id}`}>
                       <button className={style["show-recipe"]}>
                         Коментари
                       </button>
@@ -75,7 +75,7 @@ export default function Recipes() {
           <hr className={style.hr} />
           <aside className={style.aside}>
             {userData.accessToken ? (
-              <Link to="/CreateRecipe">
+              <Link to="/createRecipe">
                 <button className={style.addRecipe}>Добави нова рецепта</button>
               </Link>
             ) : null}
