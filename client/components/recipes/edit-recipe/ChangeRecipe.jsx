@@ -1,25 +1,29 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../../src/context/AuthContext";
 
 import * as recipeRequest from "../../../src/api/recipeRequest";
 import * as requester from "../../../src/api/requester";
 
-import styles from "./ChangeRecipe.module.css";
 import { urls } from "../../../public/allUrls/urls";
+import { useForm } from "../Hooks/useForm";
+
+import styles from "./ChangeRecipe.module.css";
 
 export default function CreateRecipe() {
   const userData = useContext(UserContext);
   let navigate = useNavigate();
   let { userId } = useParams();
 
-  const [values, setValues] = useState({
+  const initialFormValues = {
     name: "",
     img: "",
     user: userData.email,
     ingredients: "",
     steps: "",
-  });
+  };
+
+  const { values, changeHandler, setValues } = useForm(initialFormValues);
 
   async function sendRecipes(ev) {
     ev.preventDefault();
@@ -36,16 +40,9 @@ export default function CreateRecipe() {
         ingredients: data.ingredients.join(", "),
       });
     })();
-  }, [userId]);
+  }, [userId,setValues]);
 
-  function changeHandler(ev) {
-    ev.target.name;
-    setValues((oldValues) => ({
-      ...oldValues,
-      [ev.target.name]: ev.target.value,
-    }));
-  }
-
+ 
   return (
     <>
       <section className={styles.body}>

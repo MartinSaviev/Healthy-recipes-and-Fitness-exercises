@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "./EditComment.module.css";
 
 import { useNavigate, useParams } from "react-router-dom";
 import * as requester from "../../../../src/api/requester";
 import { urls } from "../../../../public/allUrls/urls";
+import { useForm } from "../../Hooks/useForm";
 export default function EditComment() {
   const { recipeCommentsId, commentId } = useParams();
-  console.log(useParams());
 
-  const [values, setValues] = useState({
+  const initialFormValues = {
     user: "",
     note: "",
     _id: "",
-  });
+  }
 
+  const {values,setValues,changeHandler} = useForm(initialFormValues);
   const navigate = useNavigate();
+  
   useEffect(() => {
     (async () => {
       const commentFromServer = await requester.get(
@@ -22,15 +24,8 @@ export default function EditComment() {
       );
       setValues(commentFromServer);
     })();
-  }, [commentId, recipeCommentsId]);
+  }, [commentId, recipeCommentsId,setValues]);
 
-  function changeHandler(ev) {
-    ev.target.name;
-    setValues((oldValues) => ({
-      ...oldValues,
-      [ev.target.name]: ev.target.value,
-    }));
-  }
 
   async function sendComment(ev,method) {
     ev.preventDefault();

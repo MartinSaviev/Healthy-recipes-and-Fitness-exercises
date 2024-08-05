@@ -1,25 +1,15 @@
 import { Link, useParams } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-
-import * as requester from "../../../src/api/requester";
-import { urls } from "../../../public/allUrls/urls";
+import { useContext} from "react";
 
 import styles from "./Comments.module.css";
 import { UserContext } from "../../../src/context/AuthContext";
+import { useRequest } from "../Hooks/allRecipesGetRequest";
 
 export default function Comments() {
-  const [comments, setComments] = useState([]);
-
+ 
   const { userId } = useParams();
 
-  useEffect(() => {
-    (async () => {
-      const data = await requester.get(`${urls.recipes}/${userId}/commentary`);
-      setComments(Object.values(data));
-    })();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId]);
+ const  comments =  Object.values(useRequest(userId,'commentary'));
 
   const contextData = useContext(UserContext);
 

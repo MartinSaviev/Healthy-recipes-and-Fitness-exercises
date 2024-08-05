@@ -1,22 +1,25 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styles from "./CreateRecipe.module.css";
 import { Link, useNavigate } from "react-router-dom";
 
 import * as recipeRequest from "../../../src/api/recipeRequest";
 import { UserContext } from "../../../src/context/AuthContext";
+import { useForm } from "../Hooks/useForm";
 
 export default function CreateRecipe() {
   let navigate = useNavigate();
 
   const userData = useContext(UserContext);
 
-  const [values, setValues] = useState({
+  const initialFormValues = {
     name: "",
     img: "",
     user: userData.email,
     ingredients: "",
     steps: "",
-  });
+  }
+  
+  const {values,changeHandler} = useForm(initialFormValues);
 
   async function sendRecipes(ev) {
     ev.preventDefault();
@@ -40,13 +43,6 @@ export default function CreateRecipe() {
     }
   }
 
-  function changeValuesHandler(ev) {
-    setValues((prevRecipe) => ({
-      ...prevRecipe,
-      [ev.target.name]: ev.target.value,
-    }));
-  }
-
   return (
     <div className={styles.container}>
       <section className={styles.wrapper}>
@@ -56,7 +52,7 @@ export default function CreateRecipe() {
             <input
               type="text"
               name="name"
-              onChange={changeValuesHandler}
+              onChange={changeHandler}
               required
             />
             <label>Име</label>
@@ -65,7 +61,7 @@ export default function CreateRecipe() {
             <input
               type="text"
               name="img"
-              onChange={changeValuesHandler}
+              onChange={changeHandler}
               required
             />
             <label>Изображение (URL)</label>
@@ -73,13 +69,13 @@ export default function CreateRecipe() {
           <div className={`${styles.field} ${styles.fontSizeTextarea}`}>
             <textarea
               name="ingredients"
-              onChange={changeValuesHandler}
+              onChange={changeHandler}
               required
             />
             <label>Съставки (разделени със запетая)</label>
           </div>
           <div className={`${styles.field} ${styles.fontSizeTextarea}`}>
-            <textarea name="steps" onChange={changeValuesHandler} required />
+            <textarea name="steps" onChange={changeHandler} required />
             <label>Стъпки</label>
           </div>
           <div className={styles.field}>

@@ -2,7 +2,7 @@ import { useContext} from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { UserContext } from "../../../src/context/AuthContext";
-import { useRequest } from "../custom Hook/allRecipesGetRequest";
+import { useRequest } from "../Hooks/allRecipesGetRequest";
 
 import style from "./Recipes.module.css";
 import Ingredients from "./Ingredients";

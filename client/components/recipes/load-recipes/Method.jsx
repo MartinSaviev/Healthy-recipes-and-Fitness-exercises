@@ -1,6 +1,6 @@
 
 import style from "./Recipes.module.css";
-import { useRequest } from "../custom Hook/allRecipesGetRequest.js";
+import { useRequest } from "../Hooks/allRecipesGetRequest.js";
 
 // eslint-disable-next-line react/prop-types
 export default function Method({ id }) {

@@ -1,4 +1,4 @@
-import { useRequest } from "../custom Hook/allRecipesGetRequest";
+import { useRequest } from "../Hooks/allRecipesGetRequest";
 import { Link } from "react-router-dom";
 
 import style from "./AllRecipes.module.css";

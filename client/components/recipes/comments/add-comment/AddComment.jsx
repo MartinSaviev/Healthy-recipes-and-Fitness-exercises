@@ -1,26 +1,25 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 import { UserContext } from "../../../../src/context/AuthContext";
 import * as requester from "../../../../src/api/requester";
 import { urls } from "../../../../public/allUrls/urls";
+import { useForm } from "../../Hooks/useForm";
 
 import styles from "./AddComment.module.css";
 
 export default function AddComment() {
-  const contextData = useContext(UserContext);
-  const [values, setValues] = useState({ note: "", user: contextData.email });
+  const navigate = useNavigate();
+
   const { userId } = useParams();
+  const contextData = useContext(UserContext);
 
-  let navigate = useNavigate();
+  const initialFormValues = {
+    note: "",
+    user: contextData.email,
+  };
+  const { values, changeHandler } = useForm(initialFormValues);
 
-  function changeValuesHandler(ev) {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [ev.target.name]: ev.target.value,
-    }));
-  }
-  console.log(values);
   async function handleSubmit(ev) {
     ev.preventDefault();
     try {
@@ -29,7 +28,7 @@ export default function AddComment() {
         values
       );
       console.log(response);
-      navigate(`/Comments/${userId}`);
+      navigate(`/comments/${userId}`);
     } catch (error) {
       console.error("Error adding comment:", error);
     }
@@ -41,12 +40,18 @@ export default function AddComment() {
         <div className={styles.title}>Добави Коментар</div>
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.field}>
-            <textarea name="note" onChange={changeValuesHandler} required />
+            <textarea name="note" onChange={changeHandler} required />
             <label>добави коментар</label>
           </div>
           <div className={styles.field}>
             <input type="submit" value="Добави" />
-            <Link to={`/Comments/${userId}`}><input className={styles.backButton } type="button" value="Отказ" /></Link>
+            <Link to={`/comments/${userId}`}>
+              <input
+                className={styles.backButton}
+                type="button"
+                value="Отказ"
+              />
+            </Link>
           </div>
         </form>
       </article>

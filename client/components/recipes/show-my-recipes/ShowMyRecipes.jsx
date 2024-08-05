@@ -3,7 +3,7 @@ import style from "./ShowMyRecipes.module.css";
 
 import { Link } from "react-router-dom";
 import { UserContext } from "../../../src/context/AuthContext";
-import { useRequest } from "../custom Hook/allRecipesGetRequest";
+import { useRequest } from "../Hooks/allRecipesGetRequest";
 
 export default function ShowMyRecipes() {
 

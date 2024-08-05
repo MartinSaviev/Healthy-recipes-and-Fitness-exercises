@@ -1,7 +1,7 @@
 
 import style from "./Recipes.module.css";
 
-import { useRequest } from "../custom Hook/allRecipesGetRequest";
+import { useRequest } from "../Hooks/allRecipesGetRequest";
 
 // eslint-disable-next-line react/prop-types
 export default function Ingredients({ id }) {
