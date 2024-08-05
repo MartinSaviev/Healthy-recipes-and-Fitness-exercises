@@ -11,6 +11,7 @@ import { useForm } from "../Hooks/useForm";
 import styles from "./ChangeRecipe.module.css";
 
 export default function CreateRecipe() {
+  
   const userData = useContext(UserContext);
   let navigate = useNavigate();
   let { userId } = useParams();
@@ -25,12 +26,6 @@ export default function CreateRecipe() {
 
   const { values, changeHandler, setValues } = useForm(initialFormValues);
 
-  async function sendRecipes(ev) {
-    ev.preventDefault();
-    await recipeRequest.put(userId, values);
-    navigate(`/allRecipes/recipes/${userId}`);
-  }
-
   useEffect(() => {
     (async () => {
       const data = await requester.get(`${urls.recipes}/${userId}`);
@@ -42,7 +37,12 @@ export default function CreateRecipe() {
     })();
   }, [userId,setValues]);
 
- 
+  async function sendRecipes(ev) {
+    ev.preventDefault();
+    await recipeRequest.put(userId, values);
+    navigate(`/allRecipes/recipes/${userId}`);
+  }
+
   return (
     <>
       <section className={styles.body}>

@@ -26,7 +26,6 @@ export default function EditComment() {
     })();
   }, [commentId, recipeCommentsId,setValues]);
 
-
   async function sendComment(ev,method) {
     ev.preventDefault();
     if (method === "post") {
