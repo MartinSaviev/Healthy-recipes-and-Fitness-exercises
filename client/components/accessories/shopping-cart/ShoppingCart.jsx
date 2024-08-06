@@ -2,12 +2,12 @@ import style from "./ShoppingCart.module.css";
 import { IoMdClose } from "react-icons/io";
 import { IoIosAdd } from "react-icons/io";
 import { GrFormSubtract } from "react-icons/gr";
-import { AccContext } from "../cartContext/AccessoriesContext";
+import { cartContext } from "../cartContext/AccessoriesContext";
 import { useContext, useState } from "react";
 import Checkout from "./checkout/Checkout";
 
 export default function ShoppingCart() {
-  const { cart, clearIncrementItemCount, removeItemFromCart, incrementItemCount, decrementItemCount } = useContext(AccContext);
+  const { cart, clearIncrementItemCount, removeItemFromCart, incrementItemCount, decrementItemCount } = useContext(cartContext);
   const [showCheckout, setShowCheckout] = useState(false);
 
   function clearCheckoutHandler() {

@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
-import { AccContext } from "../../cartContext/AccessoriesContext";
+import { cartContext } from "../../cartContext/AccessoriesContext";
 import style from "./Checkout.module.css";
 import { Link } from "react-router-dom";
 
 export default function Checkout({setShowCheckout}) {
-  const { totalPrice,clearCart } = useContext(AccContext);
+  const { totalPrice,clearCart } = useContext(cartContext);
  
   console.log(totalPrice);
   function cancelHandler() {

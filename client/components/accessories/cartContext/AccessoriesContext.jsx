@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
 
-export const AccContext = createContext({
+export const cartContext = createContext({
   cart: [],
   itemCount: 0,
   totalPrice: 0,
@@ -98,8 +98,8 @@ export function CartContextProvider(props) {
   };
 
   return (
-    <AccContext.Provider value={contextData}>
+    <cartContext.Provider value={contextData}>
       {props.children}
-    </AccContext.Provider>
+    </cartContext.Provider>
   );
 }

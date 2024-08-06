@@ -2,11 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import Accessories from "../Accessories";
 import * as requester from "../../../src/api/requester";
 import { urls } from "../../../public/allUrls/urls";
-import { AccContext } from "../cartContext/AccessoriesContext";
+import { cartContext } from "../cartContext/AccessoriesContext";
 
 export default function AccessoriesApp() {
   const [accessories, setAccessories] = useState([]);
-  const { dataFromServer } = useContext(AccContext);
+  const { dataFromServer } = useContext(cartContext);
 
   useEffect(() => {
     (async () => {
