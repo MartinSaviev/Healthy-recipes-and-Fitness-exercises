@@ -5,25 +5,24 @@ import * as requester from "../../../src/api/requester";
 import { urls } from "../../../public/allUrls/urls";
 
 import styles from "./EditVideo.module.css";
+import { useForm } from "../../formHook/useForm";
 
 export default function EditVideo() {
   
   let { userId } = useParams();
   const navigate = useNavigate();
-  const [values, setValues] = useState({
+
+  const initialFormValues = {
     header: "",
     user: "",
     videoUrl: "",
     _id: userId,
-  });
+  }
+
+  const {values,setValues, changeHandler}= useForm(initialFormValues); 
+ 
   const [error, setError] = useState("");
 
-  function changeHandler(ev) {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [ev.target.name]: ev.target.value,
-    }));
-  }
 
   useEffect(() => {
     (async () => {
@@ -36,7 +35,7 @@ export default function EditVideo() {
         user:data.user || "",
       }));
     })();
-  }, [userId]);
+  }, [userId,setValues]);
 
   async function editHandler(event) {
     event.preventDefault();
