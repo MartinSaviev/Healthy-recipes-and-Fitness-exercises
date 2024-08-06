@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as requester from "../../src/api/requester";
@@ -6,33 +6,31 @@ import { urls } from "../../public/allUrls/urls";
 
 import styles from "./Login.module.css";
 import { UserContext } from "../../src/context/AuthContext";
+import { useForm } from "../formHook/useForm";
 
 export default function Login() {
+  const contextData = useContext(UserContext);
   const navigate = useNavigate();
-  const [values, setValues] = useState({ email: "", password: "" });
-  
-  const  contextData = useContext(UserContext);
-  
+
+  const initialFormValues = {
+    email: "",
+    password: "",
+  };
+
+  const { values, changeHandler } = useForm(initialFormValues);
+
   async function login(ev) {
     ev.preventDefault();
-   
+
     try {
       const dataFromServer = await requester.post(urls.login, values);
       contextData.changeAuthState(dataFromServer);
     } catch (error) {
-      alert('Грешен потребител или парола!');
+      alert("Грешен потребител или парола!");
       return;
     }
- 
-    navigate('/')
-  }
 
-  function changeHandler(ev) {
-    ev.target.name;
-    setValues((oldValues) => ({
-      ...oldValues,
-      [ev.target.name]: ev.target.value,
-    }));
+    navigate("/");
   }
 
   return (
@@ -60,5 +58,4 @@ export default function Login() {
       </section>
     </section>
   );
-  
 }
