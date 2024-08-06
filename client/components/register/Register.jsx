@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as requester from "../../src/api/requester";
@@ -6,24 +6,19 @@ import { urls } from "../../public/allUrls/urls";
 import { UserContext } from "../../src/context/AuthContext";
 
 import styles from "./Register.module.css";
+import { useForm } from "../formHook/useForm";
 
 export default function Register() {
   const contextData = useContext(UserContext);
   const navigate = useNavigate();
 
-  const [values,setValues] = useState({
+const initialFormValues = {
+  email: "",
+  password: "",
+  're-password': "",
+}
 
-    email: "",
-    password: "",
-    're-password': "",
-  })
-
-  const changeHandler = (ev) => {
-    setValues((oldValues) => ({
-      ...oldValues,
-      [ev.target.name]: ev.target.value,
-    }));
-  };
+const {values,changeHandler} = useForm(initialFormValues)
 
   async function createUser(ev) {
     ev.preventDefault();
