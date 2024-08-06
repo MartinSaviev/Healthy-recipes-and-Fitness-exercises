@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserContext } from "../../../src/context/AuthContext";
 
+import { UserContext } from "../../../src/context/AuthContext";
 import * as requester from "../../../src/api/requester";
 import { urls } from "../../../public/allUrls/urls";
+import { useForm } from "../../formHook/useForm";
 
 import styles from "./CreateNewVideo.module.css";
 
@@ -11,28 +12,28 @@ export default function CreateNewVideo() {
   const userData = useContext(UserContext);
 
   let navigate = useNavigate();
-  const [values, setValues] = useState({
-    header: "",
-    user:userData.email,
-    videoUrl: "",
-  });
-  const [error, setError] = useState("");
 
-  function createNewVideoHandler(ev) {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [ev.target.name] : ev.target.value
-    }));
-  }
+  const initialFormValues = {
+    header: "",
+    user: userData.email,
+    videoUrl: "",
+  };
+
+  const { values, changeHandler } = useForm(initialFormValues);
+
+  const [error, setError] = useState("");
 
   async function postHandler(event) {
     event.preventDefault();
-    
+
     if (
       !values.header ||
-      (!values.videoUrl.startsWith("https://") && !values.videoUrl.startsWith("http://"))
+      (!values.videoUrl.startsWith("https://") &&
+        !values.videoUrl.startsWith("http://"))
     ) {
-      setError("Моля, попълнете всички полета и уверете се, че URL адресът на видеото започва с 'https://' или 'http://'.");
+      setError(
+        "Моля, попълнете всички полета и уверете се, че URL адресът на видеото започва с 'https://' или 'http://'."
+      );
       return;
     }
 
@@ -45,7 +46,9 @@ export default function CreateNewVideo() {
 
       navigate("/video");
     } catch (err) {
-      setError("Възникна грешка при добавянето на видеото. Моля, опитайте отново.");
+      setError(
+        "Възникна грешка при добавянето на видеото. Моля, опитайте отново."
+      );
       console.error("Error adding video:", err);
     }
   }
@@ -60,7 +63,7 @@ export default function CreateNewVideo() {
               type="text"
               name="header"
               value={values.header}
-              onChange={createNewVideoHandler}
+              onChange={changeHandler}
               required
             />
             <label>Име</label>
@@ -70,7 +73,7 @@ export default function CreateNewVideo() {
               type="text"
               name="videoUrl"
               value={values.videoUrl}
-              onChange={createNewVideoHandler}
+              onChange={changeHandler}
               required
             />
             <label>Видео (URL)</label>
@@ -82,18 +85,15 @@ export default function CreateNewVideo() {
               className={styles["submit-btn"]}
               value="Добави"
               required
-              
             />
-             <Link to={'/video'}>
-             <input
-              type="button"
-              className={styles["cancel-btn"]}
-              value="Отказ"
-              required
-              
-            />
-             </Link>
-            
+            <Link to={"/video"}>
+              <input
+                type="button"
+                className={styles["cancel-btn"]}
+                value="Отказ"
+                required
+              />
+            </Link>
           </div>
         </form>
       </div>
