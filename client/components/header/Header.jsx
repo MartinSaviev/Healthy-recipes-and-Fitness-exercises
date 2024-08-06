@@ -4,11 +4,11 @@ import styles from "./Header.module.css";
 import { useContext } from "react";
 import { UserContext } from "../../src/context/AuthContext";
 import { CiShoppingBasket } from "react-icons/ci";
-import {cartContext } from "../../components/accessories/cartContext/AccessoriesContext";
+import {CartContext } from "../../components/accessories/cartContext/AccessoriesContext";
 
 export default function Header() {
   const contextData = useContext(UserContext);
-  const { itemCount } = useContext(cartContext);
+  const { itemCount } = useContext(CartContext);
   return (
     <section className={styles.logo}>
       <div className={styles.media}>
