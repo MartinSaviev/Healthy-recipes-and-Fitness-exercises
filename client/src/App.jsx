@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { ContextProvider } from "../src/context/AuthContext";
-import { AccContextProvider } from "./context/AccessoriesContext";
+import { CartContextProvider } from "../components/accessories/cartContext/AccessoriesContext";
 import HealthyAndFitness from "../components/backgroudImg/HealthyAndFitness";
 import Header from "../components/header/Header";
 import Login from "../components/login/Login";
@@ -29,7 +29,7 @@ import EditComment from "../components/recipes/comments/edit-comment/EditComment
 function App() {
   return (
     <>
-      <AccContextProvider>
+      <CartContextProvider>
       <ContextProvider>
           <Header />
         <Routes>
@@ -58,7 +58,7 @@ function App() {
           <Route path="/*" element={<Page404 />}></Route>
         </Routes>
       </ContextProvider>
-      </AccContextProvider>
+      </CartContextProvider>
     </>
   );
 }

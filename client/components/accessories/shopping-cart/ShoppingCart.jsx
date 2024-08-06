@@ -2,7 +2,7 @@ import style from "./ShoppingCart.module.css";
 import { IoMdClose } from "react-icons/io";
 import { IoIosAdd } from "react-icons/io";
 import { GrFormSubtract } from "react-icons/gr";
-import { AccContext } from "../../../src/context/AccessoriesContext";
+import { AccContext } from "../cartContext/AccessoriesContext";
 import { useContext, useState } from "react";
 import Checkout from "./checkout/Checkout";
 

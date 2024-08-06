@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 import { useContext } from "react";
 import { UserContext } from "../../src/context/AuthContext";
 import { CiShoppingBasket } from "react-icons/ci";
-import { AccContext } from "../../src/context/AccessoriesContext";
+import { AccContext } from "../../components/accessories/cartContext/AccessoriesContext";
 
 export default function Header() {
   const contextData = useContext(UserContext);

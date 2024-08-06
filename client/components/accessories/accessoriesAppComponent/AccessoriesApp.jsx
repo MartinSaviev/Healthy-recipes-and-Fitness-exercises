@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Accessories from "../Accessories";
 import * as requester from "../../../src/api/requester";
 import { urls } from "../../../public/allUrls/urls";
-import { AccContext } from "../../../src/context/AccessoriesContext";
+import { AccContext } from "../cartContext/AccessoriesContext";
 
 export default function AccessoriesApp() {
   const [accessories, setAccessories] = useState([]);

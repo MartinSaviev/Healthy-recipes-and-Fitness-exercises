@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { UserContext } from "../../../../src/context/AuthContext";
 import * as requester from "../../../../src/api/requester";
 import { urls } from "../../../../public/allUrls/urls";
-import { useForm } from "../../Hooks/useForm";
+import { useForm } from "../../../formHook/useForm";
 
 import styles from "./AddComment.module.css";
 

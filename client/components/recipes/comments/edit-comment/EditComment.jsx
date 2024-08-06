@@ -4,7 +4,7 @@ import styles from "./EditComment.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import * as requester from "../../../../src/api/requester";
 import { urls } from "../../../../public/allUrls/urls";
-import { useForm } from "../../Hooks/useForm";
+import { useForm } from "../../../formHook/useForm";
 export default function EditComment() {
   const { recipeCommentsId, commentId } = useParams();
 

@@ -14,7 +14,7 @@ export const AccContext = createContext({
   decrementItemCount: () => null,
 });
 
-export function AccContextProvider(props) {
+export function CartContextProvider(props) {
   const [cart, setCart] = useState([]);
   const [itemCount, setItemCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
