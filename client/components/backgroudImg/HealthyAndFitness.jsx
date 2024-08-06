@@ -10,7 +10,7 @@ export default function HealthyAndFitness() {
           alt=""
         />
         <img  className={style.imgFitness} src="./images/fitness.jpg" alt="" />
-      <h1 className={style.text}>Тренировки и Здравословно хранене</h1>
+      <h1 className={style.text}>Видео тренировки и Здравословно хранене</h1>
       </div>
       <VideoAndRecipesPicks/>
     </>

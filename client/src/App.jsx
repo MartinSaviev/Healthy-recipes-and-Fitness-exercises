@@ -1,3 +1,4 @@
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { ContextProvider } from "../src/context/AuthContext";
 import { CartContextProvider } from "../components/accessories/cartContext/AccessoriesContext";
@@ -15,7 +16,6 @@ import Register from "../components/register/Register";
 import CreateNewVideo from "../components/video/create-new-video/CreateNewVideo";
 import Video from "../components/video/Video";
 import Logout from "../components/logout/Logout";
-import "./App.css";
 import ShoppingCart from "../components/accessories/shopping-cart/ShoppingCart";
 import AccessoriesApp from "../components/accessories/accessoriesAppComponent/AccessoriesApp";
 import Checkout from "../components/accessories/shopping-cart/checkout/Checkout";
