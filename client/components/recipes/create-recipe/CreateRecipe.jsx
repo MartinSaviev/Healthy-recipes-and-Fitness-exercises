@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import styles from "./CreateRecipe.module.css";
 import { Link, useNavigate } from "react-router-dom";
 
 import * as recipeRequest from "../../../src/api/recipeRequest";
 import { UserContext } from "../../../src/context/AuthContext";
 import { useForm } from "../../formHook/useForm";
 
+import styles from "./CreateRecipe.module.css";
+
 export default function CreateRecipe() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const userData = useContext(UserContext);
 

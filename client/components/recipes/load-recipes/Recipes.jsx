@@ -12,7 +12,7 @@ export default function Recipes() {
 
   const userData = useContext(UserContext);
   let { userId } = useParams();
-  const recipe = useRequest(userId)
+  const recipe = useRequest(userId);
 
   return (
     <>
